@@ -21,22 +21,93 @@
     
     <!-- External Libraries -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link as="style" href="https://www.w3schools.com/w3css/4/w3.css" rel="preload">
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
     
     <style>
         /* ===== GLOBAL STYLES ===== */
-        * {
+        html {
             box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Inter', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
             background: #f8f9fa;
             overflow-x: hidden;
-            line-height: 1.6;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-family: "Playfair Display";
+            letter-spacing: 3px;
+            font-size: 30px;
+            line-height: 1.3;
+            font-weight: 400;
+            color: #2c3e50;
+        }
+
+        h3 {
+            font-size: 20px;
+            line-height: 1.3;
+            font-weight: 400;
+            color: #34495e;
+        }
+
+        p {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            color: #333;
+            text-indent: 45px;
+            padding: 0 0 1em 0;
+            font-weight: 400;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .p-color {
+            font-size: 20px;
+            border-left-style: solid;
+            border-width: 5px;
+            background: linear-gradient(to top right, #ffffff 30%, #d9e6f2 100%);
+            border-color: #4080bf;
+        }
+
+        a {
+            color: mediumvioletred;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         /* ===== NAVIGATION ===== */
@@ -104,23 +175,66 @@
             width: 100%;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION WITH PAN ANIMATION ===== */
         .hero-section {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            position: relative;
+        }
+
+        .bgimg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 120%;
+            background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6I56_uDdlufJvP6WLtVzIMoKWg83QtuwtWV1x_BY8JkiFPT45AtEACBPo-W7pQHWk2GJggBIrq0tm-Xr_WexzCc-2oMKVWEgdJWt0os2RSb_Lqd9js_0MVsg_PqS3XqBVo1TSV9jKNY1mzW9X90gmY761_ZdPN8owuxFNhTeEKpUJ0nNrC9ZTaYYFeg/s16000/Top%2020%20National%20Costumes%20MG%20Thailand.png");
+            background-position: center center;
+            animation: panZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes panZoom {
+            0% {
+                background-position: 20% 20%;
+                background-size: 120%;
+            }
+            25% {
+                background-position: 80% 30%;
+                background-size: 130%;
+            }
+            50% {
+                background-position: 60% 70%;
+                background-size: 125%;
+            }
+            75% {
+                background-position: 30% 80%;
+                background-size: 135%;
+            }
+            100% {
+                background-position: 70% 40%;
+                background-size: 140%;
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            z-index: 1;
         }
 
         .hero-content {
+            position: relative;
             z-index: 2;
             max-width: 800px;
             padding: 20px;
@@ -132,6 +246,9 @@
             font-size: 4rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: white;
+            background: none;
+            -webkit-text-fill-color: white;
         }
 
         .hero-subtitle {
@@ -165,65 +282,254 @@
             padding: 60px 40px 40px;
         }
 
-        .profile-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .profile-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .profile-subtitle {
-            font-size: 1.3rem;
-            color: #667eea;
-            font-weight: 500;
-        }
-
-        /* ===== CONTESTANT PROFILE ===== */
-        .contestant-profile {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .profile-image-container {
-            position: relative;
-        }
-
-        .profile-image {
-            width: 100%;
+        /* ===== GRADIENT ARTICLES ===== */
+        .gradient-article {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="2" fill="white" opacity="0.1"/><circle cx="40" cy="60" r="1" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .gradient-article h2 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gradient-article p {
+            color: white;
+            position: relative;
+            z-index: 2;
+            text-indent: 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(80deg, hsl(316, 83%, 57%), hsl(276, 97%, 38%), hsl(316, 83%, 57%));
+            display: inline;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== SKILL CHARTS WITH COLORS ===== */
+        .skills-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 40px;
+            margin: 60px -40px;
+            border-radius: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .profile-image:hover {
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%);
+            background-size: 20px 20px;
+            animation: move 1s linear infinite;
+        }
+
+        @keyframes move {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 20px; }
+        }
+
+        .skill-beauty { background: linear-gradient(135deg, #FF51EB 0%, #EDE342 100%); }
+        .skill-intelligence { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .skill-talent { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .skill-personality { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .skill-advocacy { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .skill-leadership { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        /* ===== RATING SYSTEM ===== */
+        .head-rating {
+            font-size: 25px;
+            margin-right: 25px;
+            background-image: linear-gradient(80deg, hsl(316, 83%, 57%), hsl(276, 97%, 38%));
+            background-size: 100% 3px;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            padding-bottom: 5px;
+        }
+
+        .fa {
+            font-size: 30px;
+        }
+
+        .checked {
+            background: linear-gradient(50deg, hsl(281, 100%, 20%), hsl(320, 61%, 65%), hsl(18, 61%, 75%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Three column layout */
+        .side {
+            float: left;
+            width: 15%;
+            margin-top: 10px;
+        }
+
+        .middle {
+            margin-top: 10px;
+            float: left;
+            width: 70%;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            color: white;
+        }
+
+        .bar-5 {width: 60%; height: 18px; background: linear-gradient(-45deg, #FF51EB 0%, #EDE342 100%);}
+        .bar-4 {width: 30%; height: 18px; background-color: #FF1493;}
+        .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+        .bar-2 {width: 4%; height: 18px; background-color: #ADFF2F;}
+        .bar-1 {width: 15%; height: 18px; background-color: #FFFF00;}
+
+        /* ===== IMAGE GALLERY ===== */
+        .gallery-section {
+            margin: 60px 0;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .col-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .col:hover {
             transform: scale(1.02);
         }
 
-        .profile-details {
-            padding: 20px 0;
+        .col img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #e9ecef;
+        .col:hover img {
+            transform: scale(1.1);
         }
 
-        .detail-label {
-            font-weight: 600;
-            color: #667eea;
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
 
-        .detail-value {
-            color: #2c3e50;
+        .col:hover .image-overlay {
+            transform: translateY(0);
         }
 
         /* ===== ENDLESS SCORING SECTION ===== */
@@ -607,6 +913,7 @@
             line-height: 1.7;
             margin-bottom: 15px;
             color: #555;
+            text-indent: 0;
         }
 
         .author-expertise h4 {
@@ -649,6 +956,7 @@
         .author-footer p {
             margin: 0;
             font-size: 0.9rem;
+            text-indent: 0;
         }
 
         .author-footer a {
@@ -661,124 +969,113 @@
             text-decoration: underline;
         }
 
-        /* ===== ADVOCACY SECTION ===== */
-        .advocacy-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 60px 40px;
-            margin: 60px -40px;
-            border-radius: 20px;
-        }
-
-        .advocacy-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 40px;
-        }
-
-        .advocacy-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .advocacy-quote {
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #667eea;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        /* ===== COMMENTS SECTION ===== */
-        .comments-section {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 2px solid #e9ecef;
-        }
-
-        .comments-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 30px;
-        }
-
-        .comment-form {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-        }
-
-        .comment-input {
+        /* ===== MODAL STYLES ===== */
+        .w3-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 1rem;
-            margin-bottom: 15px;
-            transition: border-color 0.3s ease;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
         }
 
-        .comment-input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .comment-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .comment-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .comment-item {
-            background: white;
-            padding: 25px;
+        .w3-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
             border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
+        .w3-button {
+            background-color: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            transition: background-color 0.3s ease;
         }
 
-        .comment-author {
-            font-weight: 600;
-            color: #667eea;
+        .w3-button:hover {
+            background-color: #764ba2;
         }
 
-        .comment-date {
-            color: #999;
-            font-size: 0.9rem;
+        .w3-input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
-        .comment-text {
-            line-height: 1.6;
-            color: #555;
+        .w3-button-block {
+            width: 100%;
         }
 
-        .comment-rating {
-            margin-top: 10px;
+        .love {
+            background-color: #ffccff;
+            border-left: 6px solid #FF1493;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
         }
 
-        .star {
-            color: #ffd700;
-            font-size: 1.2rem;
+        .box:before {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(-45deg, #37525c 0%, #e0fbfc 100%);
+            transform: translate3d(0px, 20px, 0) scale(0.95);
+            filter: blur(20px);
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            border-radius: inherit;
+        }
+
+        .box::after {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: inherit;
+            border-radius: inherit;
+        }
+
+        hr {
+            display: block;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            border: 0;
+            height: 1.5px;
+            background-image: linear-gradient(
+                50deg,
+                hsl(240, 100%, 20%),
+                hsl(280, 81%, 42%),
+                hsl(320, 61%, 65%),
+                hsl(0, 42%, 87%),
+                hsl(18, 61%, 75%),
+                hsl(37, 81%, 62%),
+                hsl(55, 100%, 50%)
+            );
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
@@ -800,17 +1097,13 @@
                 padding: 40px 20px;
             }
             
-            .contestant-profile {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .skills-section {
+                margin: 40px -20px;
+                padding: 40px 20px;
             }
             
-            .scoring-title {
-                font-size: 2rem;
-            }
-            
-            .score-card {
-                min-width: 250px;
+            .scoring-section {
+                margin: 40px -20px;
             }
             
             .live-scoring {
@@ -842,9 +1135,20 @@
                 text-align: center;
             }
             
-            .advocacy-section {
-                margin: 40px -20px;
-                padding: 40px 20px;
+            .col-container {
+                flex-direction: column;
+            }
+            
+            .col {
+                min-width: 100%;
+            }
+            
+            .side, .middle {
+                width: 100%;
+            }
+            
+            .right {
+                display: none;
             }
         }
 
@@ -906,15 +1210,18 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#profile">Profile</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#scoring">Live Scoring</a></li>
                 <li><a href="#author">Designer</a></li>
-                <li><a href="#comments">Comments</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Pan Animation -->
     <section id="home" class="hero-section">
+        <div class="bgimg"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="crown-icon">👑</div>
             <h1 class="hero-title">Veena Praveenar Singh Thakral</h1>
@@ -948,71 +1255,452 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Profile Header -->
-        <section id="profile" class="profile-header">
-            <h1 class="profile-title">The Empress Profile</h1>
-            <p class="profile-subtitle">Beauty, Intelligence, and Purpose Combined</p>
-        </section>
+        <!-- Profile Section -->
+        <section id="profile" class="w3-row w3-padding">
+            <h2 class="w3-center w3-xxlarge">Pageant Profile</h2><br>
 
-        <!-- Contestant Profile -->
-        <section class="contestant-profile fade-in">
-            <div class="profile-image-container">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1_X4C68eYQFUhjQNBrTDw1o6xGYJ0pYBuKvgnbZBHCy0iIQHl4B9Kb7K0ArgvhxE4sP8wycpMtMH9LaTzHwLOZLfyVqokWsODAyN03kmMyG6sj5La7mHy9tjGesiyzlPkKrUjMku9J4d5HL0jXLJE5dXYnRpX1w9RV3FrKmFpGkbLjJKJxBWIeLgf_g/w512-h640/MUT%20Phuket1.jpg" 
-                     alt="Veena Praveenar Singh Thakral - Miss Universe Thailand 2023" 
-                     class="profile-image">
+            <div class="w3-col m6 w3-padding-large w3-mobile">
+                <!-- Profile Image -->
+                <img alt="Veena Praveenar Singh Thakral" class="w3-round w3-image" height="640" 
+                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1_X4C68eYQFUhjQNBrTDw1o6xGYJ0pYBuKvgnbZBHCy0iIQHl4B9Kb7K0ArgvhxE4sP8wycpMtMH9LaTzHwLOZLfyVqokWsODAyN03kmMyG6sj5La7mHy9tjGesiyzlPkKrUjMku9J4d5HL0jXLJE5dXYnRpX1w9RV3FrKmFpGkbLjJKJxBWIeLgf_g/w512-h640/MUT%20Phuket1.jpg" 
+                     width="512">
+                <h2 class="w3-left w3-margin-top">Veena Praveenar Singh Thakral</h2>
+
+                <!-- Profile Information -->
+                <div class="w3-container w3-content">
+                    <div class="w3-card w3-round-large w3-border w3-border-blue" style="width: 100%;">
+                        <span class="w3-padding" style="color: hsl(276, 97%, 38%);">
+                            <i class="material-icons w3-xxlarge">auto_awesome</i>
+                        </span>
+                        <p class="w3-large">"Be An Ally, Not A Bully" project aims to combat bullying in schools.</p>
+                    </div>
+                </div>
             </div>
-            <div class="profile-details">
-                <div class="detail-item">
-                    <span class="detail-label">Full Name:</span>
-                    <span class="detail-value">Veena Praveenar Singh Thakral</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Title:</span>
-                    <span class="detail-value">Miss Universe Thailand 2023</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Age:</span>
-                    <span class="detail-value">27 years old</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Height:</span>
-                    <span class="detail-value">178 cm</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Hometown:</span>
-                    <span class="detail-value">Phuket, Thailand</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Education:</span>
-                    <span class="detail-value">Thammasat University</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Languages:</span>
-                    <span class="detail-value">English, Thai, Russian</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Advocacy:</span>
-                    <span class="detail-value">Be An Ally, Not A Bully</span>
-                </div>
+
+            <!-- Biography Section -->
+            <div class="w3-col m6 w3-padding w3-mobile">
+                <h2>Discover Her Story</h2>
+                <h3>
+                    <span class="w3-padding w3-xlarge" style="color: hsl(276, 97%, 38%);">
+                        <i class="material-icons">menu_book</i>
+                        Biography
+                    </span>
+                </h3>
+                <h3>Who is Veena Praveenar Singh Thakral?</h3>
+                <img alt="Veena Praveenar Singh Thakral" class="w3-image" 
+                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4h9si-nLtqDiYB4iZY-SCVItQ3c1ODN8u09EEAvFAxVTZ0uxOSOFSCl0Y1KpWushM9u4YNZTucN3QADAY007Bm-f8jde0shbrSbbK5Sy5MSS_YK143tYcG7ryF0S_hkijEYrKeK7A23hm_hpoVB2kUO3PmmFrrEbDQD2iidZEAg6ABy7fGmnHn42JUQ/s16000/Veena%20Singh%20MUT.png" 
+                     style="width: 100%;">
+                <p class="w3-large">Veena was born and raised in Chiang Mai, Thailand, to an Indian Sikh family. A 27-year-old Thai citizen, she is fluent in English, Thai, and Russian. Standing tall at 178 cm (5'10"), she graduated in Liberal Arts from Thammasat University in Bangkok. Her multilingual abilities allow her to express and share her thoughts with a wider audience, especially concerning her relevant advocacies. <span class="w3-tag" style="background: linear-gradient(50deg, hsl(281, 100%, 20%), hsl(320, 61%, 65%), hsl(18, 61%, 75%), hsl(55, 100%, 50%));">Veena strongly believes that beauty pageants are no longer solely about outer beauty</span>, but they also provide a platform for women to showcase their talents, discuss their advocacies, and grow in confidence.</p>
             </div>
         </section>
 
-        <!-- Advocacy Section -->
-        <section class="advocacy-section fade-in">
-            <h2 class="advocacy-title">Her Mission: Be An Ally, Not A Bully</h2>
-            <div class="advocacy-content">
-                <p class="advocacy-quote">
-                    "I believe that every person deserves to be treated with respect and kindness, regardless of their differences. 
-                    Through my 'Be An Ally, Not A Bully' campaign, I aim to create a world where acceptance triumphs over judgment."
-                </p>
-                <p>
-                    Veena's advocacy stems from her personal experiences and her deep commitment to creating positive change. 
-                    Her project focuses on fighting against school bullying and promoting acceptance and respect for people's differences. 
-                    As Miss Universe Thailand 2023, she uses her platform to raise awareness about the devastating effects of bullying 
-                    and to encourage others to become allies in the fight against discrimination.
-                </p>
+        <!-- Gradient Article Section -->
+        <section class="gradient-article fade-in">
+            <h2>The Empress: A Story of Resilience and Advocacy</h2>
+            <p>Veena Praveenar Singh Thakral, popularly known as "The Empress," represents more than just beauty and grace. Her journey from being a victim of bullying to becoming a powerful advocate for change showcases the transformative power of resilience and determination.</p>
+            <p>Her "Be An Ally, Not A Bully" campaign has touched thousands of lives, creating safe spaces in schools and communities across Thailand. Through her platform, she continues to inspire young people to embrace their differences and stand up against discrimination.</p>
+            <p>As Miss Universe Thailand 2023, Veena carries the hopes and dreams of a nation that believes in the power of compassion, understanding, and unity. Her story is a testament to the fact that true beauty comes from within and manifests through our actions and advocacy for others.</p>
+        </section>
+
+        <!-- Skills Section with Colorful Charts -->
+        <section id="skills" class="skills-section fade-in">
+            <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px;">Pageant Skills Assessment</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="material-icons">star</i>Beauty & Presentation</h4>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Overall Beauty</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-beauty" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Stage Presence</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-beauty" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Runway Walk</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-beauty" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="material-icons">psychology</i>Intelligence & Communication</h4>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Public Speaking</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-intelligence" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Q&A Performance</span>
+                            <span>94%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-intelligence" style="width: 94%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Multilingual Skills</span>
+                            <span>96%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-intelligence" style="width: 96%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="material-icons">music_note</i>Talent & Performance</h4>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Cultural Performance</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-talent" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>National Costume</span>
+                            <span>93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-talent" style="width: 93%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Evening Gown</span>
+                            <span>91%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-talent" style="width: 91%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="material-icons">favorite</i>Personality & Character</h4>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Charisma</span>
+                            <span>97%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-personality" style="width: 97%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Authenticity</span>
+                            <span>99%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-personality" style="width: 99%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Relatability</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-personality" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="material-icons">campaign</i>Advocacy & Leadership</h4>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Social Impact</span>
+                            <span>96%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-advocacy" style="width: 96%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Community Engagement</span>
+                            <span>94%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-advocacy" style="width: 94%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Anti-Bullying Campaign</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-advocacy" style="width: 98%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="material-icons">groups</i>Leadership Qualities</h4>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Inspirational Leadership</span>
+                            <span>93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-leadership" style="width: 93%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Cultural Ambassador</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-leadership" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label">
+                            <span>Global Representation</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-leadership" style="width: 92%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- Rating System -->
+        <div class="container fade-in">
+            <h2 class="head-rating" style="display: inline-block; margin-right: 32px;">Super Fans Rating</h2>
+            <span>
+                <i class="material-icons fa checked">grade</i>
+            </span>
+            <span>
+                <i class="material-icons fa checked">grade</i>
+            </span>
+            <span>
+                <i class="material-icons fa checked">grade</i>
+            </span>
+            <span>
+                <i class="material-icons fa checked">grade</i>
+            </span>
+            <span>
+                <i class="material-icons fa">grade</i>
+            </span>
+            <p>4.1 average based on 254 reviews.</p>
+        </div>
+
+        <div class="row">
+            <div class="side">
+                <div>5 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-5"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>150</div>
+            </div>
+            <div class="side">
+                <div>4 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-4"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>63</div>
+            </div>
+            <div class="side">
+                <div>3 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-3"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>15</div>
+            </div>
+            <div class="side">
+                <div>2 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-2"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>6</div>
+            </div>
+            <div class="side">
+                <div>1 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-1"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>20</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Image Gallery Section -->
+        <section id="gallery" class="gallery-section fade-in">
+            <h2 class="gallery-title"><span class="gradient-text">Elegant Moments</span> Gallery</h2>
+            <div class="col-container">
+                <div class="col">
+                    <img alt="2022 Veena cover" loading="lazy" 
+                         src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-iCHN2llzQxU62OyUzKau3j4-jK1c5hDnn45qPmihQg8d42YHDD1ogUKA3LNo9YCMaWw9XmXYpz5RYMeCe7phfIESokEn9Q3X7EQ5NrnBEB3bIm__c1rYIC8m9lStVTAVvliryUKU0WYO2w9mtyUUOqnYlMKZQrTysQ_MWNHiOgQaiaqBVSyVG4ykpllj/s1600/117184305_2441732452786371_4524991514430154662_n.jpg">
+                    <div class="image-overlay">
+                        <h3>Pageant Excellence</h3>
+                        <p>Showcasing grace and elegance on the pageant stage</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <img alt="2020 Veena 01" loading="lazy" 
+                         src="https://pbs.twimg.com/media/EgrLf7-VoAEYTA7.jpg">
+                    <div class="image-overlay">
+                        <h3>Cultural Heritage</h3>
+                        <p>Representing Thai culture with pride and authenticity</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <img alt="2020 Veena 02" loading="lazy" 
+                         src="https://pbs.twimg.com/media/Ej3y3C3U0AAaJ0H.jpg">
+                    <div class="image-overlay">
+                        <h3>Timeless Beauty</h3>
+                        <p>Classic elegance meets modern sophistication</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <img alt="Miss Universe Thailand" loading="lazy" 
+                         src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmSBDljwCFme_lzKBj-zRkHPvN6Xb8Sneg1R2CFJa1jyHYYz6B70lz56Otk3-hteAkYM-Www_mVmNoBsNkQb9E10Q-uKwOREUWJ03c55jxr47u_S-kDQE60TiTlAuutDSz4OJOWJtMYLJEAC6Yqqki9EeweiJrpXmMKFHSzYUX-49lPT1pWp4pHPHweQ/s2048/MUT%20Phuket.jpg">
+                    <div class="image-overlay">
+                        <h3>Miss Universe Thailand</h3>
+                        <p>The crown moment - achieving her dreams</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <img alt="Advocacy Work" loading="lazy" 
+                         src="https://static.thairath.co.th/media/Dtbezn3nNUxytg04N1PAS36ODWCFxogtHjyWi6RWp8j1WP.jpg">
+                    <div class="image-overlay">
+                        <h3>Advocacy Champion</h3>
+                        <p>Leading the fight against bullying with compassion</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <img alt="National Costume" loading="lazy" 
+                         src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4h9si-nLtqDiYB4iZY-SCVItQ3c1ODN8u09EEAvFAxVTZ0uxOSOFSCl0Y1KpWushM9u4YNZTucN3QADAY007Bm-f8jde0shbrSbbK5Sy5MSS_YK143tYcG7ryF0S_hkijEYrKeK7A23hm_hpoVB2kUO3PmmFrrEbDQD2iidZEAg6ABy7fGmnHn42JUQ/s16000/Veena%20Singh%20MUT.png">
+                    <div class="image-overlay">
+                        <h3>National Pride</h3>
+                        <p>Stunning national costume representing Thailand</p>
+                    </div>
+                </div>
+            </div>
+            <p style="font-family: Georgia; font-size: 13px; line-height: 100%; margin: 3px; text-align: right;">
+                Source: <a href="#" rel="nofollow" style="color: mediumvioletred;" target="_blank">Various Official Sources</a>
+            </p>
+        </section>
+
+        <!-- Article Section -->
+        <div class="w3-white w3-margin fade-in">
+            <div class="w3-container w3-padding">
+                <h2>Remarkable Elegance: A Timeless Splendor</h2>
+            </div>
+            <div class="w3-justify">
+                <img alt="Runway" class="w3-padding-16" loading="lazy" 
+                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-iCHN2llzQxU62OyUzKau3j4-jK1c5hDnn45qPmihQg8d42YHDD1ogUKA3LNo9YCMaWw9XmXYpz5RYMeCe7phfIESokEn9Q3X7EQ5NrnBEB3bIm__c1rYIC8m9lStVTAVvliryUKU0WYO2w9mtyUUOqnYlMKZQrTysQ_MWNHiOgQaiaqBVSyVG4ykpllj/s1600/117184305_2441732452786371_4524991514430154662_n.jpg" 
+                     style="display: block; height: auto; margin: 0 auto; width: 70%;">
+            </div>
+            <p><strong>The Q&A!</strong> Praveenar Singh, 24, gave her answer with a strong, conservative bent, praising Thailand's "Three Pillars."</p>
+            <p>The question: "The picture of the Temple of Dawn has always been taken to symbolize Thailand's spirit and landmark. If you become the new Miss Universe Thailand, in what way will you represent yourself as one of the new icons of Thailand?"</p>
+            <p>"I would display humility, honoring, and respecting others, as I have been taught growing up, and smiling the Thai Smile. With these four things, anywhere in the world people will know we are Thai," Praveenar said. "More than that, it is about being taught to love the Nation, Religions, and Monarchy, which Thais love and protect more than anything."</p>
+            <p>As we immerse ourselves in this enchanting journey, we are reminded that true elegance is not bound by trends or fleeting fads. It is an eternal flame that illuminates the path of style and sophistication. With every stitch and every design, this realm of elegance becomes a beacon of inspiration for those who dare to dream beyond conventions.</p>
+
+            <div class="container">
+                <div class="row">
+                    <p class="w3-left" style="display: inline-block;">
+                        <button class="w3-btn w3-white w3-border w3-round-large" id="myBtn" onclick="likeFunction(this)">
+                            <b><i class="material-icons w3-margin-right">workspace_premium</i>Like</b>
+                        </button>
+                    </p>
+                    <p class="w3-right" style="display: inline-block;">
+                        <button class="w3-btn w3-white w3-border w3-round-large" id="myBtn2" onclick="toggleReplies()">
+                            <b>Top Replies</b> <span class="w3-tag w3-white">3</span>
+                        </button>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comment section -->
+            <div class="w3-hide" id="blogReplies">
+                <hr>
+                <div class="w3-row w3-margin-bottom">
+                    <div class="w3-col l2 m3">
+                        <img alt="01" src="https://yt3.googleusercontent.com/sE8xWGLMQ-nYMO4WJG5h8ThrYMqUwhn3_fWon19y5cfdOntQ9dcEPt4k1wZOMEs3vMZhw8_-XjQ=s176-c-k-c0x00ffffff-no-rj" style="width: 90px;">
+                    </div>
+                    <div class="w3-col l10 m9">
+                        <h4>victorywin895<span class="w3-opacity w3-medium"> July 10, 2022, 7:22 PM</span></h4>
+                        <p>Love you so much ❤💋</p>
+                    </div>
+                </div>
+                <div class="w3-row w3-margin-bottom">
+                    <div class="w3-col l2 m3">
+                        <img alt="02" src="https://yt3.googleusercontent.com/ytc/AOPolaTFBuZZBjaP4iQsSUtte-2_O-j2LKhOFgY8ibm_lA=s176-c-k-c0x00ffffff-no-rj" style="width: 90px;">
+                    </div>
+                    <div class="w3-col l10 m9">
+                        <h4>paitakanyama337<span class="w3-opacity w3-medium"> April 8, 2022, 10:32 PM</span></h4>
+                        <p>If the appointment of Vena to Vina Mee Lun Mong, because the auntie, this year, he took the satisfactory person in his body, it looks like Aunt Pornla would like Vinna, but the Thai Division does not send Vina 👑.</p>
+                    </div>
+                </div>
+                <div class="w3-row w3-margin-bottom">
+                    <div class="w3-col l2 m3">
+                        <img alt="03" src="https://yt3.googleusercontent.com/ytc/AOPolaTAMjHsG80UYFfpd54mzSqNnnCzo-aztX79iMFriqo=s176-c-k-c0x00ffffff-no-rj" style="width: 90px;">
+                    </div>
+                    <div class="w3-col l10 m9">
+                        <h4>beerwannida3906<span class="w3-opacity w3-medium"> April 7, 2022, 9:12 PM</span></h4>
+                        <p>Can't wait for the runway to start!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Endless Scoring Section -->
         <section id="scoring" class="scoring-section">
@@ -1058,6 +1746,12 @@
                 </div>
             </div>
         </section>
+
+        <!-- Love Section -->
+        <div class="love fade-in">
+            <h3 style="font-size: larger;"><strong>Love</strong> the article?</h3>
+            <p style="font-size: larger;">Never miss your favorite updates. Be the first to discover viral new trends.</p>
+        </div>
 
         <!-- Author/Designer Section -->
         <section id="author" class="author-section fade-in">
@@ -1122,307 +1816,1568 @@
                         </div>
                     </div>
                 </div>
+<!-- Add these sections after the existing Author section and before the closing main tag -->
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline-section fade-in">
+            <h2 class="timeline-title">Journey Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
                 
-                <div class="author-footer">
-                    <p><strong>Portfolio:</strong> <a href="https://pigletpeakkung.github.io/Thannxai/">Visit Portfolio</a></p>
-                    <p><strong>Connect:</strong> 
-                        <a href="https://linktr.ee/ThanttEzekiel">All Links</a>
-                    </p>
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">November 2023</div>
+                        <h3>Miss Universe 2023</h3>
+                        <p>Represents Thailand at Miss Universe 2023 in El Salvador with her powerful anti-bullying advocacy.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Global Stage</span>
+                            <span class="timeline-tag">Advocacy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 2023</div>
+                        <h3>Miss Universe Thailand 2023</h3>
+                        <p>Crowned Miss Universe Thailand 2023, launching her "Be An Ally, Not A Bully" campaign nationwide.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Crown</span>
+                            <span class="timeline-tag">Thailand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">July 2023</div>
+                        <h3>Miss Phuket 2023</h3>
+                        <p>Won Miss Phuket 2023, beginning her journey toward the national crown with outstanding performance.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Regional</span>
+                            <span class="timeline-tag">Victory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2022">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2022</div>
+                        <h3>Advocacy Launch</h3>
+                        <p>Officially launched her anti-bullying initiative in schools across Chiang Mai and Phuket.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Community</span>
+                            <span class="timeline-tag">Impact</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2021">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 2021</div>
+                        <h3>University Graduation</h3>
+                        <p>Graduated with honors from Thammasat University with a degree in Liberal Arts.</p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Education</span>
+                            <span class="timeline-tag">Achievement</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Comments Section -->
-        <section id="comments" class="comments-section fade-in">
-            <h2 class="comments-title">Community Comments</h2>
-            
-            <div class="comment-form">
-                <h3>Share Your Thoughts</h3>
-                <input type="text" class="comment-input" placeholder="Your Name" id="commentName">
-                <textarea class="comment-input" rows="4" placeholder="Write your comment..." id="commentText"></textarea>
-                <button class="comment-btn" onclick="addComment()">Post Comment</button>
+        <!-- Interactive Statistics Section -->
+        <section id="statistics" class="statistics-section fade-in">
+            <h2 class="statistics-title">Impact & Achievements</h2>
+            <div class="statistics-grid">
+                <div class="stat-card" data-target="25000">
+                    <div class="stat-icon">🏫</div>
+                    <div class="stat-number" id="stat1">0</div>
+                    <div class="stat-label">Students Reached</div>
+                    <div class="stat-description">Through anti-bullying campaigns</div>
+                </div>
+
+                <div class="stat-card" data-target="150">
+                    <div class="stat-icon">🏫</div>
+                    <div class="stat-number" id="stat2">0</div>
+                    <div class="stat-label">Schools Visited</div>
+                    <div class="stat-description">Across Thailand</div>
+                </div>
+
+                <div class="stat-card" data-target="89">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-number" id="stat3">0</div>
+                    <div class="stat-label">Percent Reduction</div>
+                    <div class="stat-description">In bullying incidents</div>
+                </div>
+
+                <div class="stat-card" data-target="50">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number" id="stat4">0</div>
+                    <div class="stat-label">Youth Mentors</div>
+                    <div class="stat-description">Trained as allies</div>
+                </div>
+
+                <div class="stat-card" data-target="1200">
+                    <div class="stat-icon">📱</div>
+                    <div class="stat-number" id="stat5">0</div>
+                    <div class="stat-label">Daily Interactions</div>
+                    <div class="stat-description">On social media</div>
+                </div>
+
+                <div class="stat-card" data-target="95">
+                    <div class="stat-icon">💝</div>
+                    <div class="stat-number" id="stat6">0</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                    <div class="stat-description">From program participants</div>
+                </div>
             </div>
-            
-            <div id="commentsList">
-                <div class="comment-item">
-                    <div class="comment-header">
-                        <span class="comment-author">Sarah Johnson</span>
-                        <span class="comment-date">2 hours ago</span>
+        </section>
+
+        <!-- Interactive Quiz Section -->
+        <section id="quiz" class="quiz-section fade-in">
+            <div class="quiz-container">
+                <h2 class="quiz-title">Test Your Knowledge</h2>
+                <p class="quiz-subtitle">How well do you know Veena and her advocacy?</p>
+                
+                <div class="quiz-content" id="quizContent">
+                    <div class="quiz-question" id="question"></div>
+                    <div class="quiz-options" id="options"></div>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar" id="progressBar"></div>
+                        <span class="quiz-progress-text" id="progressText">1 of 5</span>
                     </div>
-                    <p class="comment-text">Veena is such an inspiration! Her advocacy work against bullying is so important and needed in today's world.</p>
-                    <div class="comment-rating">
-                        <span class="star">★★★★★</span>
+                    <button class="quiz-btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+                </div>
+
+                <div class="quiz-results" id="quizResults" style="display: none;">
+                    <div class="results-icon" id="resultsIcon">🏆</div>
+                    <h3 id="resultsTitle">Congratulations!</h3>
+                    <div class="results-score" id="resultsScore">4 out of 5</div>
+                    <p id="resultsMessage">You're a true Veena supporter!</p>
+                    <button class="quiz-btn" onclick="restartQuiz()">Take Quiz Again</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Virtual Wardrobe Section -->
+        <section id="wardrobe" class="wardrobe-section fade-in">
+            <h2 class="wardrobe-title">Virtual Wardrobe Collection</h2>
+            <div class="wardrobe-controls">
+                <button class="wardrobe-btn active" data-category="all">All Outfits</button>
+                <button class="wardrobe-btn" data-category="evening">Evening Gowns</button>
+                <button class="wardrobe-btn" data-category="cultural">Cultural</button>
+                <button class="wardrobe-btn" data-category="casual">Casual</button>
+                <button class="wardrobe-btn" data-category="swimwear">Swimwear</button>
+            </div>
+
+            <div class="wardrobe-grid" id="wardrobeGrid">
+                <!-- Items will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Fan Messages Section -->
+        <section id="fanmessages" class="fanmessages-section fade-in">
+            <h2 class="fanmessages-title">Messages from Supporters</h2>
+            <div class="fanmessages-container">
+                <div class="fanmessage-scroll">
+                    <div class="fanmessage-item">
+                        <div class="fan-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Fan">
+                        </div>
+                        <div class="fanmessage-content">
+                            <h4>Sarah Chen</h4>
+                            <p>"Veena's advocacy against bullying changed my perspective. As a teacher, I now use her methods in my classroom!"</p>
+                            <div class="fanmessage-location">📍 Bangkok, Thailand</div>
+                        </div>
+                    </div>
+
+                    <div class="fanmessage-item">
+                        <div class="fan-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Fan">
+                        </div>
+                        <div class="fanmessage-content">
+                            <h4>Michael Johnson</h4>
+                            <p>"Watching Veena at Miss Universe was incredible. She represented Thailand with such grace and purpose!"</p>
+                            <div class="fanmessage-location">📍 New York, USA</div>
+                        </div>
+                    </div>
+
+                    <div class="fanmessage-item">
+                        <div class="fan-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Fan">
+                        </div>
+                        <div class="fanmessage-content">
+                            <h4>Maria Rodriguez</h4>
+                            <p>"Her 'Be An Ally, Not A Bully' campaign inspired our school to create its own anti-bullying program!"</p>
+                            <div class="fanmessage-location">📍 Madrid, Spain</div>
+                        </div>
+                    </div>
+
+                    <div class="fanmessage-item">
+                        <div class="fan-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Fan">
+                        </div>
+                        <div class="fanmessage-content">
+                            <h4>David Kim</h4>
+                            <p>"Veena proves that beauty pageants are platforms for real change. Proud to support her mission!"</p>
+                            <div class="fanmessage-location">📍 Seoul, South Korea</div>
+                        </div>
+                    </div>
+
+                    <div class="fanmessage-item">
+                        <div class="fan-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Fan">
+                        </div>
+                        <div class="fanmessage-content">
+                            <h4>Elena Volkov</h4>
+                            <p>"As a bullying survivor myself, Veena's story gives me hope and strength every day!"</p>
+                            <div class="fanmessage-location">📍 Moscow, Russia</div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="comment-item">
-                    <div class="comment-header">
-                        <span class="comment-author">Maria Rodriguez</span>
-                        <span class="comment-date">5 hours ago</span>
-                    </div>
-                    <p class="comment-text">Beautiful inside and out! Thailand chose the perfect representative for Miss Universe 2023.</p>
-                    <div class="comment-rating">
-                        <span class="star">★★★★★</span>
-                    </div>
+            </div>
+
+            <div class="fanmessage-form">
+                <h3>Share Your Message</h3>
+                <form id="fanMessageForm">
+                    <input type="text" id="fanName" placeholder="Your Name" required>
+                    <input type="text" id="fanLocation" placeholder="Your Location">
+                    <textarea id="fanMessage" placeholder="Your message to Veena..." rows="4" required></textarea>
+                    <button type="submit">Send Message 💌</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Live Social Feed Simulation -->
+        <section id="socialfeed" class="socialfeed-section fade-in">
+            <h2 class="socialfeed-title"># Live Social Updates</h2>
+            <div class="socialfeed-container">
+                <div class="social-post" id="socialPosts">
+                    <!-- Posts will be dynamically generated -->
                 </div>
-                
-                <div class="comment-item">
-                    <div class="comment-header">
-                        <span class="comment-author">Alex Chen</span>
-                        <span class="comment-date">1 day ago</span>
-                    </div>
-                    <p class="comment-text">The design of this profile page is absolutely stunning! Great work by Thanatsitt.</p>
-                    <div class="comment-rating">
-                        <span class="star">★★★★★</span>
-                    </div>
+            </div>
+            <div class="social-stats">
+                <div class="social-stat">
+                    <span class="social-icon">📱</span>
+                    <span class="social-number" id="followers">2.3M</span>
+                    <span class="social-label">Followers</span>
+                </div>
+                <div class="social-stat">
+                    <span class="social-icon">❤️</span>
+                    <span class="social-number" id="likes">156K</span>
+                    <span class="social-label">Likes Today</span>
+                </div>
+                <div class="social-stat">
+                    <span class="social-icon">💬</span>
+                    <span class="social-number" id="comments">23.7K</span>
+                    <span class="social-label">Comments</span>
+                </div>
+                <div class="social-stat">
+                    <span class="social-icon">🔄</span>
+                    <span class="social-number" id="shares">45.2K</span>
+                    <span class="social-label">Shares</span>
                 </div>
             </div>
         </section>
     </main>
 
-    <script>
-        // ===== SCORE DATA =====
-        const judges = [
-            { name: "Maria Rodriguez", avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" },
-            { name: "James Chen", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" },
-            { name: "Sophie Laurent", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" },
-            { name: "David Kim", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" },
-            { name: "Elena Volkov", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" },
-            { name: "Carlos Santos", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" }
-        ];
-
-        const categories = [
-            "Evening Gown", "Swimwear", "Interview", "Talent", 
-            "Stage Presence", "Personality", "Beauty", "Intelligence"
-        ];
-
-        // ===== SCROLL INDICATOR =====
-        function updateScrollIndicator() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            document.getElementById('scrollIndicator').style.transform = `scaleX(${scrollPercent / 100})`;
+    <!-- Add the CSS for new sections to the existing <style> tag -->
+    <style>
+        /* ===== TIMELINE SECTION ===== */
+        .timeline-section {
+            margin: 80px 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
         }
 
-        // ===== SMOOTH SCROLLING =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 60px;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-date {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-content h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .timeline-tags {
+            margin-top: 15px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ===== STATISTICS SECTION ===== */
+        .statistics-section {
+            margin: 80px 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .statistics-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .statistics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== QUIZ SECTION ===== */
+        .quiz-section {
+            margin: 80px 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quiz-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .quiz-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .quiz-content {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .quiz-option.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .quiz-option.correct {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .quiz-option.incorrect {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar::before {
+            content: '';
+            display: block;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 20%;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .quiz-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .quiz-results {
+            text-align: center;
+        }
+
+        .results-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .results-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 20px 0;
+        }
+
+        /* ===== WARDROBE SECTION ===== */
+        .wardrobe-section {
+            margin: 80px 0;
+        }
+
+        .wardrobe-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .wardrobe-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .wardrobe-btn {
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .wardrobe-btn:hover,
+        .wardrobe-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .wardrobe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .wardrobe-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .wardrobe-item:hover {
+            transform: scale(1.03);
+        }
+
+        .wardrobe-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .wardrobe-info {
+            padding: 15px;
+        }
+
+        .wardrobe-category {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .wardrobe-name {
+            font-weight: 600;
+            margin: 5px 0;
+            color: #2c3e50;
+        }
+
+        /* ===== FAN MESSAGES SECTION ===== */
+        .fanmessages-section {
+            margin: 80px 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+        }
+
+        .fanmessages-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .fanmessages-container {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 40px;
+            padding-right: 10px;
+        }
+
+        .fanmessage-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .fanmessage-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .fanmessage-scroll::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .fanmessage-item {
+            display: flex;
+            gap: 15px;
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .fanmessage-item:hover {
+            transform: translateX(5px);
+        }
+
+        .fan-avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fanmessage-content h4 {
+            margin: 0 0 8px 0;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .fanmessage-content p {
+            margin: 0 0 8px 0;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .fanmessage-location {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .fanmessage-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .fanmessage-form h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fanmessage-form input,
+        .fanmessage-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .fanmessage-form input:focus,
+        .fanmessage-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .fanmessage-form button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .fanmessage-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== SOCIAL FEED SECTION ===== */
+        .socialfeed-section {
+            margin: 80px 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .socialfeed-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .socialfeed-container {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 40px;
+        }
+
+        .social-post {
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .social-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .social-stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .social-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .social-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== RESPONSIVE UPDATES ===== */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                text-align: left !important;
+            }
+
+            .statistics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .wardrobe-controls {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .social-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+// Add this JavaScript to the existing <script> section
+
+// ===== QUIZ FUNCTIONALITY =====
+const quizQuestions = [
+    {
+        question: "What is Veena's main advocacy campaign called?",
+        options: [
+            "Stop Bullying Now",
+            "Be An Ally, Not A Bully", 
+            "Stand Together Strong",
+            "Unity Against Bullying"
+        ],
+        correct: 1
+    },
+    {
+        question: "Which university did Veena graduate from?",
+        options: [
+            "Chulalongkorn University",
+            "Mahidol University",
+            "Thammasat University",
+            "Kasetsart University"
+        ],
+        correct: 2
+    },
+    {
+        question: "How many languages can Veena speak fluently?",
+        options: ["2 languages", "3 languages", "4 languages", "5 languages"],
+        correct: 1
+    },
+    {
+        question: "What is Veena's height?",
+        options: ["175 cm", "178 cm", "180 cm", "182 cm"],
+        correct: 1
+    },
+    {
+        question: "Which regional title did Veena win before Miss Universe Thailand?",
+        options: ["Miss Bangkok", "Miss Chiang Mai", "Miss Phuket", "Miss Pattaya"],
+        correct: 2
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let selectedAnswer = -1;
+
+function loadQuestion() {
+    const question = quizQuestions[currentQuestion];
+    
+    document.getElementById('question').textContent = question.question;
+    
+    const optionsContainer = document.getElementById('options');
+    optionsContainer.innerHTML = '';
+    
+    question.options.forEach((option, index) => {
+        const optionElement = document.createElement('div');
+        optionElement.className = 'quiz-option';
+        optionElement.textContent = option;
+        optionElement.onclick = () => selectAnswer(index);
+        optionsContainer.appendChild(optionElement);
+    });
+    
+    document.getElementById('progressText').textContent = `${currentQuestion + 1} of ${quizQuestions.length}`;
+    const progressPercent = ((currentQuestion + 1) / quizQuestions.length) * 100;
+    document.querySelector('.quiz-progress-bar').style.setProperty('--progress', `${progressPercent}%`);
+    
+    selectedAnswer = -1;
+    document.getElementById('nextBtn').textContent = 'Next Question';
+}
+
+function selectAnswer(index) {
+    selectedAnswer = index;
+    const options = document.querySelectorAll('.quiz-option');
+    options.forEach((option, i) => {
+        option.classList.remove('selected');
+        if (i === index) {
+            option.classList.add('selected');
+        }
+    });
+}
+
+function nextQuestion() {
+    if (selectedAnswer === -1) return;
+    
+    const currentQuestionData = quizQuestions[currentQuestion];
+    const options = document.querySelectorAll('.quiz-option');
+    
+    // Show correct/incorrect answers
+    options[currentQuestionData.correct].classList.add('correct');
+    if (selectedAnswer !== currentQuestionData.correct) {
+        options[selectedAnswer].classList.add('incorrect');
+    } else {
+        score++;
+    }
+    
+    if (selectedAnswer === currentQuestionData.correct) {
+        score++;
+    }
+    
+    setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quizQuestions.length) {
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    }, 1500);
+}
+
+function showResults() {
+    document.getElementById('quizContent').style.display = 'none';
+    document.getElementById('quizResults').style.display = 'block';
+    
+    const percentage = (score / quizQuestions.length) * 100;
+    
+    document.getElementById('resultsScore').textContent = `${score} out of ${quizQuestions.length}`;
+    
+    if (percentage >= 80) {
+        document.getElementById('resultsIcon').textContent = '🏆';
+        document.getElementById('resultsTitle').textContent = 'Outstanding!';
+        document.getElementById('resultsMessage').textContent = "You're a true Veena expert!";
+    } else if (percentage >= 60) {
+        document.getElementById('resultsIcon').textContent = '🌟';
+        document.getElementById('resultsTitle').textContent = 'Well Done!';
+        document.getElementById('resultsMessage').textContent = "You know Veena quite well!";
+    } else {
+        document.getElementById('resultsIcon').textContent = '💪';
+        document.getElementById('resultsTitle').textContent = 'Keep Learning!';
+        document.getElementById('resultsMessage').textContent = "Learn more about Veena's journey!";
+    }
+}
+
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    document.getElementById('quizContent').style.display = 'block';
+    document.getElementById('quizResults').style.display = 'none';
+    loadQuestion();
+}
+
+// ===== STATISTICS COUNTER ANIMATION =====
+function animateCounter(element, target, duration = 2000) {
+    const startValue = 0;
+    const increment = target / (duration / 50);
+    let current = startValue;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        
+        if (element.id.includes('stat3') || element.id.includes('stat6')) {
+            element.textContent = Math.floor(current) + '%';
+        } else if (target >= 1000) {
+            element.textContent = (current / 1000).toFixed(1) + 'K';
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 50
+    }, 50);
+}
+
+// ===== WARDROBE FUNCTIONALITY =====
+const wardrobeItems = [
+    {
+        category: 'evening',
+        name: 'Golden Elegance Gown',
+        image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Stunning golden evening gown for formal events'
+    },
+    {
+        category: 'cultural',
+        name: 'Traditional Thai Costume',
+        image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Beautiful traditional Thai cultural outfit'
+    },
+    {
+        category: 'swimwear',
+        name: 'Ocean Blue Swimsuit',
+        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Elegant swimwear for competition'
+    },
+    {
+        category: 'casual',
+        name: 'Smart Casual Ensemble',
+        image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Chic casual outfit for public appearances'
+    },
+    {
+        category: 'evening',
+        name: 'Royal Purple Gown',
+        image: 'https://images.unsplash.com/photo-1566479179817-c0823c6a6c41?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Regal purple gown with intricate details'
+    },
+    {
+        category: 'cultural',
+        name: 'Modern Asian Fusion',
+        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Contemporary take on traditional Asian wear'
+    },
+    {
+        category: 'casual',
+        name: 'Professional Chic',
+        image: 'https://images.unsplash.com/photo-1580657018950-c7f5ee64494b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Sophisticated business casual attire'
+    },
+    {
+        category: 'evening',
+        name: 'Midnight Sparkle',
+        image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        description: 'Glamorous black evening gown with sequins'
+    }
+];
+
+function filterWardrobe(category) {
+    const wardrobeGrid = document.getElementById('wardrobeGrid');
+    const buttons = document.querySelectorAll('.wardrobe-btn');
+    
+    // Update active button
+    buttons.forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-category="${category}"]`).classList.add('active');
+    
+    // Filter items
+    const filteredItems = category === 'all' ? wardrobeItems : wardrobeItems.filter(item => item.category === category);
+    
+    // Create HTML
+    wardrobeGrid.innerHTML = filteredItems.map(item => `
+        <div class="wardrobe-item" data-category="${item.category}">
+            <img src="${item.image}" alt="${item.name}" class="wardrobe-image">
+            <div class="wardrobe-info">
+                <div class="wardrobe-category">${item.category}</div>
+                <div class="wardrobe-name">${item.name}</div>
+            </div>
+        </div>
+    `).join('');
+    
+    // Add click events for wardrobe items
+    document.querySelectorAll('.wardrobe-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const imgSrc = this.querySelector('.wardrobe-image').src;
+            const name = this.querySelector('.wardrobe-name').textContent;
+            openGalleryModal(imgSrc, name);
+        });
+    });
+}
+
+// ===== SOCIAL FEED SIMULATION =====
+const socialPosts = [
+    "🌟 Just visited another school for my anti-bullying campaign! The students' enthusiasm gives me so much hope! #BeAnAllyNotABully",
+    "💙 Grateful for all the support from fans around the world. Your messages mean everything! #MissUniverseThailand",
+    "📚 Education is the key to breaking the cycle of bullying. Knowledge empowers kindness! #EducationForAll",
+    "✨ Behind the scenes at a photo shoot for our upcoming awareness campaign! #BTS #Advocacy",
+    "🏫 Met with school administrators today to discuss implementing our anti-bullying programs nationwide! #Progress",
+    "💪 Remember: Your differences make you beautiful. Never let anyone dim your light! #SelfLove #Acceptance",
+    "🎭 Preparing for tonight's cultural performance - representing Thailand with pride! #ThaiCulture #Heritage",
+    "🤝 Collaborated with amazing youth leaders today. The future is in good hands! #YouthLeadership #Hope",
+    "📱 Thank you for 2.3M followers! Together we're building a kinder world! #Community #Gratitude",
+    "🌈 Diversity is not about how we differ, but about embracing one another's uniqueness! #Unity #Diversity"
+];
+
+let postIndex = 0;
+
+function createSocialPost() {
+    const socialContainer = document.getElementById('socialPosts');
+    const post = document.createElement('div');
+    post.className = 'social-post';
+    post.style.opacity = '0';
+    post.style.transform = 'translateY(20px)';
+    
+    const timeAgo = Math.floor(Math.random() * 60) + 1;
+    post.innerHTML = `
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1_X4C68eYQFUhjQNBrTDw1o6xGYJ0pYBuKvgnbZBHCy0iIQHl4B9Kb7K0ArgvhxE4sP8wycpMtMH9LaTzHwLOZLfyVqokWsODAyN03kmMyG6sj5La7mHy9tjGesiyzlPkKrUjMku9J4d5HL0jXLJE5dXYnRpX1w9RV3FrKmFpGkbLjJKJxBWIeLgf_g/w512-h640/MUT%20Phuket1.jpg" 
+                 style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px;" alt="Veena">
+            <div>
+                <div style="font-weight: 600;">@VeenaPraveenaMUT</div>
+                <div style="font-size: 0.9rem; opacity: 0.7;">${timeAgo}m ago</div>
+            </div>
+        </div>
+        <p style="line-height: 1.6; margin: 0;">${socialPosts[postIndex]}</p>
+        <div style="margin-top: 15px; display: flex; gap: 20px; font-size: 0.9rem;">
+            <span>❤️ ${Math.floor(Math.random() * 5000) + 1000}</span>
+            <span>💬 ${Math.floor(Math.random() * 500) + 50}</span>
+            <span>🔄 ${Math.floor(Math.random() * 1000) + 100}</span>
+        </div>
+    `;
+    
+    // Add to top of container
+    socialContainer.insertBefore(post, socialContainer.firstChild);
+    
+    // Animate in
+    setTimeout(() => {
+        post.style.transition = 'all 0.5s ease';
+        post.style.opacity = '1';
+        post.style.transform = 'translateY(0)';
+    }, 100);
+    
+    // Remove old posts if too many
+    const posts = socialContainer.children;
+    if (posts.length > 5) {
+        socialContainer.removeChild(posts[posts.length - 1]);
+    }
+    
+    postIndex = (postIndex + 1) % socialPosts.length;
+}
+
+// ===== FAN MESSAGE FORM =====
+function handleFanMessage(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('fanName').value;
+    const location = document.getElementById('fanLocation').value;
+    const message = document.getElementById('fanMessage').value;
+    
+    if (!name || !message) return;
+    
+    // Create new message element
+    const messageElement = document.createElement('div');
+    messageElement.className = 'fanmessage-item';
+    messageElement.style.opacity = '0';
+    messageElement.style.transform = 'translateX(-20px)';
+    
+    // Random avatar
+    const avatars = [
+        'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80'
+    ];
+    const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+    
+    messageElement.innerHTML = `
+        <div class="fan-avatar">
+            <img src="${randomAvatar}" alt="${name}">
+        </div>
+        <div class="fanmessage-content">
+            <h4>${name}</h4>
+            <p>${message}</p>
+            <div class="fanmessage-location">📍 ${location || 'Unknown Location'} • Just now</div>
+        </div>
+    `;
+    
+    // Add to top of messages
+    const scrollContainer = document.querySelector('.fanmessage-scroll');
+    scrollContainer.insertBefore(messageElement, scrollContainer.firstChild);
+    
+    // Animate in
+    setTimeout(() => {
+        messageElement.style.transition = 'all 0.5s ease';
+        messageElement.style.opacity = '1';
+        messageElement.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Clear form
+    document.getElementById('fanMessageForm').reset();
+    
+    // Show success message
+    alert('Thank you for your message! Veena appreciates your support! 💖');
+}
+
+// ===== SOCIAL STATS ANIMATION =====
+function updateSocialStats() {
+    const stats = {
+        followers: document.getElementById('followers'),
+        likes: document.getElementById('likes'),
+        comments: document.getElementById('comments'),
+        shares: document.getElementById('shares')
+    };
+    
+    // Simulate growth
+    const currentFollowers = parseFloat(stats.followers.textContent) * 1000;
+    const newFollowers = currentFollowers + Math.floor(Math.random() * 100);
+    stats.followers.textContent = (newFollowers / 1000).toFixed(1) + 'M';
+    
+    const currentLikes = parseFloat(stats.likes.textContent) * 1000;
+    const newLikes = currentLikes + Math.floor(Math.random() * 500);
+    stats.likes.textContent = (newLikes / 1000).toFixed(1) + 'K';
+    
+    const currentComments = parseFloat(stats.comments.textContent) * 1000;
+    const newComments = currentComments + Math.floor(Math.random() * 200);
+    stats.comments.textContent = (newComments / 1000).toFixed(1) + 'K';
+    
+    const currentShares = parseFloat(stats.shares.textContent) * 1000;
+    const newShares = currentShares + Math.floor(Math.random() * 300);
+    stats.shares.textContent = (newShares / 1000).toFixed(1) + 'K';
+}
+
+// ===== ENHANCED SCROLL EFFECTS =====
+function handleAdvancedScrollEffects() {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.timeline-line');
+    
+    parallaxElements.forEach(element => {
+        const speed = element.dataset.speed || 0.5;
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+    });
+}
+
+// ===== ACCESSIBILITY ENHANCEMENTS =====
+function enhanceAccessibility() {
+    // Add ARIA labels
+    document.querySelectorAll('.quiz-option').forEach((option, index) => {
+        option.setAttribute('role', 'button');
+        option.setAttribute('tabindex', '0');
+        option.setAttribute('aria-label', `Quiz option ${index + 1}`);
+        
+        // Add keyboard support
+        option.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+                this.click();
+            }
         });
+    });
+    
+    // Add focus management for modal
+    const modal = document.getElementById('galleryModal');
+    const closeBtn = modal.querySelector('.close');
+    
+    modal.addEventListener('show', function() {
+        closeBtn.focus();
+    });
+}
 
-        // ===== SCROLL ANIMATIONS =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+// ===== PERFORMANCE OPTIMIZATIONS =====
+function optimizePerformance() {
+    // Lazy load images
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                imageObserver.unobserve(img);
+            }
         });
-
-        // ===== GENERATE SCORE CARDS =====
-        function generateScoreCard(judge, category) {
-            const score = (Math.random() * 2 + 8).toFixed(1);
-            
-            return `
-                <div class="score-card">
-                    <img src="${judge.avatar}" alt="${judge.name}" class="judge-avatar">
-                    <div class="score-info">
-                        <h4>${judge.name}</h4>
-                        <div class="score-value">${score}</div>
-                        <div class="score-category">${category}</div>
-                    </div>
-                </div>
-            `;
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+    
+    // Debounce scroll events
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            cancelAnimationFrame(scrollTimeout);
         }
-
-        function populateScoreTrack(trackId) {
-            const track = document.getElementById(trackId);
-            let cards = '';
-            
-            for (let set = 0; set < 3; set++) {
-                judges.forEach(judge => {
-                    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-                    cards += generateScoreCard(judge, randomCategory);
-                });
-            }
-            
-            track.innerHTML = cards;
-        }
-
-        // ===== LIVE SCORING UPDATES =====
-        function updateLiveScores() {
-            const scores = {
-                beauty: (Math.random() * 2 + 8).toFixed(1),
-                intelligence: (Math.random() * 2 + 8).toFixed(1),
-                talent: (Math.random() * 2 + 8).toFixed(1),
-                personality: (Math.random() * 2 + 8).toFixed(1)
-            };
-            
-            const average = ((parseFloat(scores.beauty) + parseFloat(scores.intelligence) + 
-                            parseFloat(scores.talent) + parseFloat(scores.personality)) / 4).toFixed(1);
-            
-            animateScore('currentScore', average);
-            animateScore('beautyScore', scores.beauty);
-            animateScore('intelligenceScore', scores.intelligence);
-            animateScore('talentScore', scores.talent);
-            animateScore('personalityScore', scores.personality);
-        }
-
-        function animateScore(elementId, newScore) {
-            const element = document.getElementById(elementId);
-            const currentScore = parseFloat(element.textContent) || 0;
-            const targetScore = parseFloat(newScore);
-            const difference = targetScore - currentScore;
-            const steps = 20;
-            const stepSize = difference / steps;
-            let currentStep = 0;
-            
-            const interval = setInterval(() => {
-                currentStep++;
-                const newValue = currentScore + (stepSize * currentStep);
-                element.textContent = newValue.toFixed(1);
-                
-                if (currentStep >= steps) {
-                    element.textContent = targetScore.toFixed(1);
-                    clearInterval(interval);
-                }
-            }, 50);
-        }
-
-        // ===== FLOATING ELEMENTS ANIMATION =====
-        function createFloatingElement() {
-            const elements = ['⭐', '✨', '👑', '💎', '🌟'];
-            const element = document.createElement('div');
-            element.textContent = elements[Math.floor(Math.random() * elements.length)];
-            element.style.cssText = `
-                position: fixed;
-                font-size: ${Math.random() * 20 + 20}px;
-                color: #ffd700;
-                pointer-events: none;
-                z-index: 1000;
-                left: ${Math.random() * 100}vw;
-                top: 100vh;
-                animation: floatUp 4s linear forwards;
-            `;
-            
-            document.body.appendChild(element);
-            
-            setTimeout(() => {
-                element.remove();
-            }, 4000);
-        }
-
-        // ===== COMMENTS FUNCTIONALITY =====
-        function addComment() {
-            const name = document.getElementById('commentName').value;
-            const text = document.getElementById('commentText').value;
-            
-            if (name && text) {
-                const commentsList = document.getElementById('commentsList');
-                const newComment = document.createElement('div');
-                newComment.className = 'comment-item';
-                newComment.innerHTML = `
-                    <div class="comment-header">
-                        <span class="comment-author">${name}</span>
-                        <span class="comment-date">Just now</span>
-                    </div>
-                    <p class="comment-text">${text}</p>
-                    <div class="comment-rating">
-                        <span class="star">★★★★★</span>
-                    </div>
-                `;
-                
-                commentsList.insertBefore(newComment, commentsList.firstChild);
-                
-                // Clear form
-                document.getElementById('commentName').value = '';
-                document.getElementById('commentText').value = '';
-                
-                // Add animation
-                newComment.style.opacity = '0';
-                newComment.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    newComment.style.transition = 'all 0.5s ease';
-                    newComment.style.opacity = '1';
-                    newComment.style.transform = 'translateY(0)';
-                }, 100);
-            }
-        }
-
-        // Add CSS for floating animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes floatUp {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                    opacity: 1;
-                }
-                100% {
-                    transform: translateY(-100vh) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // ===== EVENT LISTENERS =====
-        window.addEventListener('scroll', () => {
+        scrollTimeout = requestAnimationFrame(() => {
             updateScrollIndicator();
+            handleAdvancedScrollEffects();
         });
+    });
+}
 
-        // ===== INITIALIZATION =====
-        document.addEventListener('DOMContentLoaded', function() {
-            // Populate score tracks
-            populateScoreTrack('scoreTrack1');
-            populateScoreTrack('scoreTrack2');
-            populateScoreTrack('scoreTrack3');
-            
-            // Start live scoring updates
-            updateLiveScores();
-            setInterval(updateLiveScores, 3000);
-            
-            // Create floating elements periodically
-            setInterval(createFloatingElement, 2000);
-            
-            // Add click interaction to live scoring
-            document.querySelector('.live-scoring').addEventListener('click', function() {
-                this.style.transform = 'scale(1.05)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 200);
-                updateLiveScores();
-            });
-        });
+// ===== EASTER EGGS AND SPECIAL EFFECTS =====
+function addSpecialEffects() {
+    // Konami code easter egg
+    let konamiCode = [];
+    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+    
+    document.addEventListener('keydown', function(e) {
+        konamiCode.push(e.code);
+        if (konamiCode.length > konamiSequence.length) {
+            konamiCode.shift();
+        }
+        
+        if (konamiCode.join('') === konamiSequence.join('')) {
+            activateSpecialMode();
+            konamiCode = [];
+        }
+    });
+    
+    // Double-click on title for surprise
+    document.querySelector('.profile-title').addEventListener('dblclick', function() {
+        createConfettiExplosion();
+    });
+}
 
-        // ===== EASTER EGG =====
-        let clickCount = 0;
-        document.querySelector('.crown-icon').addEventListener('click', function() {
-            clickCount++;
-            if (clickCount === 3) {
-                alert('🎉 Perfect 10! You found the secret crown click!');
-                updateLiveScores();
-                clickCount = 0;
+function activateSpecialMode() {
+    // Create rainbow effect
+    document.body.style.animation = 'rainbow 2s infinite';
+    
+    // Add rainbow keyframes
+    const rainbowStyle = document.createElement('style');
+    rainbowStyle.textContent = `
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(rainbowStyle);
+    
+    // Show special message
+    setTimeout(() => {
+        alert('🌈 SPECIAL MODE ACTIVATED! You found the secret Konami code! 🎉');
+        document.body.style.animation = '';
+        setTimeout(() => {
+            document.head.removeChild(rainbowStyle);
+        }, 5000);
+    }, 1000);
+}
+
+function createConfettiExplosion() {
+    const confettiCount = 50;
+    const confettiColors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dda0dd', '#98d8c8'];
+    
+    for (let i = 0; i < confettiCount; i++) {
+        createConfettiPiece(confettiColors);
+    }
+}
+
+function createConfettiPiece(colors) {
+    const confetti = document.createElement('div');
+    confetti.style.cssText = `
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        pointer-events: none;
+        z-index: 10000;
+        top: -10px;
+        left: ${Math.random() * 100}vw;
+        animation: confettiFall ${Math.random() * 3 + 2}s ease-in-out forwards;
+        transform: rotate(${Math.random() * 360}deg);
+    `;
+    
+    document.body.appendChild(confetti);
+    
+    setTimeout(() => {
+        confetti.remove();
+    }, 5000);
+}
+
+// Add confetti animation
+const confettiStyle = document.createElement('style');
+confettiStyle.textContent = `
+    @keyframes confettiFall {
+        0% {
+            transform: translateY(-100vh) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(confettiStyle);
+
+// ===== INITIALIZATION AND EVENT LISTENERS =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all sections
+    
+    // Initialize Quiz
+    loadQuestion();
+    
+    // Initialize Wardrobe
+    filterWardrobe('all');
+    document.querySelectorAll('.wardrobe-btn').forEach(btn => {
+        btn.addEventListener('click', () => filterWardrobe(btn.dataset.category));
+    });
+    
+    // Initialize Statistics with Intersection Observer
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const cards = entry.target.querySelectorAll('.stat-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        const target = parseInt(card.dataset.target);
+                        const numberElement = card.querySelector('.stat-number');
+                        animateCounter(numberElement, target);
+                    }, index * 200);
+                });
+                statsObserver.unobserve(entry.target);
             }
         });
+    });
+    
+    const statsSection = document.querySelector('.statistics-section');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+    
+    // Initialize Fan Message Form
+    document.getElementById('fanMessageForm').addEventListener('submit', handleFanMessage);
+    
+    // Initialize Social Feed
+    createSocialPost();
+    setInterval(createSocialPost, 8000); // New post every 8 seconds
+    
+    // Initialize Social Stats Updates
+    setInterval(updateSocialStats, 5000); // Update every 5 seconds
+    
+    // Add Performance Optimizations
+    optimizePerformance();
+    
+    // Add Accessibility Enhancements
+    enhanceAccessibility();
+    
+    // Add Special Effects
+    addSpecialEffects();
+    
+    // Update progress bar style for quiz
+    const progressStyle = document.createElement('style');
+    progressStyle.textContent = `
+        .quiz-progress-bar::before {
+            width: var(--progress, 20%) !important;
+        }
+    `;
+    document.head.appendChild(progressStyle);
+    
+    console.log('🎯 Advanced Features Loaded!');
+    console.log('🎮 Try the Konami Code: ↑↑↓↓←→←→BA');
+    console.log('🖱️ Double-click the main title for a surprise!');
+});
 
-        console.log('👑 Welcome to the Pageant Scoring System! Click the crown 3 times for a surprise!');
-    </script>
-</body>
-</html>
+// ===== ADVANCED INTERACTIVE FEATURES =====
+
+// Auto-scroll to next section on scroll wheel
+let isScrolling = false;
+function handleSectionNavigation(e) {
+    if (isScrolling) return;
+    
+    isScrolling = true;
+    const sections = document.querySelectorAll('section[id]');
+    const currentSection = Array.from(sections).find(section => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= 100 && rect.bottom >= 100;
+    });
+    
+    if (currentSection && Math.abs(e.deltaY) > 50) {
+        const currentIndex = Array.from(sections).indexOf(currentSection);
+        const nextIndex = e.deltaY > 0 ? currentIndex + 1 : currentIndex - 1;
+        
+        if (nextIndex >= 0 && nextIndex < sections.length) {
+            sections[nextIndex].scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+    
+    setTimeout(() => {
+        isScrolling = false;
+    }, 1000);
+}
+
+// Add smooth section navigation (optional - can be disabled)
+// document.addEventListener('wheel', handleSectionNavigation, { passive: false });
+
+// ===== FINAL TOUCHES =====
+window.addEventListener('load', function() {
+    // Add loading complete effect
+    document.body.classList.add('loaded');
+    
+    // Preload next images for better performance
+    const imageUrls = [
+        'https://images.unsplash.com/photo-1566479179817-c0823c6a6c41?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
+        'https://images.unsplash.com/photo-1580657018950-c7f5ee64494b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    ];
+    
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+});
+
+// Add CSS for loaded state
+const loadedStyle = document.createElement('style');
+loadedStyle.textContent = `
+    body.loaded {
+        animation: fadeInPage 1s ease-in;
+    }
+    
+    @keyframes fadeInPage {
+        from { opacity: 0.8; }
+        to { opacity: 1; }
+    }
+`;
+document.head.appendChild(loadedStyle);
