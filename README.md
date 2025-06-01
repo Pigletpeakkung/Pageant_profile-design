@@ -69,3 +69,31 @@ Pageant_profile-design/
 │   └── screenshots/
 └── 📂 tests/
     └── lighthouse-reports/
+
+## 📞 **Contact & Collaboration**
+
+### **Developer: Thanattsitt Thanatt Santisamranwilai**
+
+- 📧 **Email**: [thanattsitt.info@yahoo.co.uk](mailto:thanattsitt.info@yahoo.co.uk)
+- 🎨 **Design Portfolio**: [Dribbble](https://dribbble.com/ThanattsittS)
+- 💻 **Code Repository**: [GitHub](https://github.com/ThanattsittS)
+- ☕ **Support**: [Ko-fi](https://ko-fi.com/ezekielarts)
+- 🎯 **Journey Fund**: [GoFundMe](https://www.gofundme.com/f/support-my-journey-toward-independence-and-stability)
+- 🎙️ **Podcast**: [AI Earning Guide](https://www.buzzsprout.com/2470288)
+- 💼 **Hire Me**: [Dribbble Services](https://dribbble.com/ThanattsittS/services)
+
+### **Project Links**
+- **Live Demo**: [Pageant Profile Design](https://thanattsitts.github.io/Pageant_profile-design/)
+- **Issues**: [GitHub Issues](https://github.com/ThanattsittS/Pageant_profile-design/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ThanattsittS/Pageant_profile-design/discussions)
+
+---
+
+## 🏆 **Perfect for:**
+- 👑 **Pageant Contestants** - Professional digital presence
+- 🎨 **Web Designers** - Portfolio showcase piece
+- 💻 **Frontend Developers** - Advanced technique demonstration
+- 🏢 **Agencies** - Client presentation template
+- 🎓 **Students** - Learning modern web development
+
+**Built with ❤️ and pageant industry expertise**
