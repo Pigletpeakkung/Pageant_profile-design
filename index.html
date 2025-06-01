@@ -8,13 +8,13 @@
     <meta name="author" content="Miss Universe Thailand Organization">
     <meta property="og:title" content="Veena Paveena - Miss Universe Thailand 2023">
     <meta property="og:description" content="Official profile of Veena Paveena, Miss Universe Thailand 2023 and anti-bullying advocate">
-    <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1_X4C68eYQFUhjQNBrTDw1o6xGYJ0pYBuKvgnbZBHCy0iIQHl4B9Kb7K0ArgvhxE4sP8wycpMtMH9LaTzHwLOZLfyVqokWsODAyN03kmMyG6sj5La7mHy9tjGesiyzlPkKrUjMku9J4d5HL0jXLJE5dXYnRpX1w9RV3FrKmFpGkbLjJKJxBWIeLgf_g/w512-h640/MUT%20Phuket1.jpg">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:type" content="profile">
     <title>Veena Paveena - Miss Universe Thailand 2023 | Official Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2ElEQVRYhe2XwQ2DMAxFX1AlRmAEOmYERmADNmADNmhHYAQ2YAM2YANGYANGoEf/SUGhTtI0VXvSk6rESfzev8Q2gP/8cQowAhNQAS3wBspfEHADXkALzEAOZMAI3IF7aAEH4AFMQAk8gQoYgBtwDSWgBd7AFZiAKfQhVMAOmEMLaIG3sAOkwA1YgBPQAi/gDMxABRyAC3AJJaAF3sIVmIEZ2AFr4ABcgQuwAHNowecOwAY4Ake/Dy2wAy7A+tfDD5gBK+AAHIAFOAM7YA1cgDOwA9bAAjgDO2AN/POvfwG7/RbwC7eNQAAAAABJRU5ErkJggg==">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2ElEQVRYhe2XwQ2DMAxFX1AlRmAEOmYERmADNmADNmhHYAQ2YAM2YANGoEf/SUGhTtI0VXvSk6rESfzev8Q2gP/8cQowAhNQAS3wBspfEHADXkALzEAOZMAI3IF7aAEH4AFMQAk8gQoYgBtwDSWgBd7AFZiAKfQhVMAOmEMLaIG3sAOkwA1YgBPQAi/gDMxABRyAC3AJJaAF3sIVmIEZ2AFr4ABcgQuwAHNowecOwAY4Ake/Dy2wAy7A+tfDD5gBK+AAHIAFOAM7YA1cgDOwA9bAAjgDO2AN/POvfwG7/RbwC7eNQAAAAABJRU5ErkJggg==">
     
     <style>
         /* ===== CSS RESET & BASE STYLES ===== */
@@ -36,6 +36,8 @@
             --shadow-dark: rgba(0, 0, 0, 0.3);
             --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            --gradient-sunset: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff9ff3 100%);
+            --gradient-ocean: linear-gradient(135deg, #667eea 0%, #4facfe 50%, #00f2fe 100%);
             --border-radius: 15px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -51,25 +53,6 @@
             color: var(--text-dark);
             background: var(--background-light);
             overflow-x: hidden;
-        }
-
-        /* ===== ACCESSIBILITY ===== */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Focus styles for accessibility */
-        *:focus {
-            outline: 3px solid var(--primary-color);
-            outline-offset: 2px;
         }
 
         /* ===== SCROLL INDICATOR ===== */
@@ -105,6 +88,11 @@
             transition: opacity 0.5s ease;
         }
 
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
         .loading-spinner {
             width: 60px;
             height: 60px;
@@ -112,6 +100,12 @@
             border-top: 4px solid white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
         @keyframes spin {
@@ -152,6 +146,14 @@
             font-weight: 600;
             color: var(--primary-color);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo::before {
+            content: '👑';
+            font-size: 1.2rem;
         }
 
         .nav-links {
@@ -166,6 +168,7 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-links a::before {
@@ -173,7 +176,7 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             background: var(--gradient-primary);
             transition: width 0.3s ease;
@@ -207,18 +210,36 @@
 
         /* ===== HERO SECTION ===== */
         .hero-section {
-            background: var(--gradient-primary);
+            background: var(--gradient-ocean);
             padding: 4rem 0;
             margin: -2rem -2rem 4rem -2rem;
             color: white;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path d="M0,0v46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1055.19,8.93,1112.19,19.26V0Z" fill="rgba(255,255,255,0.1)"/></svg>'), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path d="M0,0v15.81c13,20.65,39.74,20.65,54,22.6,33.12,4.54,66.4,9.68,100.17,9.79,46.5.16,91.8-8.75,138.32-4.17,33.45,3.3,65.87,11.09,99.55,11,28.74-.1,56.13-5.73,85.09-5.72,23.94,0,46.07,3.47,70.11,3.33,30.12-.18,59.15-6.54,89.29-7.72,27.79-1.09,54.79,2.76,82.64,2.58,24.96-.16,48.89-3.79,73.89-3.55,22.99.22,45.13,3.72,68.17,3.33C884,51.9,906,49.22,928,49c25.77-.25,50.49,4.81,76.29,4.81V0Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover, cover;
+            background-position: bottom, bottom;
+            opacity: 0.3;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .hero-title {
@@ -227,12 +248,14 @@
             font-weight: 700;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
         .hero-subtitle {
             font-size: clamp(1.1rem, 2vw, 1.5rem);
             margin-bottom: 2rem;
             opacity: 0.95;
+            animation: fadeInUp 1s ease 0.7s both;
         }
 
         .hero-cta {
@@ -245,6 +268,7 @@
             font-weight: 600;
             transition: var(--transition);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease 0.9s both;
         }
 
         .hero-cta:hover {
@@ -275,19 +299,20 @@
 
         .profile-content {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 350px 1fr;
             gap: 3rem;
             align-items: start;
         }
 
         .profile-image-container {
             text-align: center;
+            position: relative;
         }
 
         .profile-image {
             width: 100%;
-            max-width: 300px;
-            height: 400px;
+            max-width: 350px;
+            height: 450px;
             object-fit: cover;
             border-radius: var(--border-radius);
             box-shadow: 0 20px 60px var(--shadow-medium);
@@ -300,9 +325,27 @@
             box-shadow: 0 25px 80px var(--shadow-dark);
         }
 
+        .profile-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
         .profile-details h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
         }
@@ -310,8 +353,20 @@
         .profile-title {
             font-size: 1.3rem;
             color: var(--primary-color);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 600;
+        }
+
+        .profile-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
 
         .profile-stats {
@@ -329,6 +384,23 @@
             border-radius: var(--border-radius);
             transition: var(--transition);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .stat-item:hover::before {
+            left: 100%;
         }
 
         .stat-item:hover {
@@ -347,6 +419,183 @@
             font-size: 0.9rem;
             opacity: 0.9;
             margin-top: 0.5rem;
+        }
+
+        /* ===== MEDIA SHOWCASE SECTION ===== */
+        .media-showcase {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--border-radius);
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .media-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .media-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .media-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .media-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .media-item h3 {
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .media-controls {
+            margin-top: 1rem;
+        }
+
+        .media-btn {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 0.5rem;
+        }
+
+        .media-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container, .audio-container {
+            margin-top: 1rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .video-container video, .audio-container audio {
+            width: 100%;
+            border-radius: var(--border-radius);
+        }
+
+        /* ===== ENHANCED GALLERY ===== */
+        .gallery-section {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px var(--shadow-light);
+        }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .gallery-tab.active, .gallery-tab:hover {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            opacity: 0;
+            transition: var(--transition);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gallery-overlay-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
         /* ===== SECTIONS ===== */
@@ -379,6 +628,17 @@
             padding-left: 2rem;
         }
 
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
         .content-grid {
             display: grid;
             gap: 2rem;
@@ -397,136 +657,107 @@
             font-weight: 600;
         }
 
-        /* ===== GALLERY SECTION ===== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
+        /* ===== WRITER SECTION ===== */
+        .writer-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
             border-radius: var(--border-radius);
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            cursor: pointer;
-            transition: var(--transition);
-            aspect-ratio: 4/3;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-overlay {
+        .writer-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            opacity: 0;
-            transition: var(--transition);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            opacity: 0.3;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
+        .writer-content {
+            position: relative;
+            z-index: 2;
         }
 
-        /* ===== ACHIEVEMENTS SECTION ===== */
-        .achievement-list {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .achievement-item {
-            display: flex;
-            align-items: center;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .achievement-item:hover {
-            background: white;
-            border-color: var(--primary-color);
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px var(--shadow-light);
-        }
-
-        .achievement-icon {
-            font-size: 2.5rem;
-            margin-right: 1.5rem;
-        }
-
-        .achievement-content h3 {
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .achievement-year {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* ===== ADVOCACY SECTION ===== */
-        .advocacy-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .advocacy-card {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .advocacy-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px var(--shadow-medium);
-        }
-
-        .advocacy-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .advocacy-card h3 {
+        .writer-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        /* ===== TIMELINE SECTION ===== */
+        .writer-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .writer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .writer-link {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            min-width: 200px;
+        }
+
+        .writer-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .writer-icon {
+            font-size: 2.5rem;
+        }
+
+        .writer-link-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .writer-link-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* ===== TIMELINE ENHANCEMENTS ===== */
         .timeline-section {
             margin: 4rem 0;
             padding: 4rem 3rem;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: var(--border-radius);
+            position: relative;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgba(102, 126, 234, 0.1)" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>');
+            background-size: contain;
         }
 
         .timeline-title {
@@ -579,6 +810,7 @@
             border: 4px solid var(--primary-color);
             border-radius: 50%;
             z-index: 10;
+            box-shadow: 0 0 0 4px white, 0 0 0 8px var(--primary-color);
         }
 
         .timeline-content {
@@ -627,208 +859,61 @@
             font-weight: 500;
         }
 
-        /* ===== STATISTICS SECTION ===== */
-        .statistics-section {
-            margin: 4rem 0;
-            padding: 4rem 3rem;
-            background: linear-gradient(135deg, var(--text-dark) 0%, #34495e 100%);
-            border-radius: var(--border-radius);
-            color: white;
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .statistics-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .statistics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
         }
 
-        .stat-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
+        .slide-in-left {
+            opacity: 0;
+            animation: slideInLeft 0.6s ease forwards;
         }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 0.5rem;
+        .slide-in-right {
+            opacity: 0;
+            animation: slideInRight 0.6s ease forwards;
         }
 
-        .stat-label {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-description {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* ===== QUIZ SECTION ===== */
-        .quiz-section {
-            margin: 4rem 0;
-            padding: 4rem 3rem;
-            background: var(--gradient-primary);
-            border-radius: var(--border-radius);
-            color: white;
-        }
-
-        .quiz-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .quiz-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .quiz-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-        }
-
-        .quiz-content {
-            background: rgba(255, 255, 255, 0.95);
-            color: #333;
-            padding: 3rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .quiz-question {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .quiz-options {
-            display: grid;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .quiz-option {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            padding: 1rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: left;
-        }
-
-        .quiz-option:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .quiz-option.selected {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .quiz-option.correct {
-            background: #28a745;
-            color: white;
-            border-color: #28a745;
-        }
-
-        .quiz-option.incorrect {
-            background: #dc3545;
-            color: white;
-            border-color: #dc3545;
-        }
-
-        .quiz-progress {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .quiz-progress-bar {
-            flex: 1;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .quiz-progress-fill {
-            height: 100%;
-            background: var(--gradient-primary);
-            width: 20%;
-            transition: width 0.3s ease;
-            border-radius: 4px;
-        }
-
-        .quiz-btn {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .quiz-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .quiz-results {
-            text-align: center;
-        }
-
-        .results-icon {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-        }
-
-        .results-score {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            margin: 1rem 0;
-        }
-
-        /* ===== MODAL ===== */
+        /* ===== MODAL ENHANCEMENTS ===== */
         .modal {
             display: none;
             position: fixed;
@@ -859,6 +944,14 @@
             border-radius: var(--border-radius);
         }
 
+        .modal-caption {
+            text-align: center;
+            color: white;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
         .close {
             position: absolute;
             top: 15px;
@@ -868,43 +961,14 @@
             font-weight: bold;
             cursor: pointer;
             transition: var(--transition);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 50%;
         }
 
         .close:hover {
             color: var(--accent-color);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .slide-in-up {
-            opacity: 0;
-            animation: slideInUp 0.6s ease forwards;
+            background: rgba(0, 0, 0, 0.8);
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
@@ -936,6 +1000,11 @@
                 width: 100%;
                 text-align: left !important;
             }
+
+            .writer-links {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         @media (max-width: 768px) {
@@ -961,6 +1030,7 @@
 
             .hero-section {
                 padding: 2rem 0;
+                min-height: 50vh;
             }
 
             .section {
@@ -972,18 +1042,21 @@
                 padding: 2rem;
             }
 
-            .profile-stats {
-                grid-template-columns: repeat(2, 1fr);
+            .media-grid {
+                grid-template-columns: 1fr;
             }
 
-            .statistics-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            .gallery-tabs {
+                gap: 0.5rem;
             }
 
-            .quiz-content,
-            .timeline-section,
-            .statistics-section {
-                padding: 2rem;
+            .gallery-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
 
@@ -1005,30 +1078,19 @@
             }
 
             .profile-stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-        }
 
-        /* ===== PRINT STYLES ===== */
-        @media print {
-            .navbar,
-            .scroll-indicator,
-            .quiz-section {
-                display: none;
+            .media-grid {
+                gap: 1rem;
             }
 
-            .hero-section {
-                background: none !important;
-                color: black !important;
-            }
-
-            .section {
-                box-shadow: none;
-                border: 1px solid #ddd;
+            .media-item {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -1036,10 +1098,13 @@
 
 <body>
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-spinner"></div>
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Veena's Profile...</div>
+        </div>
     </div>
 
-    <div class="scroll-indicator">
+        <div class="scroll-indicator">
         <div class="scroll-progress" id="scrollProgress"></div>
     </div>
 
@@ -1048,11 +1113,11 @@
             <a href="#" class="nav-logo">Veena Paveena</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#profile" class="nav-link">Profile</a></li>
+                <li><a href="#media" class="nav-link">Media</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#timeline" class="nav-link">Journey</a></li>
                 <li><a href="#advocacy" class="nav-link">Advocacy</a></li>
-                <li><a href="#timeline" class="nav-link">Timeline</a></li>
-                <li><a href="#quiz" class="nav-link">Quiz</a></li>
+                <li><a href="#writer" class="nav-link">Inspiration</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
                 ☰
@@ -1071,14 +1136,22 @@
 
         <main>
             <section id="profile" class="profile-header fade-in">
-                <h2 class="sr-only">Profile Information</h2>
                 <div class="profile-content">
                     <div class="profile-image-container">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1_X4C68eYQFUhjQNBrTDw1o6xGYJ0pYBuKvgnbZBHCy0iIQHl4B9Kb7K0ArgvhxE4sP8wycpMtMH9LaTzHwLOZLfyVqokWsODAyN03kmMyG6sj5La7mHy9tjGesiyzlPkKrUjMku9J4d5HL0jXLJE5dXYnRpX1w9RV3FrKmFpGkbLjJKJxBWIeLgf_g/w512-h640/MUT%20Phuket1.jpg" alt="Veena Paveena - Miss Universe Thailand 2023" class="profile-image" onclick="openModal(this.src)">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Veena Paveena - Miss Universe Thailand 2023" class="profile-image" onclick="openModal(this.src, 'Veena Paveena - Official Portrait')">
+                        <div class="profile-badges">
+                            <span class="badge">👑 Miss Universe Thailand 2023</span>
+                            <span class="badge">🎓 Liberal Arts Graduate</span>
+                            <span class="badge">💝 Youth Advocate</span>
+                        </div>
                     </div>
                     <div class="profile-details">
                         <h1>Veena Paveena</h1>
-                        <p class="profile-title">Miss Universe Thailand 2023</p>
+                        <p class="profile-title">Miss Universe Thailand 2023 | Anti-Bullying Advocate</p>
+                        
+                        <div class="profile-quote">
+                            "Be An Ally, Not A Bully - together we can create a world where every young person feels safe, valued, and empowered to shine."
+                        </div>
                         
                         <div class="profile-stats">
                             <div class="stat-item">
@@ -1097,6 +1170,14 @@
                                 <span class="stat-value">2.3M</span>
                                 <span class="stat-label">Followers</span>
                             </div>
+                            <div class="stat-item">
+                                <span class="stat-value">150+</span>
+                                <span class="stat-label">Schools Visited</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">25K+</span>
+                                <span class="stat-label">Students Reached</span>
+                            </div>
                         </div>
                         
                         <div class="bio-text">
@@ -1106,136 +1187,219 @@
                 </div>
             </section>
 
-            <section id="bio" class="section fade-in">
-                <h2 class="section-title">Biography</h2>
-                <div class="content-grid">
-                    <div class="bio-text">
-                        <p><strong>Born:</strong> December 1, 1999, in Chiang Mai, Thailand</p>
-                        <p><strong>Education:</strong> Bachelor's Degree in Liberal Arts from Thammasat University</p>
-                        <p><strong>Hometown:</strong> Originally from Chiang Mai, currently based in Bangkok</p>
-                        <p><strong>Languages:</strong> Thai (Native), English (Fluent), Chinese (Conversational)</p>
-                        <p><strong>Special Talents:</strong> Traditional Thai Dance, Public Speaking, Youth Mentoring</p>
+            <section id="media" class="media-showcase fade-in">
+                <h2 class="media-title">Media & Content</h2>
+                <p style="margin-bottom: 2rem; opacity: 0.9;">Experience Veena's journey through exclusive videos, podcast interviews, and behind-the-scenes content</p>
+                
+                <div class="media-grid">
+                    <div class="media-item">
+                        <span class="media-icon">🎬</span>
+                        <h3>Miss Universe Thailand 2023 Journey</h3>
+                        <p>Exclusive behind-the-scenes footage from coronation night and pageant preparation</p>
+                        <div class="video-container" style="display: none;" id="video1">
+                            <video controls preload="metadata" poster="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                                <track kind="captions" src="" srclang="en" label="English">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="media-controls">
+                            <button class="media-btn" onclick="toggleVideo('video1')">▶️ Watch Video</button>
+                        </div>
                     </div>
-                    <div class="bio-text">
-                                                <p>Veena's journey began in the cultural heart of Northern Thailand, where traditional values and modern aspirations merged to shape her worldview. Her academic excellence at Thammasat University, combined with her natural charisma and deep empathy for others, positioned her as a natural leader and advocate.</p>
-                        
-                        <p>Her passion for anti-bullying advocacy stems from personal experiences and a genuine desire to create safer spaces for young people. Through her platform as Miss Universe Thailand 2023, she has reached over <span class="highlight-text">25,000 students</span> across 150 schools nationwide.</p>
-                        
-                        <p>Beyond pageantry, Veena is a certified youth counselor and has collaborated with educational institutions to develop comprehensive anti-bullying programs that focus on empathy, inclusion, and peer support systems.</p>
+
+                    <div class="media-item">
+                        <span class="media-icon">🎧</span>
+                        <h3>Anti-Bullying Advocacy Podcast</h3>
+                        <p>Deep dive into her mission to create safer spaces for young people across Thailand</p>
+                        <div class="audio-container" style="display: none;" id="audio1">
+                            <audio controls preload="metadata">
+                                <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+                                <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="media-controls">
+                            <button class="media-btn" onclick="toggleAudio('audio1')">🎧 Listen Podcast</button>
+                            <button class="media-btn" onclick="window.open('https://open.spotify.com/', '_blank')">📱 Spotify</button>
+                        </div>
+                    </div>
+
+                    <div class="media-item">
+                        <span class="media-icon">📸</span>
+                        <h3>Cultural Heritage Documentary</h3>
+                        <p>Exploring Thai traditions and her connection to cultural preservation</p>
+                        <div class="video-container" style="display: none;" id="video2">
+                            <video controls preload="metadata" poster="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                                <track kind="captions" src="" srclang="en" label="English">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="media-controls">
+                            <button class="media-btn" onclick="toggleVideo('video2')">▶️ Watch Documentary</button>
+                        </div>
+                    </div>
+
+                    <div class="media-item">
+                        <span class="media-icon">🎤</span>
+                        <h3>Motivational Speech Series</h3>
+                        <p>Inspiring messages for young leaders and advocates around the world</p>
+                        <div class="audio-container" style="display: none;" id="audio2">
+                            <audio controls preload="metadata">
+                                <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+                                <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="media-controls">
+                            <button class="media-btn" onclick="toggleAudio('audio2')">🎤 Listen Speech</button>
+                            <button class="media-btn" onclick="window.open('https://podcasts.apple.com/', '_blank')">🍎 Apple Podcasts</button>
+                        </div>
+                    </div>
+
+                    <div class="media-item">
+                        <span class="media-icon">🌟</span>
+                        <h3>School Visit Highlights</h3>
+                        <p>Compilation of impactful moments from her nationwide school visits and advocacy work</p>
+                        <div class="video-container" style="display: none;" id="video3">
+                            <video controls preload="metadata" poster="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80">
+                                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                                <track kind="captions" src="" srclang="en" label="English">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="media-controls">
+                            <button class="media-btn" onclick="toggleVideo('video3')">▶️ Watch Highlights</button>
+                        </div>
+                    </div>
+
+                    <div class="media-item">
+                        <span class="media-icon">💫</span>
+                        <h3>Personal Journey Podcast</h3>
+                        <p>Intimate conversations about her personal growth, challenges, and dreams</p>
+                        <div class="audio-container" style="display: none;" id="audio3">
+                            <audio controls preload="metadata">
+                                <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+                                <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <div class="media-controls">
+                            <button class="media-btn" onclick="toggleAudio('audio3')">🎧 Personal Story</button>
+                            <button class="media-btn" onclick="window.open('https://www.youtube.com/', '_blank')">📺 YouTube</button>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section id="gallery" class="section fade-in">
+            <section id="gallery" class="gallery-section fade-in">
                 <h2 class="section-title">Photo Gallery</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Veena in evening gown" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <span>Evening Gown Competition</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Veena in traditional Thai costume" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <span>Traditional Thai Costume</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Veena swimwear competition" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <span>Swimwear Competition</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Veena casual portrait" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <span>Casual Portrait</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1566479179817-c0823c6a6c41?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1566479179817-c0823c6a6c41?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Veena formal portrait" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <span>Formal Portrait</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Veena cultural outfit" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <span>Cultural Heritage</span>
-                        </div>
-                    </div>
+                
+                <div class="gallery-tabs">
+                    <button class="gallery-tab active" onclick="filterGallery('all')">All Photos</button>
+                    <button class="gallery-tab" onclick="filterGallery('pageant')">Pageant</button>
+                    <button class="gallery-tab" onclick="filterGallery('advocacy')">Advocacy Work</button>
+                    <button class="gallery-tab" onclick="filterGallery('cultural')">Cultural</button>
+                    <button class="gallery-tab" onclick="filterGallery('behind-scenes')">Behind Scenes</button>
+                    <button class="gallery-tab" onclick="filterGallery('lifestyle')">Lifestyle</button>
                 </div>
-            </section>
+                
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-item" data-category="pageant" onclick="openModal('https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Evening Gown Competition - Miss Universe Thailand 2023')">
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Evening gown competition" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Evening Gown Competition</div>
+                            <div class="gallery-overlay-desc">Stunning golden gown showcasing elegance and grace</div>
+                        </div>
+                    </div>
 
-            <section id="achievements" class="section fade-in">
-                <h2 class="section-title">Achievements & Titles</h2>
-                <div class="achievement-list">
-                    <div class="achievement-item">
-                        <div class="achievement-icon">👑</div>
-                        <div class="achievement-content">
-                            <h3>Miss Universe Thailand 2023</h3>
-                            <p>Crowned Miss Universe Thailand 2023, representing the country at Miss Universe 2023 in El Salvador</p>
-                            <div class="achievement-year">2023</div>
+                    <div class="gallery-item" data-category="cultural" onclick="openModal('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Traditional Thai Cultural Costume')">
+                        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Traditional Thai costume" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Traditional Thai Heritage</div>
+                            <div class="gallery-overlay-desc">Celebrating Thailand's rich cultural traditions</div>
                         </div>
                     </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">🏆</div>
-                        <div class="achievement-content">
-                            <h3>Miss Phuket 2023</h3>
-                            <p>Winner of Miss Phuket 2023, earning the right to compete for the national title</p>
-                            <div class="achievement-year">2023</div>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">🎓</div>
-                        <div class="achievement-content">
-                            <h3>Academic Excellence Award</h3>
-                            <p>Graduated with honors from Thammasat University with a degree in Liberal Arts</p>
-                            <div class="achievement-year">2021</div>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">🌟</div>
-                        <div class="achievement-content">
-                            <h3>Youth Advocacy Recognition</h3>
-                            <p>Recognized by the Thai Ministry of Education for outstanding contribution to youth welfare</p>
-                            <div class="achievement-year">2022</div>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <div class="achievement-icon">💝</div>
-                        <div class="achievement-content">
-                            <h3>Community Impact Award</h3>
-                            <p>Honored for implementing successful anti-bullying programs in over 150 schools</p>
-                            <div class="achievement-year">2023</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <section id="advocacy" class="section fade-in">
-                <h2 class="section-title">Advocacy & Social Impact</h2>
-                <div class="advocacy-cards">
-                    <div class="advocacy-card">
-                        <span class="advocacy-icon">🤝</span>
-                        <h3>Be An Ally, Not A Bully</h3>
-                        <p>Her signature campaign promoting empathy, inclusion, and peer support in schools across Thailand. The program has reached over 25,000 students and reduced bullying incidents by 89% in participating schools.</p>
+                    <div class="gallery-item" data-category="pageant" onclick="openModal('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Swimwear Competition')">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Swimwear competition" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Swimwear Competition</div>
+                            <div class="gallery-overlay-desc">Confidence and fitness showcase</div>
+                        </div>
                     </div>
-                    <div class="advocacy-card">
-                        <span class="advocacy-icon">📚</span>
-                        <h3>Educational Empowerment</h3>
-                        <p>Partnering with educational institutions to develop comprehensive curricula that address mental health, emotional intelligence, and conflict resolution among young people.</p>
+
+                    <div class="gallery-item" data-category="lifestyle" onclick="openModal('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Casual Portrait Session')">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Casual portrait" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Casual Elegance</div>
+                            <div class="gallery-overlay-desc">Natural beauty in everyday moments</div>
+                        </div>
                     </div>
-                    <div class="advocacy-card">
-                        <span class="advocacy-icon">🌍</span>
-                        <h3>Global Awareness</h3>
-                        <p>Using her international platform to raise awareness about bullying as a global issue, collaborating with organizations worldwide to share best practices and solutions.</p>
+
+                    <div class="gallery-item" data-category="advocacy" onclick="openModal('https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'School Visit - Anti-Bullying Campaign')">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="School visit advocacy" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">School Advocacy Visit</div>
+                            <div class="gallery-overlay-desc">Inspiring students with anti-bullying message</div>
+                        </div>
                     </div>
-                    <div class="advocacy-card">
-                        <span class="advocacy-icon">💪</span>
-                        <h3>Youth Mentorship</h3>
-                        <p>Training young leaders to become anti-bullying ambassadors in their communities, creating a sustainable network of peer support and advocacy.</p>
+
+                    <div class="gallery-item" data-category="pageant" onclick="openModal('https://images.unsplash.com/photo-1566479179817-c0823c6a6c41?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Coronation Night')">
+                        <img src="https://images.unsplash.com/photo-1566479179817-c0823c6a6c41?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Coronation moment" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Coronation Night</div>
+                            <div class="gallery-overlay-desc">The moment dreams became reality</div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="behind-scenes" onclick="openModal('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Behind the Scenes Preparation')">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Behind scenes preparation" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Behind the Scenes</div>
+                            <div class="gallery-overlay-desc">Preparation and dedication behind the crown</div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="advocacy" onclick="openModal('https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Youth Mentorship Program')">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Youth mentorship" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Youth Mentorship</div>
+                            <div class="gallery-overlay-desc">Empowering the next generation of leaders</div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="cultural" onclick="openModal('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Thai Cultural Festival')">
+                        <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Cultural festival" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Cultural Festival</div>
+                            <div class="gallery-overlay-desc">Celebrating Thai heritage and traditions</div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="lifestyle" onclick="openModal('https://images.unsplash.com/photo-1580657018950-c7f5ee64494b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Professional Portrait')">
+                        <img src="https://images.unsplash.com/photo-1580657018950-c7f5ee64494b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Professional portrait" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Professional Portrait</div>
+                            <div class="gallery-overlay-desc">Sophisticated and confident leadership</div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="behind-scenes" onclick="openModal('https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Makeup and Styling Session')">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Makeup session" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Styling Session</div>
+                            <div class="gallery-overlay-desc">Beauty and glamour preparation process</div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="advocacy" onclick="openModal('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Community Outreach Program')">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Community outreach" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-title">Community Outreach</div>
+                            <div class="gallery-overlay-desc">Making a difference in local communities</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1245,158 +1409,207 @@
                 <div class="timeline-container">
                     <div class="timeline-line"></div>
                     
-                    <div class="timeline-item">
+                    <div class="timeline-item slide-in-right">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-date">November 2023</div>
-                            <h3>Miss Universe 2023</h3>
-                            <p>Represents Thailand at Miss Universe 2023 in El Salvador with her powerful anti-bullying advocacy, reaching a global audience of millions.</p>
+                            <h3>Miss Universe 2023 Global Stage</h3>
+                            <p>Represents Thailand at Miss Universe 2023 in El Salvador, showcasing her anti-bullying advocacy to a global audience of millions and inspiring international conversations about youth welfare.</p>
                             <div class="timeline-tags">
                                 <span class="timeline-tag">Global Stage</span>
-                                <span class="timeline-tag">Advocacy</span>
-                                <span class="timeline-tag">International</span>
+                                <span class="timeline-tag">International Advocacy</span>
+                                <span class="timeline-tag">Youth Empowerment</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item slide-in-left">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-date">September 2023</div>
-                            <h3>Miss Universe Thailand 2023</h3>
-                            <p>Crowned Miss Universe Thailand 2023, launching her "Be An Ally, Not A Bully" campaign nationwide and becoming a voice for positive change.</p>
+                            <h3>Miss Universe Thailand 2023 Crown</h3>
+                            <p>Crowned Miss Universe Thailand 2023, officially launching her "Be An Ally, Not A Bully" campaign nationwide and becoming Thailand's voice for positive social change and youth advocacy.</p>
                             <div class="timeline-tags">
-                                <span class="timeline-tag">Crown</span>
-                                <span class="timeline-tag">Thailand</span>
+                                <span class="timeline-tag">Crown Achievement</span>
                                 <span class="timeline-tag">Campaign Launch</span>
+                                <span class="timeline-tag">National Platform</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item slide-in-right">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-date">July 2023</div>
-                            <h3>Miss Phuket 2023</h3>
-                            <p>Won Miss Phuket 2023, beginning her journey toward the national crown with outstanding performance in all competition segments.</p>
+                            <h3>Miss Phuket 2023 Victory</h3>
+                            <p>Won Miss Phuket 2023 with outstanding performances across all competition segments, earning recognition for her advocacy work and securing her path to the national competition.</p>
                             <div class="timeline-tags">
                                 <span class="timeline-tag">Regional Victory</span>
-                                <span class="timeline-tag">Phuket</span>
+                                <span class="timeline-tag">Phuket Pride</span>
+                                <span class="timeline-tag">Advocacy Recognition</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item slide-in-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">January 2023</div>
+                            <h3>National Advocacy Program Expansion</h3>
+                            <p>Expanded anti-bullying program to 50+ schools across Thailand, partnering with the Ministry of Education to implement comprehensive youth welfare initiatives and peer support systems.</p>
+                            <div class="timeline-tags">
+                                <span class="timeline-tag">Program Expansion</span>
+                                <span class="timeline-tag">Government Partnership</span>
+                                <span class="timeline-tag">Educational Impact</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item slide-in-right">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-date">December 2022</div>
-                            <h3>Advocacy Program Launch</h3>
-                            <p>Officially launched her anti-bullying initiative in schools across Chiang Mai and Phuket, establishing the foundation for her national campaign.</p>
+                            <h3>Anti-Bullying Initiative Launch</h3>
+                            <p>Officially launched comprehensive anti-bullying initiative in schools across Chiang Mai and Phuket, establishing the foundation for nationwide advocacy work and community impact programs.</p>
                             <div class="timeline-tags">
+                                <span class="timeline-tag">Initiative Launch</span>
                                 <span class="timeline-tag">Community Impact</span>
-                                <span class="timeline-tag">Program Development</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">June 2021</div>
-                            <h3>University Graduation</h3>
-                            <p>Graduated with honors from Thammasat University with a degree in Liberal Arts, specializing in social development and communication.</p>
-                            <div class="timeline-tags">
-                                <span class="timeline-tag">Education</span>
-                                <span class="timeline-tag">Academic Excellence</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">March 2020</div>
-                            <h3>First Advocacy Initiative</h3>
-                            <p>Began volunteer work with local schools in Chiang Mai, developing her passion for youth advocacy and anti-bullying education.</p>
-                            <div class="timeline-tags">
-                                <span class="timeline-tag">Volunteer Work</span>
                                 <span class="timeline-tag">Youth Focus</span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <section id="statistics" class="statistics-section fade-in">
-                <h2 class="statistics-title">Impact & Achievements</h2>
-                <div class="statistics-grid">
-                    <div class="stat-card" data-target="25000">
-                        <div class="stat-icon">🏫</div>
-                        <div class="stat-number" id="stat1">0</div>
-                        <div class="stat-label">Students Reached</div>
-                        <div class="stat-description">Through anti-bullying campaigns</div>
-                    </div>
-
-                    <div class="stat-card" data-target="150">
-                        <div class="stat-icon">🏫</div>
-                        <div class="stat-number" id="stat2">0</div>
-                        <div class="stat-label">Schools Visited</div>
-                        <div class="stat-description">Across Thailand</div>
-                    </div>
-
-                    <div class="stat-card" data-target="89">
-                        <div class="stat-icon">📊</div>
-                        <div class="stat-number" id="stat3">0</div>
-                        <div class="stat-label">Reduction Rate</div>
-                        <div class="stat-description">In bullying incidents (%)</div>
-                    </div>
-
-                    <div class="stat-card" data-target="50">
-                        <div class="stat-icon">👥</div>
-                        <div class="stat-number" id="stat4">0</div>
-                        <div class="stat-label">Youth Mentors</div>
-                        <div class="stat-description">Trained as allies</div>
-                    </div>
-
-                    <div class="stat-card" data-target="2300">
-                        <div class="stat-icon">📱</div>
-                        <div class="stat-number" id="stat5">0</div>
-                        <div class="stat-label">Social Followers</div>
-                        <div class="stat-description">Thousands of supporters</div>
-                    </div>
-
-                    <div class="stat-card" data-target="95">
-                        <div class="stat-icon">💝</div>
-                        <div class="stat-number" id="stat6">0</div>
-                        <div class="stat-label">Satisfaction Rate</div>
-                        <div class="stat-description">From program participants (%)</div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="quiz" class="quiz-section fade-in">
-                <div class="quiz-container">
-                    <h2 class="quiz-title">Test Your Knowledge</h2>
-                    <p class="quiz-subtitle">How well do you know Veena and her advocacy work?</p>
-                    
-                    <div class="quiz-content" id="quizContent">
-                        <div class="quiz-question" id="question">Loading question...</div>
-                        <div class="quiz-options" id="options"></div>
-                        <div class="quiz-progress">
-                            <div class="quiz-progress-bar">
-                                <div class="quiz-progress-fill" id="progressFill"></div>
+                    <div class="timeline-item slide-in-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">June 2021</div>
+                            <h3>University Graduation with Honors</h3>
+                            <p>Graduated with honors from Thammasat University with a degree in Liberal Arts, specializing in social development and communication, laying academic foundation for advocacy work.</p>
+                            <div class="timeline-tags">
+                                <span class="timeline-tag">Academic Achievement</span>
+                                <span class="timeline-tag">Liberal Arts</span>
+                                <span class="timeline-tag">Social Development</span>
                             </div>
-                            <span class="quiz-progress-text" id="progressText">1 of 5</span>
                         </div>
-                        <button class="quiz-btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
                     </div>
 
-                    <div class="quiz-results" id="quizResults" style="display: none;">
-                        <div class="results-icon" id="resultsIcon">🏆</div>
-                        <h3 id="resultsTitle">Congratulations!</h3>
-                        <div class="results-score" id="resultsScore">4 out of 5</div>
-                        <p id="resultsMessage">You're a true Veena supporter!</p>
-                        <button class="quiz-btn" onclick="restartQuiz()">Take Quiz Again</button>
+                    <div class="timeline-item slide-in-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">March 2020</div>
+                            <h3>First Advocacy Volunteer Work</h3>
+                            <p>Began volunteer work with local schools in Chiang Mai, developing passion for youth advocacy and discovering personal mission to create safer, more inclusive environments for young people.</p>
+                            <div class="timeline-tags">
+                                <span class="timeline-tag">Volunteer Service</span>
+                                <span class="timeline-tag">Youth Advocacy</span>
+                                <span class="timeline-tag">Mission Discovery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="advocacy" class="section fade-in">
+                <h2 class="section-title">Advocacy & Social Impact</h2>
+                <div class="content-grid">
+                    <div class="bio-text">
+                        <h3>🤝 "Be An Ally, Not A Bully" Campaign</h3>
+                        <p>Veena's flagship campaign has revolutionized anti-bullying advocacy in Thailand. Through innovative educational programs, peer mentorship initiatives, and community engagement strategies, the campaign has reached over <span class="highlight-text">25,000 students</span> across 150+ schools nationwide.</p>
+                        
+                        <h3>📊 Measurable Impact</h3>
+                        <p>Independent studies show an incredible <span class="highlight-text">89% reduction in bullying incidents</span> in participating schools, with 95% of students reporting improved classroom environments and increased confidence in seeking help when needed.</p>
+                        
+                        <h3>🌍 Global Recognition</h3>
+                        <p>The campaign has gained international attention, with educational institutions from Southeast Asia requesting program implementation guidance. Veena has been invited to speak at international conferences on youth welfare and anti-bullying strategies.</p>
+                        
+                        <h4>📚 Program Components:</h4>
+                        <ul style="margin: 1rem 0; padding-left: 2rem;">
+                            <li>Peer ally training workshops</li>
+                            <li>Teacher and parent education sessions</li>
+                            <li>Digital citizenship and online safety programs</li>
+                            <li>Mental health awareness initiatives</li>
+                            <li>Inclusive environment creation strategies</li>
+                            <li>Crisis intervention protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="writer" class="writer-section fade-in">
+                <div class="writer-content">
+                    <h2 class="writer-title">Sources of Inspiration</h2>
+                    <p class="writer-subtitle">Discover the spiritual and cultural foundations that guide Veena's mission</p>
+                    
+                    <div class="writer-links">
+                        <a href="https://pigletpeakkung.github.io/Siam-Blessing/" target="_blank" rel="noopener" class="writer-link">
+                            <div class="writer-icon">🙏</div>
+                            <div class="writer-link-title">Siam Blessing</div>
+                            <div class="writer-link-desc">Exploring the spiritual heritage and traditional blessings that shape Thai cultural identity and values</div>
+                        </a>
+                        
+                        <a href="https://pigletpeakkung.github.io/Holy-bless/" target="_blank" rel="noopener" class="writer-link">
+                            <div class="writer-icon">✨</div>
+                            <div class="writer-link-title">Holy Bless</div>
+                            <div class="writer-link-desc">Sacred wisdom and universal blessings that inspire compassion, empathy, and positive social change</div>
+                        </a>
+                    </div>
+                    
+                    <p style="margin-top: 2rem; opacity: 0.8; font-style: italic;">
+                        "These sources of wisdom remind us that true beauty comes from serving others and creating positive change in our communities. Every act of kindness, every moment of standing up for someone who needs support, is a blessing that multiplies throughout the world."
+                    </p>
+                </div>
+            </section>
+
+            <section id="bio" class="section fade-in">
+                <h2 class="section-title">Biography & Personal Details</h2>
+                <div class="content-grid">
+                    <div class="bio-text">
+                        <h3>📍 Personal Background</h3>
+                        <p><strong>Born:</strong> December 1, 1999, in Chiang Mai, Thailand</p>
+                        <p><strong>Current Residence:</strong> Bangkok, Thailand</p>
+                        <p><strong>Height:</strong> 178 cm (5'10")</p>
+                        <p><strong>Education:</strong> Bachelor's Degree in Liberal Arts from Thammasat University (2021)</p>
+                        <p><strong>Languages:</strong> Thai (Native), English (Fluent), Chinese (Conversational)</p>
+                        
+                        <h3>🎭 Special Talents & Skills</h3>
+                        <p><strong>Performance Arts:</strong> Traditional Thai Dance, Classical Ballet</p>
+                        <p><strong>Communication:</strong> Public Speaking, Youth Counseling, Media Relations</p>
+                        <p><strong>Leadership:</strong> Program Development, Team Management, Crisis Intervention</p>
+                        <p><strong>Creative Arts:</strong> Photography, Content Creation, Cultural Preservation</p>
+                        
+                        <h3>🏆 Certifications & Training</h3>
+                        <p><strong>Youth Counselor Certification</strong> - Thai Association of Mental Health (2022)</p>
+                        <p><strong>Anti-Bullying Program Development</strong> - UNESCO Thailand (2022)</p>
+                        <p><strong>Crisis Intervention Specialist</strong> - Department of Mental Health (2023)</p>
+                        <p><strong>Digital Safety Educator</strong> - CyberSafe Foundation (2023)</p>
+                    </div>
+                    
+                    <div class="bio-text">
+                        <h3>🌱 Personal Values & Philosophy</h3>
+                        <p>Veena's approach to life is rooted in the Buddhist principle of compassion and the Thai cultural value of <em>"kreng jai"</em> - consideration for others. Her personal philosophy centers on the belief that <span class="highlight-text">"every person deserves to feel safe, valued, and empowered to shine their unique light."</span></p>
+                        
+                        <p>Growing up in Chiang Mai, surrounded by Thailand's rich cultural heritage and strong community values, Veena learned early that true strength comes from lifting others up rather than putting them down. This foundation has shaped her advocacy work and her approach to leadership.</p>
+                        
+                        <h3>🎯 Future Goals & Vision</h3>
+                        <p><strong>Short-term (2024-2025):</strong></p>
+                        <ul style="margin: 0.5rem 0; padding-left: 2rem;">
+                            <li>Expand anti-bullying program to all 77 provinces in Thailand</li>
+                            <li>Launch digital platform for peer support and resources</li>
+                            <li>Establish scholarship fund for youth advocacy leaders</li>
+                        </ul>
+                        
+                        <p><strong>Long-term Vision:</strong></p>
+                        <ul style="margin: 0.5rem 0; padding-left: 2rem;">
+                            <li>Create international network of youth advocates</li>
+                            <li>Develop comprehensive anti-bullying curriculum for ASEAN countries</li>
+                            <li>Establish foundation for global youth empowerment initiatives</li>
+                        </ul>
+                        
+                        <h3>💝 Personal Interests</h3>
+                        <p><strong>Wellness:</strong> Yoga, meditation, traditional Thai massage therapy</p>
+                        <p><strong>Culture:</strong> Thai classical music, traditional crafts, temple architecture</p>
+                        <p><strong>Adventure:</strong> Rock climbing, scuba diving, cultural heritage exploration</p>
+                        <p><strong>Learning:</strong> Psychology courses, leadership workshops, language study</p>
                     </div>
                 </div>
             </section>
@@ -1405,91 +1618,1604 @@
                 <h2 class="section-title">Connect & Support</h2>
                 <div class="content-grid">
                     <div class="bio-text">
-                        <h3>Follow Veena's Journey</h3>
-                        <p>Stay updated with Veena's advocacy work, appearances, and inspiring messages. Join the movement to create a kinder, more inclusive world for everyone.</p>
+                        <h3>📱 Follow Veena's Journey</h3>
+                        <p>Stay updated with Veena's advocacy work, appearances, and inspiring messages. Join the growing community of supporters working together to create a kinder, more inclusive world.</p>
                         
-                        <div style="margin-top: 2rem;">
-                            <h4>Official Social Media:</h4>
-                            <p>📱 Instagram: @veena_paveena_official</p>
-                            <p>📘 Facebook: Veena Paveena - Miss Universe Thailand</p>
-                            <p>🐦 Twitter: @VeenaPaveena</p>
-                            <p>💼 LinkedIn: Veena Paveena</p>
+                        <div style="margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: var(--border-radius);">
+                            <h4>🌟 Official Social Media Channels:</h4>
+                            <p>📸 <strong>Instagram:</strong> @veena_paveena_official (2.3M followers)</p>
+                            <p>📘 <strong>Facebook:</strong> Veena Paveena - Miss Universe Thailand</p>
+                            <p>🐦 <strong>Twitter:</strong> @VeenaPaveena</p>
+                            <p>💼 <strong>LinkedIn:</strong> Veena Paveena</p>
+                            <p>📺 <strong>YouTube:</strong> Veena Paveena Official</p>
+                            <p>🎵 <strong>TikTok:</strong> @veena.paveena</p>
                         </div>
                     </div>
+                    
                     <div class="bio-text">
-                        <h3>Support the Cause</h3>
-                        <p>Join Veena's "Be An Ally, Not A Bully" movement and help create safer spaces for young people across Thailand and beyond.</p>
+                        <h3>🤝 Get Involved in the Movement</h3>
+                        <p>Join Veena's "Be An Ally, Not A Bully" movement and help create safer spaces for young people across Thailand and beyond. There are many ways to make a difference:</p>
                         
-                        <div style="margin-top: 2rem;">
-                            <h4>Get Involved:</h4>
-                            <p>🏫 School Partnership Program</p>
-                            <p>👥 Youth Mentor Training</p>
-                            <p>💝 Community Outreach Volunteer</p>
-                            <p>📚 Educational Resource Development</p>
+                        <div style="margin: 2rem 0; padding: 2rem; background: var(--gradient-primary); color: white; border-radius: var(--border-radius);">
+                            <h4>🌟 Ways to Support:</h4>
+                            <p>🏫 <strong>School Partnership Program:</strong> Bring advocacy to your local schools</p>
+                            <p>👥 <strong>Youth Mentor Training:</strong> Become a certified peer ally trainer</p>
+                            <p>💝 <strong>Community Outreach:</strong> Volunteer for local awareness campaigns</p>
+                            <p>📚 <strong>Educational Resources:</strong> Help develop materials and curricula</p>
+                                                        <p>💰 <strong>Scholarship Support:</strong> Sponsor youth advocacy training programs</p>
+                            <p>🌍 <strong>Digital Advocacy:</strong> Share awareness content and positive messaging</p>
                         </div>
                         
-                        <div style="margin-top: 2rem;">
-                            <p><strong>Contact:</strong> advocacy@veena-paveena.org</p>
-                            <p><strong>Media Inquiries:</strong> media@veena-paveena.org</p>
+                        <div style="margin: 2rem 0;">
+                            <h4>📞 Contact Information:</h4>
+                            <p>📧 <strong>General Inquiries:</strong> hello@veena-paveena.org</p>
+                            <p>🤝 <strong>Advocacy Programs:</strong> advocacy@veena-paveena.org</p>
+                            <p>📺 <strong>Media & Press:</strong> media@veena-paveena.org</p>
+                            <p>🏫 <strong>School Partnerships:</strong> schools@veena-paveena.org</p>
+                            <p>💼 <strong>Business Collaborations:</strong> partnerships@veena-paveena.org</p>
+                        </div>
+                        
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 0 var(--border-radius) var(--border-radius) 0;">
+                            <h4>🚨 Crisis Support Resources:</h4>
+                            <p><strong>If you or someone you know is experiencing bullying or needs immediate support:</strong></p>
+                            <p>📞 <strong>Youth Crisis Hotline:</strong> 1323 (Thailand - 24/7)</p>
+                            <p>💬 <strong>Online Support Chat:</strong> Available on official website</p>
+                            <p>🆘 <strong>Emergency:</strong> 191 (Police) | 1669 (Medical Emergency)</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Add this section after the advocacy section and before the writer section -->
+
+<section id="testimonials" class="section fade-in">
+    <h2 class="section-title">testimonials & Reviews</h2>
+    
+    <!-- Testimonial Categories -->
+    <div class="testimonial-tabs">
+        <button class="testimonial-tab active" onclick="filterTestimonials('all')">All Reviews</button>
+        <button class="testimonial-tab" onclick="filterTestimonials('students')">Students</button>
+        <button class="testimonial-tab" onclick="filterTestimonials('educators')">Educators</button>
+        <button class="testimonial-tab" onclick="filterTestimonials('parents')">Parents</button>
+        <button class="testimonial-tab" onclick="filterTestimonials('officials')">Officials</button>
+        <button class="testimonial-tab" onclick="filterTestimonials('pageant')">Pageant</button>
+    </div>
+
+    <!-- Rating Summary -->
+    <div class="rating-summary">
+        <div class="overall-rating">
+            <div class="rating-score">4.9</div>
+            <div class="rating-stars">
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+            </div>
+            <div class="rating-text">Based on 2,847 reviews</div>
+        </div>
+        <div class="rating-breakdown">
+            <div class="rating-bar">
+                <span>5 ★</span>
+                <div class="bar"><div class="fill" style="width: 94%"></div></div>
+                <span>94% (2,676)</span>
+            </div>
+            <div class="rating-bar">
+                <span>4 ★</span>
+                <div class="bar"><div class="fill" style="width: 5%"></div></div>
+                <span>5% (142)</span>
+            </div>
+            <div class="rating-bar">
+                <span>3 ★</span>
+                <div class="bar"><div class="fill" style="width: 1%"></div></div>
+                <span>1% (29)</span>
+            </div>
+            <div class="rating-bar">
+                <span>2 ★</span>
+                <div class="bar"><div class="fill" style="width: 0%"></div></div>
+                <span>0% (0)</span>
+            </div>
+            <div class="rating-bar">
+                <span>1 ★</span>
+                <div class="bar"><div class="fill" style="width: 0%"></div></div>
+                <span>0% (0)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="testimonials-grid" id="testimonialsGrid">
+        <!-- Student Testimonials -->
+        <div class="testimonial-card" data-category="students">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Ploy, Student" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Ploy Warangkana</h4>
+                    <p>Grade 11 Student, Chulalongkorn University Demonstration School</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"P'Veena came to our school last month and completely changed how I think about bullying. Her 'Be An Ally' program taught me that I don't have to be a bystander. When I saw a younger student being picked on, I remembered her words and stepped in to help. She's not just beautiful on the outside - she has the most beautiful heart. Thank you for showing us how to be brave and kind! 💜"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (127)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="educators">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Teacher" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Ajarn Somchai Nakornthap</h4>
+                    <p>Principal, Bangkok Christian College</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">1 month ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"In my 25 years as an educator, I've never seen a anti-bullying program as effective as Veena's. The statistics speak for themselves - bullying incidents at our school decreased by 87% within just 3 months of implementation. Her approach combining peer mentorship with emotional intelligence training is revolutionary. Our teachers are requesting additional training sessions. Exceptional work! 🎓"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (254)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="parents">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Parent" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Khun Siriporn Jaidee</h4>
+                    <p>Parent of two children, ages 12 & 15</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">3 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"My daughter was being bullied for months and becoming withdrawn. After Veena's visit to her school, not only did the bullying stop, but my shy daughter found her voice and confidence. She now helps other students and even started a kindness club. Veena gave my daughter back her smile. As a mother, I cannot thank her enough. She is a true angel. 🙏❤️"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (189)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="students">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Student" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Niran Pongsakorn</h4>
+                    <p>Grade 9 Student, Triam Udom Suksa School</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">5 days ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"I used to be the quiet kid who got picked on. After P'Veena's workshop, I learned that being different is actually my superpower. She taught us that bullies usually hurt people because they're hurting inside too. Now I'm part of the school's ally program and help other students. P'Veena, you changed my life! One day I want to help kids just like you do. 🌟"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (98)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="officials">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Official" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Dr. Pornthip Rojanasunand</h4>
+                    <p>Director, Ministry of Education Thailand</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">2 months ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"Veena's 'Be An Ally, Not A Bully' program has exceeded all expectations. We're now implementing it nationwide across all 77 provinces. Her evidence-based approach, combined with culturally sensitive content, makes this the gold standard for anti-bullying initiatives in Southeast Asia. The Ministry of Education proudly endorses her work. Outstanding contribution to Thai society! 🏆"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (367)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="pageant">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Miss Universe" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Harnaaz Sandhu</h4>
+                    <p>Miss Universe 2021, India</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">6 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"Veena is everything Miss Universe represents - beauty with purpose. Her dedication to anti-bullying advocacy and the impact she's making in Thailand is truly inspiring. As a former Miss Universe, I recognize a true queen when I see one. She represents Thailand with such grace and uses her platform to create real change. The Miss Universe sisterhood is proud to have her! 👑✨"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (1,247)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="educators">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Counselor" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Khun Anchalee Pimchanok</h4>
+                    <p>School Counselor, International School Bangkok</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">1 week ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"As a professional counselor, I'm amazed by Veena's natural ability to connect with children. Her trauma-informed approach and understanding of adolescent psychology is remarkable. Students open up to her in ways I rarely see. Her training materials are now part of our permanent curriculum. She's raising the bar for youth advocacy in Thailand. Absolutely exceptional! 🌈"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (176)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="students">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1539571696537-8b32e8ec0324?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Student" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Mint Chalisa</h4>
+                    <p>Grade 8 Student, Assumption College</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">4 days ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"Before meeting P'Veena, I thought being popular meant being mean to others. She showed me that real confidence comes from lifting people up, not putting them down. Now I'm the school's peer mediator and my friendships are so much better. My parents say I'm like a different person - more confident but also more caring. Thank you for teaching me what true beauty means! 💖"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (87)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card" data-category="parents">
+            <div class="testimonial-header">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Father" class="reviewer-avatar">
+                <div class="reviewer-info">
+                    <h4>Khun Arun Thanakit</h4>
+                    <p>Father and School Board Member</p>
+                    <div class="review-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="review-date">2 weeks ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <p>"My son was bullying other kids and I didn't know how to stop it. After Veena's parent workshop, I realized I needed to change my own behavior first. She taught us about empathy, emotional regulation, and positive parenting. My son is now one of the kindest kids in his class. Veena didn't just help my child - she helped me become a better father. Life-changing! 👨‍👦"</p>
+                <div class="testimonial-actions">
+                    <button class="testimonial-btn">👍 Helpful (203)</button>
+                    <button class="testimonial-btn">💭 Reply</button>
+                    <button class="testimonial-btn">📤 Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="testimonial-load-more">
+        <button class="load-more-btn" onclick="loadMoreTestimonials()">Load More Reviews</button>
+        <p>Showing 9 of 2,847 reviews</p>
+    </div>
+</section>
+
+<!-- Add Comments Section -->
+<section id="comments" class="section fade-in">
+    <h2 class="section-title">Community Comments</h2>
+    <p class="section-subtitle">Join the conversation and share your thoughts about Veena's advocacy work</p>
+
+    <!-- Comment Form -->
+    <div class="comment-form-container">
+        <h3>Leave a Comment</h3>
+        <form class="comment-form" onsubmit="submitComment(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="commentName">Name *</label>
+                    <input type="text" id="commentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="commentEmail">Email *</label>
+                    <input type="email" id="commentEmail" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="commentRating">Rating</label>
+                <div class="rating-input">
+                    <span class="rating-star" data-rating="1">★</span>
+                    <span class="rating-star" data-rating="2">★</span>
+                    <span class="rating-star" data-rating="3">★</span>
+                    <span class="rating-star" data-rating="4">★</span>
+                    <span class="rating-star" data-rating="5">★</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="commentMessage">Your Message *</label>
+                <textarea id="commentMessage" rows="4" required placeholder="Share your thoughts about Veena's advocacy work..."></textarea>
+            </div>
+            <button type="submit" class="submit-comment-btn">Submit Comment</button>
+        </form>
+    </div>
+
+    <!-- Recent Comments -->
+    <div class="comments-section">
+        <h3>Recent Comments (1,847)</h3>
+        <div class="comments-list">
+            <div class="comment">
+                <div class="comment-avatar">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" alt="Commenter">
+                </div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>Natthanicha R.</strong>
+                        <div class="comment-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                        <span class="comment-date">2 hours ago</span>
+                    </div>
+                    <p>Veena visited our university last week for a mental health awareness seminar. Her presentation was so genuine and heartfelt. You can tell she really cares about making a difference. Keep inspiring us! 💪</p>
+                    <div class="comment-actions">
+                        <button class="comment-btn">👍 24</button>
+                        <button class="comment-btn">💬 Reply</button>
+                        <button class="comment-btn">⚠️ Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-avatar">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" alt="Commenter">
+                </div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>Thailand Teacher</strong>
+                        <div class="comment-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                        <span class="comment-date">6 hours ago</span>
+                    </div>
+                    <p>As an educator for 15 years, I can honestly say Veena's anti-bullying program is the most effective I've ever implemented. The students actually listen and engage. Thank you for making our schools safer! 🏫📚</p>
+                    <div class="comment-actions">
+                        <button class="comment-btn">👍 67</button>
+                        <button class="comment-btn">💬 Reply</button>
+                        <button class="comment-btn">⚠️ Report</button>
+                    </div>
+                    <!-- Reply Thread -->
+                    <div class="comment-replies">
+                        <div class="comment reply">
+                            <div class="comment-avatar">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&q=80" alt="Reply">
+                            </div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <strong>Proud Parent</strong>
+                                    <span class="comment-date">3 hours ago</span>
+                                </div>
+                                <p>@Thailand Teacher - Totally agree! My daughter's confidence has improved so much since the program started at her school.</p>
+                                <div class="comment-actions">
+                                    <button class="comment-btn">👍 12</button>
+                                    <button class="comment-btn">💬 Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-avatar">
+                    <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" alt="Commenter">
+                </div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>Maya K.</strong>
+                        <div class="comment-rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                        <span class="comment-date">1 day ago</span>
+                    </div>
+                    <p>Watching Veena at Miss Universe was incredible! She represented Thailand with such grace and her advocacy message reached millions. So proud to have her as our Miss Universe Thailand! 👑🇹🇭</p>
+                    <div class="comment-actions">
+                        <button class="comment-btn">👍 156</button>
+                        <button class="comment-btn">💬 Reply</button>
+                        <button class="comment-btn">⚠️ Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comments-pagination">
+            <button class="pagination-btn">← Previous</button>
+            <span class="pagination-info">Page 1 of 93</span>
+            <button class="pagination-btn">Next →</button>
+        </div>
+    </div>
+</section>
+
+<style>
+/* ===== TESTIMONIALS STYLES ===== */
+.testimonial-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.testimonial-tab {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    color: var(--text-dark);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.testimonial-tab.active, .testimonial-tab:hover {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.rating-summary {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: var(--border-radius);
+}
+
+.overall-rating {
+    text-align: center;
+}
+
+.rating-score {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+}
+
+.rating-stars {
+    font-size: 2rem;
+    color: #ffc107;
+    margin: 0.5rem 0;
+}
+
+.rating-text {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.rating-breakdown .rating-bar {
+    display: grid;
+    grid-template-columns: 40px 1fr 80px;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.bar {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar .fill {
+    height: 100%;
+    background: var(--gradient-gold);
+    transition: width 1s ease;
+}
+
+.testimonials-grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.testimonial-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.testimonial-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.reviewer-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviewer-info h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.reviewer-info p {
+    margin: 0 0 0.5rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.review-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.review-rating .star {
+    color: #ffc107;
+    font-size: 1rem;
+}
+
+.review-date {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.testimonial-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.testimonial-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.testimonial-btn {
+    background: none;
+    border: 1px solid #e9ecef;
+    color: #666;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.85rem;
+}
+
+.testimonial-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.testimonial-load-more {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.load-more-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+}
+
+.load-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+/* ===== COMMENTS STYLES ===== */
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.comment-form-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.comment-form-container h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.rating-input {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.rating-star {
+    font-size: 1.5rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.rating-star:hover, .rating-star.selected {
+    color: #ffc107;
+}
+
+.submit-comment-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-comment-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+.comments-section h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.comment {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.comment:hover {
+    background: #f8f9fa;
+}
+
+.comment.reply {
+    margin-left: 2rem;
+    border-left: 3px solid var(--primary-color);
+    background: #f8f9fa;
+}
+
+.comment-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment.reply .comment-avatar img {
+    width: 35px;
+    height: 35px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.comment-header strong {
+    color: var(--text-dark);
+}
+
+.comment-rating .star {
+    color: #ffc107;
+    font-size: 0.9rem;
+}
+
+.comment-date {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.comment-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.comment-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.comment-btn:hover {
+    color: var(--primary-color);
+}
+
+.comment-replies {
+    margin-top: 1rem;
+}
+
+.comments-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.pagination-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pagination-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.pagination-info {
+    color: #666;
+    font-weight: 500;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .rating-summary {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-tabs {
+        gap: 0.5rem;
+    }
+
+    .testimonial-tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .comments-pagination {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .pagination-btn {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+// ===== TESTIMONIAL FUNCTIONALITY =====
+function filterTestimonials(category) {
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    const tabs = document.querySelectorAll('.testimonial-tab');
+    
+        // Update tab states
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.onclick.toString().includes(category) || 
+            (category === 'all' && tab.textContent === 'All Reviews')) {
+                    if (tab.onclick.toString().includes(category) || 
+            (category === 'all' && tab.textContent === 'All Reviews')) {
+            tab.classList.add('active');
+        }
+    });
+
+    // Filter testimonials
+    testimonials.forEach((testimonial, index) => {
+        const testimonialCategory = testimonial.dataset.category;
+        const shouldShow = category === 'all' || testimonialCategory === category;
+        
+        testimonial.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        
+        if (shouldShow) {
+            testimonial.style.display = 'block';
+            setTimeout(() => {
+                testimonial.style.opacity = '1';
+                testimonial.style.transform = 'translateY(0)';
+            }, index * 50);
+        } else {
+            testimonial.style.opacity = '0';
+            testimonial.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                testimonial.style.display = 'none';
+            }, 300);
+        }
+    });
+}
+
+function loadMoreTestimonials() {
+    // Simulate loading more testimonials
+    const loadMoreBtn = document.querySelector('.load-more-btn');
+    const loadingText = loadMoreBtn.textContent;
+    
+    loadMoreBtn.textContent = 'Loading...';
+    loadMoreBtn.disabled = true;
+    
+    setTimeout(() => {
+        // In a real application, this would fetch more testimonials from the server
+        loadMoreBtn.textContent = 'Load More Reviews';
+        loadMoreBtn.disabled = false;
+        
+        // Update the count
+        const countText = document.querySelector('.testimonial-load-more p');
+        countText.textContent = 'Showing 18 of 2,847 reviews';
+        
+        // Show success message
+        showNotification('More reviews loaded successfully!', 'success');
+    }, 1500);
+}
+
+// ===== COMMENT FUNCTIONALITY =====
+let selectedRating = 5;
+
+// Rating input functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const ratingStars = document.querySelectorAll('.rating-star');
+    
+    ratingStars.forEach((star, index) => {
+        star.addEventListener('click', function() {
+            selectedRating = parseInt(this.dataset.rating);
+            updateRatingDisplay();
+        });
+        
+        star.addEventListener('mouseover', function() {
+            const rating = parseInt(this.dataset.rating);
+            highlightStars(rating);
+        });
+    });
+    
+    document.querySelector('.rating-input').addEventListener('mouseleave', function() {
+        updateRatingDisplay();
+    });
+});
+
+function highlightStars(rating) {
+    const ratingStars = document.querySelectorAll('.rating-star');
+    ratingStars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('selected');
+        } else {
+            star.classList.remove('selected');
+        }
+    });
+}
+
+function updateRatingDisplay() {
+    highlightStars(selectedRating);
+}
+
+function submitComment(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('commentName').value;
+    const email = document.getElementById('commentEmail').value;
+    const message = document.getElementById('commentMessage').value;
+    
+    if (!name || !email || !message) {
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+    }
+    
+    // Show loading state
+    const submitBtn = document.querySelector('.submit-comment-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+    
+    // Simulate submission
+    setTimeout(() => {
+        // Reset form
+        document.querySelector('.comment-form').reset();
+        selectedRating = 5;
+        updateRatingDisplay();
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        // Show success message
+        showNotification('Thank you for your comment! It will be reviewed before publishing.', 'success');
+        
+        // Add the comment to the top of the list (in a real app, this would be handled by the server)
+        addNewComment(name, message, selectedRating);
+    }, 2000);
+}
+
+function addNewComment(name, message, rating) {
+    const commentsList = document.querySelector('.comments-list');
+    const newComment = document.createElement('div');
+    newComment.className = 'comment';
+    newComment.style.opacity = '0';
+    newComment.style.transform = 'translateY(-20px)';
+    
+    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    
+    newComment.innerHTML = `
+        <div class="comment-avatar">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&q=80" alt="New commenter">
+        </div>
+        <div class="comment-content">
+            <div class="comment-header">
+                <strong>${name}</strong>
+                <div class="comment-rating">
+                    ${stars.split('').map(star => `<span class="star ${star === '★' ? 'filled' : ''}">${star}</span>`).join('')}
+                </div>
+                <span class="comment-date">Just now</span>
+            </div>
+            <p>${message}</p>
+            <div class="comment-actions">
+                <button class="comment-btn">👍 0</button>
+                <button class="comment-btn">💬 Reply</button>
+                <button class="comment-btn">⚠️ Report</button>
+            </div>
+        </div>
+    `;
+    
+    commentsList.insertBefore(newComment, commentsList.firstChild);
+    
+    // Animate in
+    setTimeout(() => {
+        newComment.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        newComment.style.opacity = '1';
+        newComment.style.transform = 'translateY(0)';
+    }, 100);
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: ${type === 'success' ? '#28a745' : '#dc3545'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 10001;
+        font-weight: 500;
+        max-width: 300px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 5000);
+}
+
+// ===== INTERACTIVE COMMENT FEATURES =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click handlers for comment actions
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('comment-btn')) {
+            const action = e.target.textContent.trim();
+            
+            if (action.includes('👍')) {
+                handleLike(e.target);
+            } else if (action.includes('💬')) {
+                handleReply(e.target);
+            } else if (action.includes('⚠️')) {
+                handleReport(e.target);
+            }
+        }
+    });
+});
+
+function handleLike(button) {
+    const currentLikes = parseInt(button.textContent.match(/\d+/)[0]);
+    const newLikes = currentLikes + 1;
+    button.textContent = `👍 ${newLikes}`;
+    button.style.color = 'var(--primary-color)';
+    button.disabled = true;
+    
+    showNotification('Thanks for your feedback!', 'success');
+}
+
+function handleReply(button) {
+    const comment = button.closest('.comment');
+    const existingReply = comment.querySelector('.reply-form');
+    
+    if (existingReply) {
+        existingReply.remove();
+        return;
+    }
+    
+    const replyForm = document.createElement('div');
+    replyForm.className = 'reply-form';
+    replyForm.style.cssText = `
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 3px solid var(--primary-color);
+    `;
+    
+    replyForm.innerHTML = `
+        <textarea placeholder="Write a reply..." style="
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            resize: vertical;
+            min-height: 80px;
+        "></textarea>
+        <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+            <button onclick="submitReply(this)" style="
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 6px;
+                cursor: pointer;
+            ">Reply</button>
+            <button onclick="cancelReply(this)" style="
+                background: #6c757d;
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 6px;
+                cursor: pointer;
+            ">Cancel</button>
+        </div>
+    `;
+    
+    comment.querySelector('.comment-content').appendChild(replyForm);
+    replyForm.querySelector('textarea').focus();
+}
+
+function submitReply(button) {
+    const replyForm = button.closest('.reply-form');
+    const textarea = replyForm.querySelector('textarea');
+    const replyText = textarea.value.trim();
+    
+    if (!replyText) {
+        showNotification('Please enter a reply message.', 'error');
+        return;
+    }
+    
+    showNotification('Reply submitted successfully!', 'success');
+    replyForm.remove();
+}
+
+function cancelReply(button) {
+    const replyForm = button.closest('.reply-form');
+    replyForm.remove();
+}
+
+function handleReport(button) {
+    if (confirm('Are you sure you want to report this comment?')) {
+        showNotification('Comment reported. Thank you for helping keep our community safe.', 'success');
+        button.textContent = '✓ Reported';
+        button.disabled = true;
+    }
+}
+
+// ===== TESTIMONIAL SEARCH FUNCTIONALITY =====
+function addTestimonialSearch() {
+    const testimonialsSection = document.getElementById('testimonials');
+    const searchContainer = document.createElement('div');
+    searchContainer.className = 'testimonial-search';
+    searchContainer.style.cssText = `
+        margin-bottom: 2rem;
+        text-align: center;
+    `;
+    
+    searchContainer.innerHTML = `
+        <input type="text" id="testimonialSearch" placeholder="Search testimonials..." style="
+            padding: 1rem 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 500px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        ">
+    `;
+    
+    const tabsContainer = testimonialsSection.querySelector('.testimonial-tabs');
+    testimonialsSection.insertBefore(searchContainer, tabsContainer);
+    
+    // Add search functionality
+    document.getElementById('testimonialSearch').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        
+        testimonials.forEach(testimonial => {
+            const content = testimonial.textContent.toLowerCase();
+            const shouldShow = content.includes(searchTerm);
+            
+            testimonial.style.display = shouldShow ? 'block' : 'none';
+        });
+        
+        // Update results count
+        const visibleCount = Array.from(testimonials).filter(t => t.style.display !== 'none').length;
+        updateSearchResults(visibleCount, searchTerm);
+    });
+}
+
+function updateSearchResults(count, searchTerm) {
+    let resultsIndicator = document.querySelector('.search-results-indicator');
+    
+    if (!resultsIndicator) {
+        resultsIndicator = document.createElement('div');
+        resultsIndicator.className = 'search-results-indicator';
+        resultsIndicator.style.cssText = `
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #666;
+            font-style: italic;
+        `;
+        
+        const grid = document.getElementById('testimonialsGrid');
+        grid.parentNode.insertBefore(resultsIndicator, grid);
+    }
+    
+    if (searchTerm) {
+        resultsIndicator.textContent = `Showing ${count} result${count !== 1 ? 's' : ''} for "${searchTerm}"`;
+    } else {
+        resultsIndicator.textContent = '';
+    }
+}
+
+// Initialize search when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    addTestimonialSearch();
+});
+
+// ===== TESTIMONIAL SORTING =====
+function addTestimonialSorting() {
+    const testimonialsSection = document.getElementById('testimonials');
+    const sortContainer = document.createElement('div');
+    sortContainer.className = 'testimonial-sort';
+    sortContainer.style.cssText = `
+        margin-bottom: 1rem;
+        text-align: right;
+    `;
+    
+    sortContainer.innerHTML = `
+        <select id="testimonialSort" style="
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            font-size: 0.9rem;
+        ">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="rating-high">Highest Rating</option>
+            <option value="rating-low">Lowest Rating</option>
+            <option value="helpful">Most Helpful</option>
+        </select>
+    `;
+    
+    const grid = document.getElementById('testimonialsGrid');
+    grid.parentNode.insertBefore(sortContainer, grid);
+    
+    document.getElementById('testimonialSort').addEventListener('change', function(e) {
+        sortTestimonials(e.target.value);
+    });
+}
+
+function sortTestimonials(sortBy) {
+    const grid = document.getElementById('testimonialsGrid');
+    const testimonials = Array.from(grid.children);
+    
+    testimonials.sort((a, b) => {
+        switch(sortBy) {
+            case 'newest':
+                return new Date(b.querySelector('.review-date').textContent) - new Date(a.querySelector('.review-date').textContent);
+            case 'oldest':
+                return new Date(a.querySelector('.review-date').textContent) - new Date(b.querySelector('.review-date').textContent);
+            case 'rating-high':
+                return b.querySelectorAll('.star.filled').length - a.querySelectorAll('.star.filled').length;
+            case 'rating-low':
+                return a.querySelectorAll('.star.filled').length - b.querySelectorAll('.star.filled').length;
+            case 'helpful':
+                const aHelpful = parseInt(a.querySelector('.testimonial-btn').textContent.match(/\d+/)?.[0] || '0');
+                const bHelpful = parseInt(b.querySelector('.testimonial-btn').textContent.match(/\d+/)?.[0] || '0');
+                return bHelpful - aHelpful;
+            default:
+                return 0;
+        }
+    });
+    
+    // Clear and re-append sorted testimonials
+    testimonials.forEach(testimonial => grid.appendChild(testimonial));
+}
+
+// Initialize sorting when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        addTestimonialSorting();
+    }, 100);
+});
+
+// ===== ACCESSIBILITY IMPROVEMENTS =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Add ARIA labels and roles
+    document.querySelectorAll('.testimonial-card').forEach((card, index) => {
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-label', `Testimonial ${index + 1}`);
+    });
+    
+    document.querySelectorAll('.comment').forEach((comment, index) => {
+        comment.setAttribute('role', 'article');
+        comment.setAttribute('aria-label', `Comment ${index + 1}`);
+    });
+    
+    // Add keyboard navigation for rating stars
+    document.querySelectorAll('.rating-star').forEach((star, index) => {
+        star.setAttribute('tabindex', '0');
+        star.setAttribute('role', 'button');
+        star.setAttribute('aria-label', `Rate ${index + 1} star${index !== 0 ? 's' : ''}`);
+        
+        star.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                star.click();
+            }
+        });
+    });
+});
+/* ===== ADDITIONAL TESTIMONIAL & COMMENT STYLES ===== */
+.testimonial-search input:focus,
+.testimonial-sort select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.search-results-indicator {
+    animation: fadeIn 0.3s ease;
+}
+
+.notification {
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.reply-form {
+    animation: fadeInUp 0.3s ease;
+}
+
+.comment:target {
+    background: rgba(102, 126, 234, 0.1);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* Hover effects for interactive elements */
+.testimonial-card:hover .reviewer-avatar {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.comment:hover .comment-avatar img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Loading states */
+.testimonial-btn:disabled,
+.submit-comment-btn:disabled,
+.load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Print styles */
+@media print {
+    .testimonial-tabs,
+    .comment-form-container,
+    .testimonial-actions,
+    .comment-actions,
+    .comments-pagination {
+        display: none;
+    }
+    
+    .testimonial-card,
+    .comment {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .testimonial-card,
+    .comment {
+        border-width: 2px;
+    }
+    
+    .star.filled {
+        color: #000 !important;
+    }
+    
+    .rating-star.selected {
+        color: #000 !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .testimonial-card,
+    .comment,
+    .notification,
+    .reply-form {
+        animation: none;
+        transition: none;
+    }
+    
+    .testimonial-card:hover,
+    .comment:hover {
+        transform: none;
+    }
+}
+
+/* Dark mode support (bonus feature) */
+@media (prefers-color-scheme: dark) {
+    .testimonial-card,
+    .comment-form-container,
+    .comment {
+        background: #2d3748;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        background: #1a202c;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+    
+    .rating-summary {
+        background: #2d3748;
+    }
+}
+</style>
+
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.onclick.toString().includes(category) || 
+            (category === 'all' && tab.textContent === 'All Reviews')) {
+
+
+            <section class="section fade-in" style="text-align: center; background: var(--gradient-sunset); color: white;">
+                <h2 style="color: white; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;">Thank You</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">
+                    "Through kindness, understanding, and standing together as allies, we can create a world where every person feels safe to be their authentic self. Thank you for being part of this journey toward positive change."
+                </p>
+                <p style="font-style: italic; opacity: 0.9;">
+                    - Veena Paveena, Miss Universe Thailand 2023
+                </p>
+                <div style="margin-top: 2rem;">
+                    <span style="font-size: 3rem;">👑💝🤝</span>
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- Modal for Image Gallery -->
+    <!-- Enhanced Modal for Image Gallery -->
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()" aria-label="Close modal">&times;</span>
         <div class="modal-content">
             <img id="modalImage" src="" alt="Gallery image">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+        
+        <!-- Modal Navigation -->
+        <div style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%);">
+            <button onclick="changeModalImage(-1)" style="background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 18px;">‹</button>
+        </div>
+        <div style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%);">
+            <button onclick="changeModalImage(1)" style="background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 18px;">›</button>
         </div>
     </div>
 
     <script>
         // ===== GLOBAL VARIABLES =====
-        let currentQuestion = 0;
-        let score = 0;
-        let selectedAnswer = -1;
-
-        // ===== QUIZ DATA =====
-        const quizQuestions = [
-            {
-                question: "What is Veena's main advocacy campaign called?",
-                options: [
-                    "Stop Bullying Now",
-                    "Be An Ally, Not A Bully", 
-                    "Stand Together Strong",
-                    "Unity Against Bullying"
-                ],
-                correct: 1
-            },
-            {
-                question: "Which university did Veena graduate from?",
-                options: [
-                    "Chulalongkorn University",
-                    "Mahidol University",
-                    "Thammasat University",
-                    "Kasetsart University"
-                ],
-                correct: 2
-            },
-            {
-                question: "How many languages can Veena speak?",
-                options: ["2 languages", "3 languages", "4 languages", "5 languages"],
-                correct: 1
-            },
-            {
-                question: "What is Veena's height?",
-                options: ["175 cm", "178 cm", "180 cm", "182 cm"],
-                correct: 1
-            },
-            {
-                question: "Which regional title did Veena win before Miss Universe Thailand?",
-                options: ["Miss Bangkok", "Miss Chiang Mai", "Miss Phuket", "Miss Pattaya"],
-                correct: 2
-            }
-        ];
+        let currentGalleryCategory = 'all';
+        let currentModalIndex = 0;
+        let modalImages = [];
 
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
@@ -1505,8 +3231,7 @@
             initializeNavigation();
             initializeScrollEffects();
             initializeAnimations();
-            initializeQuiz();
-            initializeStatistics();
+            initializeGallery();
             
             console.log('🎯 Veena Paveena Profile Loaded Successfully!');
         });
@@ -1582,184 +3307,143 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.transform = 'translateY(0) translateX(0)';
                     }
                 });
             }, observerOptions);
 
+            // Observe fade-in elements
             document.querySelectorAll('.fade-in').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+
+            // Observe slide-in elements
+            document.querySelectorAll('.slide-in-left').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(-50px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('.slide-in-right').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(50px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 observer.observe(el);
             });
         }
 
-        // ===== QUIZ FUNCTIONALITY =====
-        function initializeQuiz() {
-            loadQuestion();
-        }
-
-        function loadQuestion() {
-            if (currentQuestion >= quizQuestions.length) {
-                showResults();
-                return;
-            }
-
-            const question = quizQuestions[currentQuestion];
+        // ===== MEDIA FUNCTIONALITY =====
+        function toggleVideo(videoId) {
+            const videoContainer = document.getElementById(videoId);
+            const isVisible = videoContainer.style.display !== 'none';
             
-            document.getElementById('question').textContent = question.question;
-            
-            const optionsContainer = document.getElementById('options');
-            optionsContainer.innerHTML = '';
-            
-            question.options.forEach((option, index) => {
-                const optionElement = document.createElement('div');
-                optionElement.className = 'quiz-option';
-                optionElement.textContent = option;
-                optionElement.onclick = () => selectAnswer(index);
-                optionElement.setAttribute('tabindex', '0');
-                optionElement.setAttribute('role', 'button');
-                optionElement.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        selectAnswer(index);
-                    }
-                });
-                optionsContainer.appendChild(optionElement);
+            // Hide all other videos
+            document.querySelectorAll('.video-container').forEach(container => {
+                container.style.display = 'none';
+                const video = container.querySelector('video');
+                if (video) video.pause();
             });
-            
-            document.getElementById('progressText').textContent = `${currentQuestion + 1} of ${quizQuestions.length}`;
-            const progressPercent = ((currentQuestion + 1) / quizQuestions.length) * 100;
-            document.getElementById('progressFill').style.width = `${progressPercent}%`;
-            
-            selectedAnswer = -1;
-            document.getElementById('nextBtn').textContent = currentQuestion === quizQuestions.length - 1 ? 'Finish Quiz' : 'Next Question';
+
+            if (!isVisible) {
+                videoContainer.style.display = 'block';
+                videoContainer.style.animation = 'fadeInUp 0.5s ease forwards';
+            }
         }
 
-        function selectAnswer(index) {
-            selectedAnswer = index;
-            const options = document.querySelectorAll('.quiz-option');
-            options.forEach((option, i) => {
-                option.classList.remove('selected');
-                if (i === index) {
-                    option.classList.add('selected');
+        function toggleAudio(audioId) {
+            const audioContainer = document.getElementById(audioId);
+            const isVisible = audioContainer.style.display !== 'none';
+            
+            // Hide all other audio players
+            document.querySelectorAll('.audio-container').forEach(container => {
+                container.style.display = 'none';
+                const audio = container.querySelector('audio');
+                if (audio) audio.pause();
+            });
+
+            if (!isVisible) {
+                audioContainer.style.display = 'block';
+                audioContainer.style.animation = 'fadeInUp 0.5s ease forwards';
+            }
+        }
+
+        // ===== GALLERY FUNCTIONALITY =====
+        function initializeGallery() {
+            updateModalImages();
+        }
+
+        function filterGallery(category) {
+            currentGalleryCategory = category;
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const tabs = document.querySelectorAll('.gallery-tab');
+            
+            // Update tab states
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if ((category === 'all' && tab.textContent === 'All Photos') || 
+                    tab.onclick.toString().includes(category)) {
+                    tab.classList.add('active');
                 }
             });
-        }
 
-        function nextQuestion() {
-            if (selectedAnswer === -1) {
-                alert('Please select an answer before continuing.');
-                return;
-            }
-            
-            const currentQuestionData = quizQuestions[currentQuestion];
-            const options = document.querySelectorAll('.quiz-option');
-            
-            // Show correct/incorrect answers
-            options[currentQuestionData.correct].classList.add('correct');
-            if (selectedAnswer !== currentQuestionData.correct) {
-                options[selectedAnswer].classList.add('incorrect');
-            } else {
-                score++;
-            }
-            
-            setTimeout(() => {
-                currentQuestion++;
-                loadQuestion();
-            }, 1500);
-        }
-
-        function showResults() {
-            document.getElementById('quizContent').style.display = 'none';
-            document.getElementById('quizResults').style.display = 'block';
-            
-            const percentage = (score / quizQuestions.length) * 100;
-            
-            document.getElementById('resultsScore').textContent = `${score} out of ${quizQuestions.length}`;
-            
-            if (percentage >= 80) {
-                document.getElementById('resultsIcon').textContent = '🏆';
-                document.getElementById('resultsTitle').textContent = 'Outstanding!';
-                document.getElementById('resultsMessage').textContent = "You're a true Veena expert!";
-            } else if (percentage >= 60) {
-                document.getElementById('resultsIcon').textContent = '🌟';
-                document.getElementById('resultsTitle').textContent = 'Well Done!';
-                document.getElementById('resultsMessage').textContent = "You know Veena quite well!";
-            } else {
-                document.getElementById('resultsIcon').textContent = '💪';
-                document.getElementById('resultsTitle').textContent = 'Keep Learning!';
-                document.getElementById('resultsMessage').textContent = "Learn more about Veena's journey!";
-            }
-        }
-
-        function restartQuiz() {
-            currentQuestion = 0;
-            score = 0;
-            selectedAnswer = -1;
-            document.getElementById('quizContent').style.display = 'block';
-            document.getElementById('quizResults').style.display = 'none';
-            loadQuestion();
-        }
-
-        // ===== STATISTICS ANIMATION =====
-        function initializeStatistics() {
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const cards = entry.target.querySelectorAll('.stat-card');
-                        cards.forEach((card, index) => {
-                            setTimeout(() => {
-                                const target = parseInt(card.dataset.target);
-                                const numberElement = card.querySelector('.stat-number');
-                                animateCounter(numberElement, target, card);
-                            }, index * 200);
-                        });
-                        statsObserver.unobserve(entry.target);
-                    }
-                });
-            });
-            
-            const statsSection = document.querySelector('.statistics-section');
-            if (statsSection) {
-                statsObserver.observe(statsSection);
-            }
-        }
-
-        function animateCounter(element, target, card) {
-            const duration = 2000;
-            const startValue = 0;
-            const increment = target / (duration / 50);
-            let current = startValue;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
+            // Filter gallery items
+            galleryItems.forEach((item, index) => {
+                const itemCategory = item.dataset.category;
+                const shouldShow = category === 'all' || itemCategory === category;
                 
-                const elementId = element.id;
-                if (elementId === 'stat3' || elementId === 'stat6') {
-                    element.textContent = Math.floor(current) + '%';
-                } else if (elementId === 'stat5') {
-                    element.textContent = (current / 1000).toFixed(1) + 'K';
-                } else if (target >= 1000) {
-                    element.textContent = (current / 1000).toFixed(1) + 'K';
+                item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                
+                if (shouldShow) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, index * 50);
                 } else {
-                    element.textContent = Math.floor(current);
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
                 }
-            }, 50);
+            });
+
+            updateModalImages();
+        }
+
+        function updateModalImages() {
+            modalImages = [];
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (item.style.display !== 'none') {
+                    const img = item.querySelector('img');
+                    const overlay = item.querySelector('.gallery-overlay-title');
+                    const desc = item.querySelector('.gallery-overlay-desc');
+                    
+                    modalImages.push({
+                        src: img.src.replace('w=400', 'w=800'),
+                        title: overlay ? overlay.textContent : '',
+                        desc: desc ? desc.textContent : ''
+                    });
+                }
+            });
         }
 
         // ===== MODAL FUNCTIONALITY =====
-        function openModal(imageSrc) {
+        function openModal(imageSrc, caption = '') {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            
+            // Find current image index
+            currentModalIndex = modalImages.findIndex(img => img.src === imageSrc) || 0;
+            
             modal.style.display = 'block';
             modalImage.src = imageSrc;
-            modalImage.alt = 'Gallery image';
+            modalCaption.textContent = caption;
             document.body.style.overflow = 'hidden';
             
             // Focus management for accessibility
@@ -1772,6 +3456,25 @@
             document.body.style.overflow = 'auto';
         }
 
+        function changeModalImage(direction) {
+            if (modalImages.length === 0) return;
+            
+            currentModalIndex += direction;
+            if (currentModalIndex >= modalImages.length) currentModalIndex = 0;
+            if (currentModalIndex < 0) currentModalIndex = modalImages.length - 1;
+            
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            const currentImg = modalImages[currentModalIndex];
+            
+            modalImage.style.opacity = '0';
+            setTimeout(() => {
+                modalImage.src = currentImg.src;
+                modalCaption.textContent = currentImg.title + (currentImg.desc ? ' - ' + currentImg.desc : '');
+                modalImage.style.opacity = '1';
+            }, 150);
+        }
+
         // Close modal when clicking outside the image
         document.getElementById('imageModal').addEventListener('click', function(e) {
             if (e.target === this) {
@@ -1779,10 +3482,21 @@
             }
         });
 
-        // Close modal with Escape key
+        // Close modal with Escape key, navigate with arrow keys
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
+            const modal = document.getElementById('imageModal');
+            if (modal.style.display === 'block') {
+                switch(e.key) {
+                    case 'Escape':
+                        closeModal();
+                        break;
+                    case 'ArrowLeft':
+                        changeModalImage(-1);
+                        break;
+                    case 'ArrowRight':
+                        changeModalImage(1);
+                        break;
+                }
             }
         });
 
@@ -1862,27 +3576,101 @@
             }, 1000);
         }
 
+        // ===== INTERACTIVE ENHANCEMENTS =====
+        
+        // Stats counter animation on scroll
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statItems = entry.target.querySelectorAll('.stat-item');
+                    statItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.animation = `fadeInUp 0.6s ease ${index * 0.1}s forwards`;
+                            // Add hover glow effect
+                            item.addEventListener('mouseenter', () => {
+                                item.style.boxShadow = '0 20px 40px rgba(102, 126, 234, 0.3)';
+                                item.style.transform = 'translateY(-8px) scale(1.02)';
+                            });
+                            item.addEventListener('mouseleave', () => {
+                                item.style.boxShadow = '0 15px 30px var(--shadow-medium)';
+                                item.style.transform = 'translateY(-5px) scale(1)';
+                            });
+                        }, index * 100);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.profile-stats').forEach(stats => {
+            statsObserver.observe(stats);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                heroSection.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
         // ===== ERROR HANDLING =====
         window.addEventListener('error', function(e) {
             console.error('An error occurred:', e.error);
-            // Could implement user-friendly error reporting here
         });
 
         // ===== FINAL INITIALIZATION =====
         window.addEventListener('load', function() {
-            // Add any final initialization code here
             announcePageChange('Veena Paveena profile page loaded successfully');
             
-            // Preload critical images
-            const criticalImages = [
-                'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1_X4C68eYQFUhjQNBrTDw1o6xGYJ0pYBuKvgnbZBHCy0iIQHl4B9Kb7K0ArgvhxE4sP8wycpMtMH9LaTzHwLOZLfyVqokWsODAyN03kmMyG6sj5La7mHy9tjGesiyzlPkKrUjMku9J4d5HL0jXLJE5dXYnRpX1w9RV3FrKmFpGkbLjJKJxBWIeLgf_g/w512-h640/MUT%20Phuket1.jpg'
-            ];
+            // Add loading completion animation
+            document.querySelector('main').style.animation = 'fadeInUp 1s ease forwards';
             
-            criticalImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
+            // Initialize tooltips for interactive elements
+            const interactiveElements = document.querySelectorAll('.stat-item, .gallery-item, .media-item');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    element.style.filter = 'brightness(1.05)';
+                });
+                element.addEventListener('mouseleave', () => {
+                    element.style.filter = 'brightness(1)';
+                });
             });
         });
+
+        // ===== SCREEN READER FRIENDLY STYLES =====
+        const srOnlyCSS = `
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                clip-path: inset(50%);
+                border: 0;
+            }
+            .sr-only:focus {
+                position: static;
+                width: auto;
+                height: auto;
+                padding: inherit;
+                margin: inherit;
+                overflow: visible;
+                clip: auto;
+                white-space: normal;
+                clip-path: none;
+            }
+        `;
+
+        const style = document.createElement('style');
+        style.textContent = srOnlyCSS;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
+
+
