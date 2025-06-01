@@ -1,0 +1,36 @@
+{
+  "name": "pageant-profile-design",
+  "version": "1.0.0",
+  "description": "Professional pageant contestant profile website with advanced web features and comprehensive digital presence",
+  "main": "index.html",
+  "author": {
+    "name": "Thanattsitt Thanatt Santisamranwilai",
+    "email": "thanattsitt.info@yahoo.co.uk",
+    "url": "https://dribbble.com/ThanattsittS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThanattsittS/Pageant_profile-design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThanattsittS/Pageant_profile-design/issues"
+  },
+  "homepage": "https://thanattsitts.github.io/Pageant_profile-design/",
+  "keywords": [
+    "pageant-profile",
+    "miss-universe",
+    "beauty-pageant",
+    "contestant-website",
+    "personal-branding",
+    "portfolio-design",
+    "responsive-design",
+    "accessibility",
+    "performance",
+    "vanilla-javascript",
+    "css-grid",
+    "mobile-first",
+    "seo-optimized",
+    "progressive-enhancement",
+    "thanattsitt"
+  ]
+}
