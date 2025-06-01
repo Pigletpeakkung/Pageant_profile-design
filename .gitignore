@@ -1,0 +1,279 @@
+# ===== PAGEANT PROFILE DESIGN - GITIGNORE =====
+
+# ===== OS GENERATED FILES =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===== IDE AND EDITOR FILES =====
+.vscode/
+.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.history/
+.vs/
+
+# ===== NODE.JS =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.npm
+.yarn-integrity
+
+# ===== LOGS =====
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ===== RUNTIME DATA =====
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ===== COVERAGE DIRECTORY =====
+lib-cov/
+coverage/
+*.lcov
+.nyc_output/
+
+# ===== DEPENDENCY DIRECTORIES =====
+jspm_packages/
+
+# ===== TYPESCRIPT =====
+*.tsbuildinfo
+
+# ===== OPTIONAL CACHES =====
+.eslintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ===== OPTIONAL REPL HISTORY =====
+.node_repl_history
+
+# ===== OUTPUT OF 'NPM PACK' =====
+*.tgz
+
+# ===== ENVIRONMENT VARIABLES =====
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.example
+
+# ===== PARCEL-BUNDLER CACHE =====
+.cache/
+.parcel-cache/
+
+# ===== BUILD FRAMEWORKS =====
+.next/
+.nuxt/
+dist/
+build/
+out/
+
+# ===== GATSBY FILES =====
+.cache/
+public/
+
+# ===== STORYBOOK BUILD OUTPUTS =====
+.out/
+.storybook-out/
+
+# ===== TEMPORARY FOLDERS =====
+tmp/
+temp/
+.tmp/
+
+# ===== WEBPACK =====
+.webpack/
+
+# ===== TESTING =====
+coverage/
+.nyc_output/
+junit.xml
+test-results/
+
+# ===== LIGHTHOUSE REPORTS =====
+lighthouse-report.html
+lighthouse-report.json
+lighthouse-reports/
+performance-reports/
+
+# ===== DESIGN FILES =====
+*.sketch
+*.fig
+*.xd
+*.psd
+*.ai
+*.indd
+
+# ===== RAW MEDIA FILES =====
+# Uncomment if you don't want to track large raw files
+# assets/images/raw/
+# assets/media/raw/
+# assets/videos/uncompressed/
+# *.mov
+# *.avi
+# *.mkv
+
+# ===== COMPRESSED FILES =====
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+
+# ===== BACKUP FILES =====
+*.bak
+*.backup
+*.old
+*.orig
+*~
+
+# ===== DEPLOYMENT =====
+.vercel/
+.netlify/
+.firebase/
+.surge/
+
+# ===== ANALYTICS & TRACKING =====
+google-analytics.json
+analytics/
+tracking/
+
+# ===== SECURITY =====
+.htaccess
+.htpasswd
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+secrets/
+private/
+
+# ===== DOCUMENTATION BUILDS =====
+docs/_build/
+site/
+_site/
+
+# ===== MACOS =====
+*.dmg
+.fseventsd
+.DocumentRevisions-V100
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ===== WINDOWS =====
+*.exe
+*.msi
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ===== LINUX =====
+*.deb
+*.rpm
+*~
+
+# ===== MOBILE DEVELOPMENT =====
+*.ipa
+*.apk
+*.aab
+
+# ===== DATABASE =====
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# ===== CACHE =====
+.sass-cache/
+.cache/
+.parcel-cache/
+
+# ===== PAGEANT SPECIFIC FILES =====
+# Uncomment these if you don't want to track certain pageant files
+
+# Personal contestant information
+# contestant-private-info/
+# personal-details/
+
+# High-resolution original photos
+# assets/images/originals/
+# assets/images/unedited/
+
+# Video source files
+# assets/media/source/
+# assets/videos/masters/
+
+# Press kit materials (if confidential)
+# press-kit/confidential/
+# media-kit/private/
+
+# Sponsor agreements and contracts
+# contracts/
+# agreements/
+# legal-documents/
+
+# ===== DEVELOPMENT TOOLS =====
+.stylelintcache
+.eslintcache
+.prettiercache
+
+# ===== IGNORE SPECIFIC DIRECTORIES =====
+/vendor/
+/cache/
+/storage/
+/bootstrap/cache/
+/public/hot
+/public/storage
+
+# ===== CUSTOM PROJECT IGNORES =====
+# Add any project-specific files you want to ignore
+
+# Local development settings
+local-config.json
+dev-settings.json
+
+# Test data
+test-data/
+mock-data/
+
+# Screenshots for development (keep docs/screenshots/)
+dev-screenshots/
+temp-screenshots/
+
+# ===== KEEP THESE IMPORTANT FILES =====
+# Make sure these are NOT ignored:
+# README.md
+# LICENSE
+# package.json
+# index.html
+# assets/css/
+# assets/js/
+# assets/images/ (compressed versions)
+# docs/screenshots/ (for README)
+
+# ===== END OF GITIGNORE =====
