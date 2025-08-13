@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Queen Profile Generator</title>
+    
+    <!-- CDN Dependencies -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/notyf/3.10.0/notyf.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #6a5acd;
+            --secondary-color: #836fff;
+            --accent-color: #d4af37;
+            --text-dark: #2c2c38;
+            --text-light: #fafafa;
+            --background-light: #fdfdfd;
+            --shadow-light: rgba(0,0,0,0.08);
+            --shadow-medium: rgba(0,0,0,0.15);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-gold: linear-gradient(135deg, #ffda79 0%, var(--accent-color) 100%);
+            --border-radius: 15px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Admin Header */
+        .admin-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow-medium);
+        }
+        
+        .admin-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+        }
+        
+        /* Form Styles */
+        .form-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            height: fit-content;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 2px solid #f1f3f4;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .form-section:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .form-section.active {
+            border-color: var(--accent-color);
+            background: #fefefe;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .section-content {
+            display: none;
+        }
+        
+        .section-content.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        /* Dynamic Lists */
+        .dynamic-list {
+            border: 2px dashed #e1e5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .dynamic-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .remove-item {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .add-item-btn {
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .add-item-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Color Picker */
+        .color-picker-group {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+        
+        .color-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px var(--shadow-medium);
+        }
+        
+        /* Preview Panel */
+        .preview-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-light);
+            overflow: hidden;
+            position: sticky;
+            top: 2rem;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .preview-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .preview-content {
+            padding: 1rem;
+            min-height: 400px;
+        }
+        
+        .preview-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            color: #666;
+        }
+        
+        .preview-loading i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Control Buttons */
+        .control-panel {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+        
+        .control-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px var(--shadow-medium);
+        }
+        
+        .btn-preview {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .btn-generate {
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+        }
+        
+        .btn-download {
+            background: #28a745;
+            color: white;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+        
+        /* File Upload */
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-upload input[type=file] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border: 2px dashed var(--primary-color);
+            border-radius: 8px;
+            background: #f8f9ff;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .file-upload-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            z-index: 10000;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-gold);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .preview-container {
+                position: relative;
+                top: 0;
+                max-height: none;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-panel {
+                flex-direction: column;
+                align-items: center;
+                left: 1rem;
+                right: 1rem;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <h1 class="admin-title">Beauty Queen Profile Generator</h1>
+        <p class="admin-subtitle">Create a stunning professional profile website in minutes</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Form Container -->
+        <div class="form-container">
+            <form id="profileForm">
+                <!-- Basic Information -->
+                <div class="form-section active" data-section="basic">
+                    <h2 class="section-title" onclick="toggleSection('basic')">
+                        <i class="fas fa-user"></i> Basic Information
+                    </h2>
+                    <div class="section-content active">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="e.g., Veena Paveena">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="title">Title/Achievement *</label>
+                            <input type="text" id="title" name="title" required placeholder="e.g., Miss Universe Thailand 2023">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subtitle">Subtitle/Mission *</label>
+                            <input type="text" id="subtitle" name="subtitle" required placeholder="e.g., Anti-Bullying Advocate | Social Impact Leader">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mainQuote">Inspirational Quote *</label>
+                            <textarea id="mainQuote" name="mainQuote" required placeholder="Share your most inspiring quote or personal motto..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mainImage">Profile Image URL</label>
+                            <div class="file-upload">
+                                <input type="file" id="mainImageFile" accept="image/*" onchange="previewImage(this, 'mainImagePreview')">
+                                <div class="file-upload-btn">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Upload Profile Photo</span>
+                                </div>
+                            </div>
+                            <img id="mainImagePreview" class="image-preview" alt="Profile Preview">
+                            <input type="url" id="mainImage" name="mainImage" placeholder="Or enter image URL">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Section -->
+                <div class="form-section" data-section="hero">
+                    <h2 class="section-title" onclick="toggleSection('hero')">
+                        <i class="fas fa-star"></i> Hero Section
+                    </h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="heroTitle">Hero Title</label>
+                            <input type="text" id="heroTitle" name="heroTitle" placeholder="Will use Full Name if empty">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="heroSubtitle">Hero Subtitle</label>
+                            <input type="text" id="heroSubtitle" name="heroSubtitle" placeholder="Will use Title if empty">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="heroCTA">Call-to-Action Text</label>
+                            <input type="text" id="heroCTA" name="heroCTA" placeholder="e.g., ✨ Discover My Journey">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="form-section" data-section="stats">
+                    <h2 class="section-title" onclick="toggleSection('stats')">
+                        <i class="fas fa-chart-bar"></i> Achievement Statistics
+                    </h2>
+                    <div class="section-content">
+                        <div class="dynamic-list" id="statisticsList">
+                            <div class="dynamic-item">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Statistic Value</label>
+                                        <input type="text" name="statValue[]" placeholder="e.g., 2023, 10K+, 50+">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Statistic Label</label>
+                                        <input type="text" name="statLabel[]" placeholder="e.g., Miss Universe Thailand">
+                                    </div>
+                                </div>
+                                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-item-btn" onclick="addStatistic()">
+                            <i class="fas fa-plus"></i> Add Statistic
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Biography -->
+                <div class="form-section" data-section="biography">
+                    <h2 class="section-title" onclick="toggleSection('biography')">
+                        <i class="fas fa-book"></i> Biography & Journey
+                    </h2>
+                    <div class="section-content">
+                        <div class="dynamic-list" id="biographyList">
+                            <div class="dynamic-item">
+                                <div class="form-group">
+                                    <label>Section Heading</label>
+                                    <input type="text" name="bioHeading[]" placeholder="e.g., My Story, The Challenge, Finding Purpose">
+                                </div>
+                                <div class="form-group">
+                                    <label>Content</label>
+                                    <textarea name="bioContent[]" placeholder="Share this part of your story..."></textarea>
+                                </div>
+                                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-item-btn" onclick="addBiographySection()">
+                            <i class="fas fa-plus"></i> Add Biography Section
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="form-section" data-section="timeline">
+                    <h2 class="section-title" onclick="toggleSection('timeline')">
+                        <i class="fas fa-timeline"></i> Career Timeline
+                    </h2>
+                    <div class="section-content">
+                        <div class="dynamic-list" id="timelineList">
+                            <div class="dynamic-item">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Year</label>
+                                        <input type="text" name="timelineYear[]" placeholder="e.g., 2023">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Achievement/Event</label>
+                                        <input type="text" name="timelineTitle[]" placeholder="e.g., Won Miss Universe Thailand">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea name="timelineDesc[]" placeholder="Describe this milestone..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags (comma-separated)</label>
+                                    <input type="text" name="timelineTags[]" placeholder="e.g., Crown, Victory, Platform">
+                                </div>
+                                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-item-btn" onclick="addTimelineEvent()">
+                            <i class="fas fa-plus"></i> Add Timeline Event
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <div class="form-section" data-section="gallery">
+                    <h2 class="section-title" onclick="toggleSection('gallery')">
+                        <i class="fas fa-images"></i> Photo Gallery
+                    </h2>
+                    <div class="section-content">
+                        <div class="dynamic-list" id="galleryList">
+                            <div class="dynamic-item">
+                                <div class="form-group">
+                                    <label>Image Upload</label>
+                                    <div class="file-upload">
+                                        <input type="file" name="galleryImageFile[]" accept="image/*" onchange="previewGalleryImage(this)">
+                                        <div class="file-upload-btn">
+                                            <i class="fas fa-image"></i>
+                                            <span>Upload Photo</span>
+                                        </div>
+                                    </div>
+                                    <img class="image-preview gallery-preview" alt="Gallery Preview">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select name="galleryCategory[]">
+                                            <option value="pageant">Pageant</option>
+                                            <option value="advocacy">Advocacy Work</option>
+                                            <option value="personal">Personal</option>
+                                            <option value="events">Events</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Photo Title</label>
+                                        <input type="text" name="galleryTitle[]" placeholder="e.g., Crowning Moment">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo Description</label>
+                                    <input type="text" name="galleryDesc[]" placeholder="Brief description of this photo">
+                                </div>
+                                <input type="hidden" name="galleryImage[]" class="gallery-image-url">
+                                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-item-btn" onclick="addGalleryItem()">
+                            <i class="fas fa-plus"></i> Add Photo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="form-section" data-section="testimonials">
+                    <h2 class="section-title" onclick="toggleSection('testimonials')">
+                        <i class="fas fa-comments"></i> Testimonials & Reviews
+                    </h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="overallRating">Overall Rating (1-5)</label>
+                            <input type="number" id="overallRating" name="overallRating" min="1" max="5" step="0.1" value="4.9">
+                        </div>
+                        <div class="form-group">
+                            <label for="totalReviews">Total Number of Reviews</label>
+                            <input type="number" id="totalReviews" name="totalReviews" value="127">
+                        </div>
+                        
+                        <div class="dynamic-list" id="testimonialsList">
+                            <div class="dynamic-item">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select name="testimonialCategory[]">
+                                            <option value="audience">Audience</option>
+                                            <option value="media">Media</option>
+                                            <option value="organizations">Organizations</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Rating (1-5)</label>
+                                        <input type="number" name="testimonialRating[]" min="1" max="5" value="5">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Review Text</label>
+                                    <textarea name="testimonialText[]" placeholder="Enter the testimonial/review..."></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Author Name</label>
+                                        <input type="text" name="testimonialAuthor[]" placeholder="e.g., Sarah Martinez">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Author Role/Title</label>
+                                        <input type="text" name="testimonialRole[]" placeholder="e.g., High School Student">
+                                    </div>
+                                </div>
+                                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-item-btn" onclick="addTestimonial()">
+                            <i class="fas fa-plus"></i> Add Testimonial
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contact & Social -->
+                <div class="form-section" data-section="contact">
+                    <h2 class="section-title" onclick="toggleSection('contact')">
+                        <i class="fas fa-envelope"></i> Contact & Social Media
+                    </h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="contactTitle">Contact Section Title</label>
+                            <input type="text" id="contactTitle" name="contactTitle" value="Let's Connect">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactDesc">Contact Description</label>
+                            <textarea id="contactDesc" name="contactDesc" placeholder="Brief message about getting in touch..."></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emailAddress">Email Address</label>
+                                <input type="email" id="emailAddress" name="emailAddress" placeholder="contact@yourname.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="instagramUrl">Instagram URL</label>
+                                <input type="url" id="instagramUrl" name="instagramUrl" placeholder="https://instagram.com/yourhandle">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="linkedinUrl">LinkedIn URL</label>
+                                <input type="url" id="linkedinUrl" name="linkedinUrl" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                            <div class="form-group">
+                                <label for="twitterUrl">Twitter URL</label>
+                                <input type="url" id="twitterUrl" name="twitterUrl" placeholder="https://twitter.com/yourhandle">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="youtubeUrl">YouTube URL</label>
+                            <input type="url" id="youtubeUrl" name="youtubeUrl" placeholder="https://youtube.com/@yourchannel">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme Colors -->
+                <div class="form-section" data-section="theme">
+                    <h2 class="section-title" onclick="toggleSection('theme')">
+                        <i class="fas fa-palette"></i> Theme Colors
+                    </h2>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="primaryColor">Primary Color</label>
+                            <div class="color-picker-group">
+                                <input type="color" id="primaryColor" name="primaryColor" value="#6a5acd">
+                                <div class="color-preview" id="primaryPreview"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="secondaryColor">Secondary Color</label>
+                            <div class="color-picker-group">
+                                <input type="color" id="secondaryColor" name="secondaryColor" value="#836fff">
+                                <div class="color-preview" id="secondaryPreview"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="accentColor">Accent Color</label>
+                            <div class="color-picker-group">
+                                <input type="color" id="accentColor" name="accentColor" value="#d4af37">
+                                <div class="color-preview" id="accentPreview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Preview Container -->
+        <div class="preview-container">
+            <div class="preview-header">
+                <h3><i class="fas fa-eye"></i> Live Preview</h3>
+                <p>See your website as you build it</p>
+            </div>
+            <div class="preview-content" id="previewContent">
+                <div class="preview-loading">
+                    <i class="fas fa-magic"></i>
+                    <p>Start filling the form to see your website come to life!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <button class="control-btn btn-preview" onclick="updatePreview()">
+            <i class="fas fa-eye"></i> Update Preview
+        </button>
+        <button class="control-btn btn-generate" onclick="generateWebsite()">
+            <i class="fas fa-magic"></i> Generate Website
+        </button>
+        <button class="control-btn btn-download" onclick="downloadWebsite()" id="downloadBtn" style="display: none;">
+            <i class="fas fa-download"></i> Download HTML
+        </button>
+    </div>
+
+    <!-- CDN Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notyf/3.10.0/notyf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script>
+        // Initialize notifications
+        const notyf = new Notyf({
+            duration: 3000,
+            position: { x: 'right', y: 'top' }
+        });
+
+        let generatedHTML = '';
+        let generatedData = {};
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Section Toggle
+        function toggleSection(sectionId) {
+            const section = document.querySelector(`[data-section="${sectionId}"]`);
+            const content = section.querySelector('.section-content');
+            const isActive = section.classList.contains('active');
+            
+            // Close all sections
+            document.querySelectorAll('.form-section').forEach(s => {
+                s.classList.remove('active');
+                s.querySelector('.section-content').classList.remove('active');
+            });
+            
+            // Open clicked section if it wasn't active
+            if (!isActive) {
+                section.classList.add('active');
+                content.classList.add('active');
+            }
+            
+            updateProgress();
+        }
+
+        // Progress tracking
+        function updateProgress() {
+            const formInputs = document.querySelectorAll('#profileForm input[required], #profileForm textarea[required]');
+            const filledInputs = Array.from(formInputs).filter(input => input.value.trim() !== '');
+            const progress = (filledInputs.length / formInputs.length) * 100;
+            
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        // Dynamic list management
+        function removeItem(button) {
+            button.closest('.dynamic-item').remove();
+            updateProgress();
+        }
+
+        function addStatistic() {
+            const list = document.getElementById('statisticsList');
+            const item = document.createElement('div');
+            item.className = 'dynamic-item';
+            item.innerHTML = `
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Statistic Value</label>
+                        <input type="text" name="statValue[]" placeholder="e.g., 2023, 10K+, 50+">
+                    </div>
+                    <div class="form-group">
+                        <label>Statistic Label</label>
+                        <input type="text" name="statLabel[]" placeholder="e.g., Miss Universe Thailand">
+                    </div>
+                </div>
+                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+            `;
+            list.appendChild(item);
+        }
+
+        function addBiographySection() {
+            const list = document.getElementById('biographyList');
+            const item = document.createElement('div');
+            item.className = 'dynamic-item';
+            item.innerHTML = `
+                <div class="form-group">
+                    <label>Section Heading</label>
+                    <input type="text" name="bioHeading[]" placeholder="e.g., My Story, The Challenge, Finding Purpose">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea name="bioContent[]" placeholder="Share this part of your story..."></textarea>
+                </div>
+                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+            `;
+            list.appendChild(item);
+        }
+
+        function addTimelineEvent() {
+            const list = document.getElementById('timelineList');
+            const item = document.createElement('div');
+            item.className = 'dynamic-item';
+            item.innerHTML = `
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="text" name="timelineYear[]" placeholder="e.g., 2023">
+                    </div>
+                    <div class="form-group">
+                        <label>Achievement/Event</label>
+                        <input type="text" name="timelineTitle[]" placeholder="e.g., Won Miss Universe Thailand">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="timelineDesc[]" placeholder="Describe this milestone..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tags (comma-separated)</label>
+                    <input type="text" name="timelineTags[]" placeholder="e.g., Crown, Victory, Platform">
+                </div>
+                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+            `;
+            list.appendChild(item);
+        }
+
+        function addGalleryItem() {
+            const list = document.getElementById('galleryList');
+            const item = document.createElement('div');
+            item.className = 'dynamic-item';
+            item.innerHTML = `
+                <div class="form-group">
+                    <label>Image Upload</label>
+                    <div class="file-upload">
+                        <input type="file" name="galleryImageFile[]" accept="image/*" onchange="previewGalleryImage(this)">
+                        <div class="file-upload-btn">
+                            <i class="fas fa-image"></i>
+                            <span>Upload Photo</span>
+                        </div>
+                    </div>
+                    <img class="image-preview gallery-preview" alt="Gallery Preview">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="galleryCategory[]">
+                            <option value="pageant">Pageant</option>
+                            <option value="advocacy">Advocacy Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="events">Events</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Photo Title</label>
+                        <input type="text" name="galleryTitle[]" placeholder="e.g., Crowning Moment">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Photo Description</label>
+                    <input type="text" name="galleryDesc[]" placeholder="Brief description of this photo">
+                </div>
+                                <input type="hidden" name="galleryImage[]" class="gallery-image-url">
+                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+            `;
+            list.appendChild(item);
+        }
+
+        function addTestimonial() {
+            const list = document.getElementById('testimonialsList');
+            const item = document.createElement('div');
+            item.className = 'dynamic-item';
+            item.innerHTML = `
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="testimonialCategory[]">
+                            <option value="audience">Audience</option>
+                            <option value="media">Media</option>
+                            <option value="organizations">Organizations</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating (1-5)</label>
+                        <input type="number" name="testimonialRating[]" min="1" max="5" value="5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Review Text</label>
+                    <textarea name="testimonialText[]" placeholder="Enter the testimonial/review..."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Author Name</label>
+                        <input type="text" name="testimonialAuthor[]" placeholder="e.g., Sarah Martinez">
+                    </div>
+                    <div class="form-group">
+                        <label>Author Role/Title</label>
+                        <input type="text" name="testimonialRole[]" placeholder="e.g., High School Student">
+                    </div>
+                </div>
+                <button type="button" class="remove-item" onclick="removeItem(this)">×</button>
+            `;
+            list.appendChild(item);
+        }
+
+        // Image preview functions
+        function previewImage(input, previewId) {
+            const file = input.files[0];
+            const preview = document.getElementById(previewId);
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    // Also set the URL input
+                    const urlInput = input.closest('.form-group').querySelector('input[type="url"]');
+                    if (urlInput) {
+                        urlInput.value = e.target.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function previewGalleryImage(input) {
+            const file = input.files[0];
+            const preview = input.closest('.dynamic-item').querySelector('.gallery-preview');
+            const urlInput = input.closest('.dynamic-item').querySelector('.gallery-image-url');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    urlInput.value = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Color preview updates
+        function updateColorPreview(colorInput, previewId) {
+            const preview = document.getElementById(previewId);
+            preview.style.backgroundColor = colorInput.value;
+        }
+
+        // Form data collection
+        function collectFormData() {
+            const formData = new FormData(document.getElementById('profileForm'));
+            const data = {
+                metadata: {
+                    title: `${formData.get('fullName')} - ${formData.get('title')} | Official Profile`,
+                    description: `${formData.get('fullName')} - ${formData.get('title')}. ${formData.get('subtitle')}`,
+                    keywords: `${formData.get('fullName')}, ${formData.get('title')}, beauty queen`,
+                    author: formData.get('fullName'),
+                    ogImage: formData.get('mainImage') || "https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=800",
+                    language: "en"
+                },
+                profile: {
+                    name: formData.get('fullName'),
+                    title: formData.get('subtitle'),
+                    mainImage: formData.get('mainImage') || "https://images.pexels.com/photos/1542085/pexels-photo-1542085.jpeg?auto=compress&cs=tinysrgb&w=800",
+                    quote: formData.get('mainQuote'),
+                    badges: [formData.get('title')],
+                    statistics: []
+                },
+                hero: {
+                    title: formData.get('heroTitle') || formData.get('fullName'),
+                    subtitle: formData.get('heroSubtitle') || formData.get('title'),
+                    ctaText: formData.get('heroCTA') || "✨ Discover My Journey",
+                    ctaLink: "#about"
+                },
+                biography: {
+                    sections: []
+                },
+                timeline: [],
+                gallery: {
+                    categories: [
+                        { id: "all", label: "All Photos", active: true },
+                        { id: "pageant", label: "Pageant", active: false },
+                        { id: "advocacy", label: "Advocacy Work", active: false },
+                        { id: "personal", label: "Personal", active: false },
+                        { id: "events", label: "Events", active: false }
+                    ],
+                    items: []
+                },
+                testimonials: {
+                    overallRating: {
+                        score: parseFloat(formData.get('overallRating')) || 4.9,
+                        stars: 5,
+                        text: "Exceptional Impact",
+                        totalReviews: parseInt(formData.get('totalReviews')) || 127
+                    },
+                    categories: [
+                        { id: "all", label: "All Reviews", active: true },
+                        { id: "audience", label: "Audience", active: false },
+                        { id: "media", label: "Media", active: false },
+                        { id: "organizations", label: "Organizations", active: false }
+                    ],
+                    reviews: []
+                },
+                contact: {
+                    title: formData.get('contactTitle') || "Let's Connect",
+                    description: formData.get('contactDesc'),
+                    socialLinks: []
+                },
+                theme: {
+                    primaryColor: formData.get('primaryColor') || "#6a5acd",
+                    secondaryColor: formData.get('secondaryColor') || "#836fff",
+                    accentColor: formData.get('accentColor') || "#d4af37",
+                    textDark: "#2c2c38",
+                    textLight: "#fafafa",
+                    backgroundLight: "#fdfdfd"
+                }
+            };
+
+            // Collect statistics
+            const statValues = formData.getAll('statValue[]');
+            const statLabels = formData.getAll('statLabel[]');
+            for (let i = 0; i < statValues.length; i++) {
+                if (statValues[i] && statLabels[i]) {
+                    data.profile.statistics.push({
+                        value: statValues[i],
+                        label: statLabels[i]
+                    });
+                }
+            }
+
+            // Collect biography sections
+            const bioHeadings = formData.getAll('bioHeading[]');
+            const bioContents = formData.getAll('bioContent[]');
+            for (let i = 0; i < bioHeadings.length; i++) {
+                if (bioHeadings[i] && bioContents[i]) {
+                    data.biography.sections.push({
+                        heading: bioHeadings[i],
+                        content: bioContents[i]
+                    });
+                }
+            }
+
+            // Collect timeline events
+            const timelineYears = formData.getAll('timelineYear[]');
+            const timelineTitles = formData.getAll('timelineTitle[]');
+            const timelineDescs = formData.getAll('timelineDesc[]');
+            const timelineTags = formData.getAll('timelineTags[]');
+            for (let i = 0; i < timelineYears.length; i++) {
+                if (timelineYears[i] && timelineTitles[i]) {
+                    data.timeline.push({
+                        year: timelineYears[i],
+                        title: timelineTitles[i],
+                        description: timelineDescs[i] || '',
+                        tags: timelineTags[i] ? timelineTags[i].split(',').map(tag => tag.trim()) : []
+                    });
+                }
+            }
+
+            // Collect gallery items
+            const galleryImages = formData.getAll('galleryImage[]');
+            const galleryCategories = formData.getAll('galleryCategory[]');
+            const galleryTitles = formData.getAll('galleryTitle[]');
+            const galleryDescs = formData.getAll('galleryDesc[]');
+            for (let i = 0; i < galleryImages.length; i++) {
+                if (galleryImages[i] && galleryTitles[i]) {
+                    data.gallery.items.push({
+                        category: galleryCategories[i],
+                        image: galleryImages[i],
+                        title: galleryTitles[i],
+                        description: galleryDescs[i] || '',
+                        alt: galleryTitles[i]
+                    });
+                }
+            }
+
+            // Collect testimonials
+            const testimonialCategories = formData.getAll('testimonialCategory[]');
+            const testimonialRatings = formData.getAll('testimonialRating[]');
+            const testimonialTexts = formData.getAll('testimonialText[]');
+            const testimonialAuthors = formData.getAll('testimonialAuthor[]');
+            const testimonialRoles = formData.getAll('testimonialRole[]');
+            for (let i = 0; i < testimonialTexts.length; i++) {
+                if (testimonialTexts[i] && testimonialAuthors[i]) {
+                    data.testimonials.reviews.push({
+                        category: testimonialCategories[i],
+                        rating: parseInt(testimonialRatings[i]) || 5,
+                        text: testimonialTexts[i],
+                        author: {
+                            name: testimonialAuthors[i],
+                            role: testimonialRoles[i] || '',
+                            avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100"
+                        }
+                    });
+                }
+            }
+
+            // Collect social links
+            const socialPlatforms = ['email', 'instagram', 'linkedin', 'twitter', 'youtube'];
+            const socialIcons = ['📧', '📱', '💼', '🐦', '📺'];
+            const socialLabels = ['Email', 'Instagram', 'LinkedIn', 'Twitter', 'YouTube'];
+            
+            socialPlatforms.forEach((platform, index) => {
+                const url = formData.get(`${platform}${platform === 'email' ? 'Address' : 'Url'}`);
+                if (url) {
+                    data.contact.socialLinks.push({
+                        platform: platform,
+                        icon: socialIcons[index],
+                        label: socialLabels[index],
+                        url: platform === 'email' ? `mailto:${url}` : url
+                    });
+                }
+            });
+
+            return data;
+        }
+
+        // Generate the complete HTML website
+        function generateWebsite() {
+            try {
+                const data = collectFormData();
+                generatedData = data;
+                
+                notyf.open({
+                    type: 'info',
+                    message: 'Generating your website...'
+                });
+
+                // Generate the complete HTML
+                generatedHTML = generateCompleteHTML(data);
+                
+                // Update preview
+                updatePreviewWithHTML(generatedHTML);
+                
+                // Show download button
+                document.getElementById('downloadBtn').style.display = 'flex';
+                
+                notyf.success('Website generated successfully! You can now download it.');
+                
+            } catch (error) {
+                console.error('Error generating website:', error);
+                notyf.error('Error generating website. Please check your inputs.');
+            }
+        }
+
+        // Generate complete HTML structure
+        function generateCompleteHTML(data) {
+            return `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${data.metadata.title}</title>
+    <meta name="description" content="${data.metadata.description}">
+    <meta name="keywords" content="${data.metadata.keywords}">
+    <meta name="author" content="${data.metadata.author}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="${data.metadata.title}">
+    <meta property="og:description" content="${data.metadata.description}">
+    <meta property="og:image" content="${data.metadata.ogImage}">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        ${generateCSS(data.theme)}
+    </style>
+</head>
+<body>
+    ${generateHTML(data)}
+    
+    <script>
+        ${generateJavaScript()}
+    </script>
+</body>
+</html>`;
+        }
+
+        // Generate CSS with theme colors
+        function generateCSS(theme) {
+            return `
+        :root {
+            --primary-color: ${theme.primaryColor};
+            --secondary-color: ${theme.secondaryColor};
+            --accent-color: ${theme.accentColor};
+            --text-dark: ${theme.textDark};
+            --text-light: ${theme.textLight};
+            --background-light: ${theme.backgroundLight};
+            --shadow-light: rgba(0,0,0,0.08);
+            --shadow-medium: rgba(0,0,0,0.15);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-gold: linear-gradient(135deg, #ffda79 0%, var(--accent-color) 100%);
+            --border-radius: 15px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background-light);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        /* Scroll Progress */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            z-index: 9999;
+        }
+        
+        .scroll-progress {
+            height: 100%;
+            background: var(--gradient-gold);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px var(--shadow-light);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+        }
+        
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* Profile Header */
+        .profile-header {
+            background: white;
+            padding: 4rem 0;
+            margin: -2rem 0 4rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px var(--shadow-light);
+        }
+        
+        .profile-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .profile-image-container {
+            position: relative;
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--accent-color);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .badge {
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .profile-details h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        
+        .profile-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 25px var(--shadow-light);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+        
+        .stat-value {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Sections */
+        .section {
+            background: white;
+            padding: 4rem;
+            margin: 4rem 0;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        
+        /* Biography */
+        .content-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .bio-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+        }
+        
+        .bio-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .highlight-text {
+            background: var(--gradient-gold);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        /* Timeline */
+        .timeline-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4rem;
+            margin: 4rem 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 4rem;
+        }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: right;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2.5rem;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 12px var(--shadow-medium);
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 25px var(--shadow-light);
+            width: 45%;
+            position: relative;
+        }
+        
+        .timeline-date {
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .timeline-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Gallery */
+        .gallery-section {
+            background: white;
+            padding: 4rem;
+            margin: 4rem 0;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+        
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .gallery-tab.active,
+        .gallery-tab:hover {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonial-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .testimonial-tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .testimonial-tab.active,
+        .testimonial-tab:hover {
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+        }
+        
+        .rating-summary {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: var(--border-radius);
+        }
+        
+        .overall-rating {
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .rating-score {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .rating-stars {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .rating-text {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .rating-breakdown {
+            flex: 1;
+        }
+        
+        .rating-bar {
+            display: grid;
+            grid-template-columns: 1fr 200px 60px;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .rating-label {
+            font-weight: 500;
+        }
+        
+        .rating-progress {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .rating-fill {
+            height: 100%;
+            background: var(--gradient-gold);
+            transition: width 1s ease;
+        }
+        
+        .rating-count {
+            color: #666;
+            text-align: right;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px var(--shadow-light);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            opacity: 0.3;
+        }
+        
+        .testimonial-rating {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+        
+        .testimonial-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            border-radius: var(--border-radius);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+        
+        .contact-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+                .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-link:hover {
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-main h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--shadow-medium);
+            transition: var(--transition);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .profile-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .profile-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                justify-content: flex-start;
+                padding-left: 70px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .rating-summary {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 20px var(--shadow-medium);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+            
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+        `;
+        }
+
+        // Generate HTML structure with data
+        function generateHTML(data) {
+            return `
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading ${data.profile.name}'s Profile...</div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">${data.profile.name}</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#journey" class="nav-link">Journey</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">${data.hero.title}</h1>
+                <p class="hero-subtitle">${data.hero.subtitle}</p>
+                <a href="${data.hero.ctaLink}" class="hero-cta">${data.hero.ctaText}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Header -->
+    <section id="about" class="container">
+        <div class="profile-header">
+            <div class="profile-content">
+                <div class="profile-image-container">
+                    <img src="${data.profile.mainImage}" alt="${data.profile.name}" class="profile-image" onclick="openModal(this)">
+                    <div class="profile-badges">
+                        ${data.profile.badges.map(badge => `<span class="badge">${badge}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h1>${data.profile.name}</h1>
+                    <p class="profile-title">${data.profile.title}</p>
+                    <div class="profile-quote">"${data.profile.quote}"</div>
+                    <div class="profile-stats">
+                        ${data.profile.statistics.map(stat => `
+                            <div class="stat-item">
+                                <span class="stat-value">${stat.value}</span>
+                                <span class="stat-label">${stat.label}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biography Section -->
+    <section class="container">
+        <div class="section">
+            <h2 class="section-title">My Story</h2>
+            <div class="content-grid">
+                <div class="bio-text">
+                    ${data.biography.sections.map(section => `
+                        <h3>${section.heading}</h3>
+                        <p>${section.content}</p>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="journey" class="timeline-section">
+        <div class="container">
+            <h2 class="timeline-title">My Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                ${data.timeline.map(item => `
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">${item.year}</span>
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                            <div class="timeline-tags">
+                                ${item.tags.map(tag => `<span class="timeline-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container">
+        <div class="gallery-section">
+            <h2 class="section-title">Photo Gallery</h2>
+            <div class="gallery-tabs">
+                ${data.gallery.categories.map(cat => `
+                    <button class="gallery-tab ${cat.active ? 'active' : ''}" onclick="filterGallery('${cat.id}')">${cat.label}</button>
+                `).join('')}
+            </div>
+            <div class="gallery-grid">
+                ${data.gallery.items.map(item => `
+                    <div class="gallery-item" data-category="${item.category}">
+                        <img src="${item.image}" alt="${item.alt}" class="gallery-image" onclick="openModal(this)">
+                        <div class="gallery-overlay">
+                            <h4 class="gallery-overlay-title">${item.title}</h4>
+                            <p>${item.description}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="container">
+        <div class="section">
+            <h2 class="section-title">What People Say</h2>
+            
+            <div class="rating-summary">
+                <div class="overall-rating">
+                    <div class="rating-score">${data.testimonials.overallRating.score}</div>
+                    <div class="rating-stars">${'★'.repeat(data.testimonials.overallRating.stars)}</div>
+                    <div class="rating-text">${data.testimonials.overallRating.text}</div>
+                    <div class="rating-count">${data.testimonials.overallRating.totalReviews} reviews</div>
+                </div>
+                <div class="rating-breakdown">
+                    <div class="rating-bar">
+                        <span class="rating-label">Inspiring Speaking</span>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 98%"></div>
+                        </div>
+                        <span class="rating-count">98%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span class="rating-label">Authenticity</span>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 96%"></div>
+                        </div>
+                        <span class="rating-count">96%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span class="rating-label">Impact</span>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 95%"></div>
+                        </div>
+                        <span class="rating-count">95%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span class="rating-label">Connection</span>
+                        <div class="rating-progress">
+                            <div class="rating-fill" style="width: 94%"></div>
+                        </div>
+                        <span class="rating-count">94%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-tabs">
+                ${data.testimonials.categories.map(cat => `
+                    <button class="testimonial-tab ${cat.active ? 'active' : ''}" onclick="filterTestimonials('${cat.id}')">${cat.label}</button>
+                `).join('')}
+            </div>
+            
+            <div class="testimonial-grid">
+                ${data.testimonials.reviews.map(review => `
+                    <div class="testimonial-card" data-category="${review.category}">
+                        <div class="testimonial-rating">${'★'.repeat(review.rating)}</div>
+                        <p class="testimonial-text">${review.text}</p>
+                        <div class="testimonial-author">
+                            <img src="${review.author.avatar}" alt="${review.author.name}" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h4>${review.author.name}</h4>
+                                <p>${review.author.role}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <div class="contact-section">
+            <div class="contact-content">
+                <h2 class="contact-title">${data.contact.title}</h2>
+                <p class="contact-description">${data.contact.description}</p>
+                <div class="social-links">
+                    ${data.contact.socialLinks.map(link => `
+                        <a href="${link.url}" class="social-link" target="_blank">
+                            <span>${link.icon}</span>
+                            <span>${link.label}</span>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <h3>${data.profile.name}</h3>
+                    <p>Making a difference, one story at a time.</p>
+                    <div class="footer-links">
+                        <a href="#home" class="footer-link">Home</a>
+                        <a href="#about" class="footer-link">About</a>
+                        <a href="#journey" class="footer-link">Journey</a>
+                        <a href="#gallery" class="footer-link">Gallery</a>
+                        <a href="#testimonials" class="footer-link">Reviews</a>
+                        <a href="#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ${data.profile.name}. All rights reserved.</p>
+                <p>Designed with 💜 for making a difference</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImg" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+            `;
+        }
+
+        // Generate JavaScript functionality
+        function generateJavaScript() {
+            return `
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Scroll progress
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercentage + '%';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile navigation
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Modal functionality
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Gallery filtering
+        function filterGallery(category) {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const galleryTabs = document.querySelectorAll('.gallery-tab');
+            
+            galleryTabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            galleryItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                if (category === 'all' || itemCategory === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Testimonials filtering
+        function filterTestimonials(category) {
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const testimonialTabs = document.querySelectorAll('.testimonial-tab');
+            
+            testimonialTabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            testimonialCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section, .timeline-item, .stat-item, .gallery-item');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+            `;
+        }
+
+        // Update live preview
+        function updatePreview() {
+            try {
+                const data = collectFormData();
+                const previewHTML = `
+                    <div style="font-family: 'Inter', sans-serif; color: #333;">
+                        <div style="background: linear-gradient(135deg, ${data.theme.primaryColor}, ${data.theme.secondaryColor}); color: white; padding: 2rem; border-radius: 10px; text-align: center; margin-bottom: 2rem;">
+                            <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem;">${data.profile.name}</h1>
+                            <p style="opacity: 0.9;">${data.profile.title}</p>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                            ${data.profile.statistics.map(stat => `
+                                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                                    <div style="font-size: 1.5rem; font-weight: bold; color: ${data.theme.primaryColor};">${stat.value}</div>
+                                    <div style="font-size: 0.85rem; color: #666;">${stat.label}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <h3 style="color: ${data.theme.primaryColor}; margin-bottom: 1rem;">Biography Sections</h3>
+                            ${data.biography.sections.map(section => `
+                                <div style="margin-bottom: 1rem;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">${section.heading}</h4>
+                                    <p style="font-size: 0.9rem; color: #666;">${section.content.substring(0, 100)}...</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <h3 style="color: ${data.theme.primaryColor}; margin-bottom: 1rem;">Timeline Events (${data.timeline.length})</h3>
+                            <h3 style="color: ${data.theme.primaryColor}; margin-bottom: 1rem;">Gallery Photos (${data.gallery.items.length})</h3>
+                            <h3 style="color: ${data.theme.primaryColor}; margin-bottom: 1rem;">Testimonials (${data.testimonials.reviews.length})</h3>
+                        </div>
+                        
+                        <div style="background: ${data.theme.accentColor}; color: #333; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <strong>Ready to generate your complete website!</strong>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('previewContent').innerHTML = previewHTML;
+                notyf.success('Preview updated!');
+            } catch (error) {
+                console.error('Preview error:', error);
+                notyf.error('Error updating preview');
+            }
+        }
+
+        // Update preview with full HTML
+        function updatePreviewWithHTML(html) {
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '400px';
+            iframe.style.border = 'none';
+            iframe.style.borderRadius = '8px';
+            
+            document.getElementById('previewContent').innerHTML = '';
+            document.getElementById('previewContent').appendChild(iframe);
+            
+            iframe.contentDocument.open();
+            iframe.contentDocument.write(html);
+            iframe.contentDocument.close();
+        }
+
+        // Download website
+        function downloadWebsite() {
+            if (!generatedHTML) {
+                notyf.error('Please generate the website first!');
+                return;
+            }
+            
+            const blob = new Blob([generatedHTML], { type: 'text/html' });
+            const filename = `${generatedData.profile.name.toLowerCase().replace(/\s+/g, '-')}-profile.html`;
+            saveAs(blob, filename);
+            
+            notyf.success('Website downloaded successfully!');
+        }
+
+        // Initialize color previews
+        document.addEventListener('DOMContentLoaded', function() {
+            const colorInputs = document.querySelectorAll('input[type="color"]');
+            colorInputs.forEach(input => {
+                const previewId = input.id + 'Preview';
+                const preview = document.getElementById(previewId);
+                if (preview) {
+                    preview.style.backgroundColor = input.value;
+                    input.addEventListener('change', () => {
+                        preview.style.backgroundColor = input.value;
+                    });
+                }
+            });
+            
+            // Auto-update progress
+            const inputs = document.querySelectorAll('#profileForm input, #profileForm textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', updateProgress);
+            });
+            
+            updateProgress();
+        });
+
+        // Auto-save to localStorage
+        function saveToLocalStorage() {
+            const formData = new FormData(document.getElementById('profileForm'));
+            const data = Object.fromEntries(formData.entries());
+            localStorage.setItem('profileFormData', JSON.stringify(data));
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('profileFormData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.keys(data).forEach(key => {
+                    const input = document.querySelector(`[name="${key}"]`);
+                    if (input) {
+                        input.value = data[key];
+                    }
+                });
+            }
+        }
+
+        // Auto-save every 30 seconds
+        setInterval(saveToLocalStorage, 30000);
+
+        // Load saved data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFromLocalStorage();
+        });
+
+        // Initialize first section as open
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstSection = document.querySelector('.form-section');
+            if (firstSection) {
+                firstSection.classList.add('active');
+                firstSection.querySelector('.section-content').classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
